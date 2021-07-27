@@ -24,6 +24,8 @@ namespace Hospital_Project.Models
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
+        public DbSet<Questions> Questions { get; set; }
+        public DbSet<Surveys> Surveys { get; set; }
 
         public static ApplicationDbContext Create()
         {
