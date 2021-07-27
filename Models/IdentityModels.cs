@@ -27,6 +27,10 @@ namespace Hospital_Project.Models
         public DbSet<Questions> Questions { get; set; }
         public DbSet<Surveys> Surveys { get; set; }
 
+        //Volunteer Application Entities
+        public DbSet<Application> Applications { get; set; }
+        public DbSet<Position> Positions { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
