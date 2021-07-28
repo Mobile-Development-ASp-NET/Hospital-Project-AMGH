@@ -24,6 +24,13 @@ namespace Hospital_Project.Models
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
+
+        // ####### Doctor - Detail Entities
+
+        public DbSet<Department> Departments { get; set; }
+
+        public DbSet<DoctorDetails> DoctorDetails { get; set; }
+        // #######
         public DbSet<Questions> Questions { get; set; }
         public DbSet<Surveys> Surveys { get; set; }
 
