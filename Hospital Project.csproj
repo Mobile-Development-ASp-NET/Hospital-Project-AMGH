@@ -216,9 +216,19 @@
     <Compile Include="Migrations\202107272133447_application-position.Designer.cs">
       <DependentUpon>202107272133447_application-position.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107280654081_Departments.cs" />
+    <Compile Include="Migrations\202107280654081_Departments.Designer.cs">
+      <DependentUpon>202107280654081_Departments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107280707051_DoctorDetail.cs" />
+    <Compile Include="Migrations\202107280707051_DoctorDetail.Designer.cs">
+      <DependentUpon>202107280707051_DoctorDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Application.cs" />
+    <Compile Include="Models\Department.cs" />
+    <Compile Include="Models\DoctorDetails.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Position.cs" />
@@ -321,6 +331,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107272133447_application-position.resx">
       <DependentUpon>202107272133447_application-position.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107280654081_Departments.resx">
+      <DependentUpon>202107280654081_Departments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107280707051_DoctorDetail.resx">
+      <DependentUpon>202107280707051_DoctorDetail.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
