@@ -45,6 +45,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -124,12 +130,6 @@
     <Reference Include="System.Web.Http.WebHost">
       <HintPath>packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework">
-      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -181,8 +181,10 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ApplicationDataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PositionDataController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -202,10 +204,24 @@
     <Compile Include="Migrations\202107271453344_Surveys1.Designer.cs">
       <DependentUpon>202107271453344_Surveys1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107272130149_applications.cs" />
+    <Compile Include="Migrations\202107272130149_applications.Designer.cs">
+      <DependentUpon>202107272130149_applications.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107272132415_positions.cs" />
+    <Compile Include="Migrations\202107272132415_positions.Designer.cs">
+      <DependentUpon>202107272132415_positions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107272133447_application-position.cs" />
+    <Compile Include="Migrations\202107272133447_application-position.Designer.cs">
+      <DependentUpon>202107272133447_application-position.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Application.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Position.cs" />
     <Compile Include="Models\Questions.cs" />
     <Compile Include="Models\Surveys.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -296,6 +312,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107271453344_Surveys1.resx">
       <DependentUpon>202107271453344_Surveys1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107272130149_applications.resx">
+      <DependentUpon>202107272130149_applications.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107272132415_positions.resx">
+      <DependentUpon>202107272132415_positions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107272133447_application-position.resx">
+      <DependentUpon>202107272133447_application-position.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
