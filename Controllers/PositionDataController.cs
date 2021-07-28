@@ -15,7 +15,10 @@ namespace Hospital_Project.Controllers
     public class PositionDataController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        // Once the Department Table is made you need to make a ListPositionsforDepartments
 
+
+        // Admin Credentials
         /// <summary>
         /// List all positions that are available follow by dates
         /// </summary>
@@ -47,6 +50,7 @@ namespace Hospital_Project.Controllers
             return Ok(PositionDtos);
         }
 
+        // Admin Credentials
         /// <summary>
         /// Find the info on a position base on ID
         /// </summary>
@@ -82,6 +86,7 @@ namespace Hospital_Project.Controllers
             return Ok(PositionDtos);
         }
 
+        // Admin Credentials
         /// <summary>
         /// Updaes a picticular Position in the system with a POST Data input
         /// </summary>
@@ -133,6 +138,7 @@ namespace Hospital_Project.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        // Admin Credentials
         /// <summary>
         /// Adds a Position to the system
         /// </summary>
