@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -9,6 +10,8 @@ namespace Hospital_Project.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
+        //Users can have many admiited patients
+        public ICollection<Admission> Admissions { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -37,6 +40,11 @@ namespace Hospital_Project.Models
         //Volunteer Application Entities
         public DbSet<Application> Applications { get; set; }
         public DbSet<Position> Positions { get; set; }
+
+        //greeting card and admission entities
+
+        public DbSet<GreetingCard> GreetingCards { get; set; }
+        public DbSet<Admission> Admissions { get; set; }
 
         public static ApplicationDbContext Create()
         {
