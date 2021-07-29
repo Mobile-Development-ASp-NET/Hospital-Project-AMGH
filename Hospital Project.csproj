@@ -230,10 +230,19 @@
     <Compile Include="Migrations\202107290800165_greetingcard.Designer.cs">
       <DependentUpon>202107290800165_greetingcard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107291943245_subscribed_user.cs" />
+    <Compile Include="Migrations\202107291943245_subscribed_user.Designer.cs">
+      <DependentUpon>202107291943245_subscribed_user.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107291944365_blog.cs" />
+    <Compile Include="Migrations\202107291944365_blog.Designer.cs">
+      <DependentUpon>202107291944365_blog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Admission.cs" />
     <Compile Include="Models\Application.cs" />
+    <Compile Include="Models\Blog.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\DoctorDetails.cs" />
     <Compile Include="Models\GreetingCard.cs" />
@@ -241,6 +250,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Position.cs" />
     <Compile Include="Models\Questions.cs" />
+    <Compile Include="Models\SubscribedUser.cs" />
     <Compile Include="Models\Surveys.cs" />
     <Compile Include="Models\ViewModels\DetailsApplication.cs" />
     <Compile Include="Models\ViewModels\DetailsPosition.cs" />
@@ -354,6 +364,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107290800165_greetingcard.resx">
       <DependentUpon>202107290800165_greetingcard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107291943245_subscribed_user.resx">
+      <DependentUpon>202107291943245_subscribed_user.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107291944365_blog.resx">
+      <DependentUpon>202107291944365_blog.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
