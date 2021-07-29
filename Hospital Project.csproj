@@ -185,6 +185,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PositionDataController.cs" />
+    <Compile Include="Controllers\QuestionDataController.cs" />
+    <Compile Include="Controllers\SurveyDataController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
