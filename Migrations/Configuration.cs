@@ -10,13 +10,14 @@ namespace Hospital_Project.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+
         }
 
         protected override void Seed(Hospital_Project.Models.ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
+            //  You can use the DbSet<T>.AddOrUpdate() helper method 
             //  to avoid creating duplicate seed data.
         }
     }
