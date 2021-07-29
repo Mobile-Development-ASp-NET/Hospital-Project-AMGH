@@ -20,8 +20,8 @@ namespace Hospital_Project.Models
         /*
          * Add a Foreign Key to Departments when that table is completed
          * Since a position can have multiple departments while a department can have one position.
-         */
-       /* [ForeignKey("Department")]
+         
+        [ForeignKey("Department")]
         public int DepartmentID { get; set; }
         public virtual Department Departments { get; set; } */
          

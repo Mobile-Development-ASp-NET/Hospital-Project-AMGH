@@ -52,6 +52,7 @@ namespace Hospital_Project.Controllers
             return View();
         }*/
 
+        // Get: Appication/List
         //[Authorize]
         public ActionResult List()
         {
