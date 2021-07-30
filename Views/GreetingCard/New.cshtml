@@ -16,17 +16,20 @@
         <label>CardType:</label> <input type="text" name="CardType" />
     </div>
     <div>
-        <label>Species:</label>
-        <select name="SpeciesID">
-            @foreach (var species in Model)
+        <label>CardMessage:</label> <input type="text" name="CardMessage" />
+    </div>
+    <div>
+        <label>Room&Bed:</label>
+        <select name="AdmissionId">
+            @foreach (var admissions in Model)
             {
-                <option value="@species.SpeciesID">@species.SpeciesName</option>
+                <option value="@admissions.AdmissionId">@admissions.Room + @admissions.Bed</option>
 
             }
         </select>
     </div>
     <div>
-        <input type="submit" value="Add Animal" />
+        <input type="submit" value="Add GreetingCard" />
 
     </div>
 </form>

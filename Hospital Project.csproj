@@ -240,6 +240,10 @@
     <Compile Include="Migrations\202107300745362_feedback.Designer.cs">
       <DependentUpon>202107300745362_feedback.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107302027054_cardmessage.cs" />
+    <Compile Include="Migrations\202107302027054_cardmessage.Designer.cs">
+      <DependentUpon>202107302027054_cardmessage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Admission.cs" />
@@ -335,11 +339,12 @@
     <Content Include="Views\Question\Details.cshtml" />
     <Content Include="Views\Question\Error.cshtml" />
     <Content Include="Views\Survey\Error.cshtml" />
-    <Content Include="Views\GreetingCard\Create.cshtml" />
-    <Content Include="Views\GreetingCard\Delete.cshtml" />
+    <Content Include="Views\GreetingCard\New.cshtml" />
+    <Content Include="Views\GreetingCard\Error.cshtml" />
     <Content Include="Views\GreetingCard\Details.cshtml" />
     <Content Include="Views\GreetingCard\Edit.cshtml" />
-    <Content Include="Views\GreetingCard\Index.cshtml" />
+    <Content Include="Views\GreetingCard\List.cshtml" />
+    <Content Include="Views\GreetingCard\DeleteConfirm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -393,6 +398,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107300745362_feedback.resx">
       <DependentUpon>202107300745362_feedback.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107302027054_cardmessage.resx">
+      <DependentUpon>202107302027054_cardmessage.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

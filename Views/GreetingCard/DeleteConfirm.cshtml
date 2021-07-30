@@ -1,0 +1,19 @@
+﻿@model Hospital_Project.Models.GreetingCardDto
+
+@{
+    ViewBag.Title = "DeleteConfirm";
+}
+
+<h2>Are you sure you want to delete this greetingcard?</h2>
+<nav>
+    <ul>
+        <li><a href="/GreetingCard/List">Cancel</a></li>
+        <li><a href="/GreetingCard/Edit/@Model.CardId">Update</a></li>
+    </ul>
+</nav>
+<h3>@Model.CardMessage</h3>
+<div>By @Model.SenderFirstName + " " + @Model.SenderLastName</div>
+<div>To @Model.Room + " " + @Model.Bed</div>
+<form action="/GreetingCard/Delete/@Model.CardId" method="POST">
+    <input type="submit" value="Confirm Delete" />
+</form>

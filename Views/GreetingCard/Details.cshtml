@@ -1,74 +1,28 @@
-﻿@model Hospital_Project.Models.GreetingCard
-
+﻿@model Hospital_Project.Models.ViewModels.GreetingCardDetails
 @{
-    Layout = null;
+    ViewBag.Title = "View";
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
-<body>
-    <div>
-        <h4>GreetingCard</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Admissions.Room)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Admissions.Room)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.SenderFirstName)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.SenderFirstName)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.SenderLastName)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.SenderLastName)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.CardType)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.CardType)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.CardHasPic)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.CardHasPic)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.PicExtension)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.PicExtension)
-            </dd>
-    
-        </dl>
+<h2>@Model.SelectedCard.CardMessage</h2>
+<nav>
+    <ul>
+        <li><a href="/GreetingCard/List">Go back to list</a></li>
+        <li><a href="/GreetingCard/Edit/@Model.SelectedCard.CardId">Update</a></li>
+        <li><a style="color:#ab2020;" href="/GreetingCard/DeleteConfirm/@Model.SelectedCard.CardId">Delete</a></li>
+    </ul>
+</nav>
+<div class="row">
+    <div class="col-md-6 col-sm-12">
+        @{
+            string imageurl = "/Content/Images/GreetingCards/default.jpg";
+            if (Model.SelectedCard.CardHasPic)
+            {
+                imageurl = "/Content/Images/GreetingCards/" + Model.SelectedCard.CardId + "." + Model.SelectedCard.PicExtension;
+            }
+        }
+        <div><img style="display:block; max-width:100%;" alt="@Model.SelectedCard.CardMessage" src="@imageurl" /></div>
+        <div>By @Model.SelectedCard.SenderFirstName + " " +  @Model.SelectedCard.SenderLastName</div>
+        <div>To @Model.SelectedCard.Room + " " + @Model.SelectedCard.Bed</div>
     </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.CardId }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
-</body>
-</html>
+    
+
+</div>
