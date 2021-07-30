@@ -234,6 +234,10 @@
     <Compile Include="Migrations\202107300502531_questions.Designer.cs">
       <DependentUpon>202107300502531_questions.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107300745362_feedback.cs" />
+    <Compile Include="Migrations\202107300745362_feedback.Designer.cs">
+      <DependentUpon>202107300745362_feedback.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Admission.cs" />
@@ -375,6 +379,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107300502531_questions.resx">
       <DependentUpon>202107300502531_questions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107300745362_feedback.resx">
+      <DependentUpon>202107300745362_feedback.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
