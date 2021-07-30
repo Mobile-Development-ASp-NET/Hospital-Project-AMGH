@@ -43,8 +43,8 @@ namespace Hospital_Project.Controllers
                 PositionDescription = p.PositionDescription,
                 PositionPostedDate = p.PositionPostedDate,
                 ApplicationDeadLine = p.ApplicationDeadLine,
-                DepartmentID = p.Department.DepartmentID,
-                DepartmentName = p.Department.DepartmentName
+                //DepartmentID = p.Department.DepartmentID,
+                //DepartmentName = p.Department.DepartmentName
             }));
 
             return Ok(PositionDtos);
@@ -75,9 +75,9 @@ namespace Hospital_Project.Controllers
                 PositionJob = Positions.PositionJob,
                 PositionDescription = Positions.PositionDescription,
                 PositionPostedDate = Positions.PositionPostedDate,
-                ApplicationDeadLine = Positions.ApplicationDeadLine,
-                DepartmentID = Positions.Department.DepartmentID,
-                DepartmentName = Positions.Department.DepartmentName
+                ApplicationDeadLine = Positions.ApplicationDeadLine
+                //DepartmentID = Positions.Department.DepartmentID,
+                //DepartmentName = Positions.Department.DepartmentName
             };
             if (Positions == null)
             {
