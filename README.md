@@ -14,7 +14,10 @@
   
 ## Features
   - Volunteer Application Form - Estevan Cordero
-    - This feature allows a form to be filled out to apply for a position in a department. The application is saved in a database where an admin can review a list of applicants,         review a selected applicant, update the status of the applicant, or delete the application that was submitted. 
+    - This feature allows a form to be filled out to apply for a position in a department. The application is saved in a database where an admin can review a list of applicants, review a selected applicant, update the status of the applicant, or delete the application that was submitted. 
+    - Models
+      - Application
+      - Position
 
   - Greeting Cards-Alby Baby
     - This feature allows a person to send a greeting card to a patient admitted to the hospital.The admin can do the crud operations on the greeting card and also on the                admissions of the hospital.
