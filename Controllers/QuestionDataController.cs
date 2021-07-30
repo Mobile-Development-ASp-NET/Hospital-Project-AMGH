@@ -16,7 +16,12 @@ namespace Hospital_Project.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: api/QuestionData
+        ///Objective: Create a method that allow us to return all questions from the database
+        /// <summary>
+        /// return all questions from the database
+        /// </summary>
+        /// <returns>List of questions in the database</returns>
+        /// <example>GET: api/QuestionData/ListQuestions</example>
         [HttpGet]
         public List<QuestionDto> ListQuestions()
         {
@@ -33,7 +38,37 @@ namespace Hospital_Project.Controllers
             return QuestionDtos;
         }
 
-        // GET: api/QuestionData/5
+        ///Objective: Create a method that allow us to return all questions that are related to the selected survey
+        ///by entering a interger value of the selected survey id
+        /// <summary>
+        /// Return all questions that are related to the survey from the database
+        /// </summary>
+        /// <param name="id">surveyID</param>
+        /// <returns>List of questions that are related to the selected survey</returns>
+        ///<example>GET: api/QuestionData/ListQuestionsForSurvey</example>
+        [HttpGet]
+        public List<QuestionDto> ListQuestionsForSurvey(int id)
+        {
+            List<Questions> Questions = db.Questions.Where(q => q.Surveys.Any(
+                s => s.SurveyID == id)).ToList();
+            List<QuestionDto> QuestionDtos = new List<QuestionDto>();
+            Questions.ForEach(q => QuestionDtos.Add(new QuestionDto()
+            {
+                QuestionID = q.QuestionID,
+                QuestionTitle = q.QuestionTitle,
+                QuestionyDescription = q.QuestionyDescription
+            }));
+            return QuestionDtos;
+        }
+
+        ///Objective: Create a method that allow us to return the selected question by entering a interger value of the selected question id
+        /// <summary>
+        /// Return the selected the question from the database
+        /// </summary>
+        /// <param name="id">questionID</param>
+        /// <return>The selected question</return>
+        ///<example>GET: api/QuestionData/FindQuestion/{id}</example>
+        [HttpGet]
         [ResponseType(typeof(Questions))]
         public IHttpActionResult FindQuestion(int id)
         {
@@ -52,7 +87,21 @@ namespace Hospital_Project.Controllers
             return Ok(QuestionDto);
         }
 
-        // PUT: api/QuestionData/5
+        ///Objective: Create a method that allow us to access the selected question by entering a interger value of the selected question id
+        ///Then Update the selected question with JSON form data of the question  model 
+        /// <summary>
+        /// Update the selected question  from the database
+        /// </summary>
+        /// <param name="id">question ID</param>
+        /// <param name="question">question JSON form data</param>
+        /// <returns>
+        /// HEADER: 204 (Success, No Content Response)
+        /// or
+        /// HEADER: 400 (Bad Request)
+        /// or
+        /// HEADER: 404 (Not Found)
+        /// </returns>
+        ///<example>POST: api/QuestionData/UpdateQuestions/{id}</example>
         [ResponseType(typeof(void))]
         [HttpPost]
         public IHttpActionResult UpdateQuestions(int id, Questions questions)
@@ -88,7 +137,17 @@ namespace Hospital_Project.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/QuestionData
+        ///Objective: Create a method that allow us to add a new question by JSON form data of the question model into the database 
+        /// <summary>
+        /// Add a new question into the database
+        /// </summary>
+        /// <param name="question">question JSON form data</param>
+        /// <returns>
+        /// HEADER: 204 (Success, No Content Response)
+        /// or
+        /// HEADER: 400 (Bad Request)
+        /// </returns>
+        ///<example>POST: api/QuestionData/AddQuestions</example>
         [ResponseType(typeof(Questions))]
         [HttpPost]
         public IHttpActionResult AddQuestions(Questions questions)
@@ -104,7 +163,17 @@ namespace Hospital_Project.Controllers
             return CreatedAtRoute("DefaultApi", new { id = questions.QuestionID }, questions);
         }
 
-        // DELETE: api/QuestionData/5
+        ///Objective: Create a method that allow us to delete the selected question by entering a interger value of the selected question id
+        /// <summary>
+        /// Remove the selected the question from the database
+        /// </summary>
+        /// <param name="id">questionID</param>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// or
+        /// HEADER: 404 (NOT FOUND)
+        /// </returns>
+        ///<example>POST: api/QuestionData/DeleteQuestions/{id}</example>
         [ResponseType(typeof(Questions))]
         [HttpPost]
         public IHttpActionResult DeleteQuestions(int id)

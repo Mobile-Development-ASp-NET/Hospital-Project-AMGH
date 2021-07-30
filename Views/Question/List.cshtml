@@ -1,0 +1,18 @@
+﻿@model List<Hospital_Project.Models.QuestionDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<a href="/Question/New" class="navlink">Add</a>
+<div class="detailInfo">
+    <h1>Question List</h1>
+    <div>
+        @foreach (var question in Model)
+        {
+            <a href="/question/details/@question.QuestionID"><h2>@question.QuestionTitle</h2></a>
+            <p>@question.QuestionyDescription</p>
+        }
+    </div>
+</div>
+
+
