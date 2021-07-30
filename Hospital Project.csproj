@@ -236,6 +236,7 @@
     <Compile Include="Models\Application.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\DoctorDetails.cs" />
+    <Compile Include="Models\Feedback.cs" />
     <Compile Include="Models\GreetingCard.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
