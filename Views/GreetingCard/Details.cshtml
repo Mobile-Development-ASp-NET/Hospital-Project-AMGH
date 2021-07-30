@@ -1,0 +1,74 @@
+﻿@model Hospital_Project.Models.GreetingCard
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>GreetingCard</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Admissions.Room)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Admissions.Room)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.SenderFirstName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.SenderFirstName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.SenderLastName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.SenderLastName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CardType)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CardType)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CardHasPic)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CardHasPic)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.PicExtension)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.PicExtension)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.CardId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

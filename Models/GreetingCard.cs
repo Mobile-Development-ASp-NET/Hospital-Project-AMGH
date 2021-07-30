@@ -13,6 +13,7 @@ namespace Hospital_Project.Models
         public int CardId { get; set; }
         public string SenderFirstName { get; set; }
         public string SenderLastName { get; set; }
+        public string CardMessage { get; set; }
         public string CardType { get; set; }
         public bool CardHasPic { get; set;}
         public string PicExtension { get; set; }
@@ -29,6 +30,7 @@ namespace Hospital_Project.Models
         public string SenderFirstName { get; set; }
         public string SenderLastName { get; set; }
         public string CardType { get; set; }
+        public string CardMessage { get; set; }
         public bool CardHasPic { get; set; }
         public string PicExtension { get; set; }
         public int AdmissionId { get; set;}
