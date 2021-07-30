@@ -238,13 +238,16 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Admission.cs" />
     <Compile Include="Models\Application.cs" />
+    <Compile Include="Models\Blog.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\DoctorDetails.cs" />
+    <Compile Include="Models\Feedback.cs" />
     <Compile Include="Models\GreetingCard.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Position.cs" />
     <Compile Include="Models\Questions.cs" />
+    <Compile Include="Models\SubscribedUser.cs" />
     <Compile Include="Models\Surveys.cs" />
     <Compile Include="Models\ViewModels\DetailsApplication.cs" />
     <Compile Include="Models\ViewModels\DetailsPosition.cs" />
