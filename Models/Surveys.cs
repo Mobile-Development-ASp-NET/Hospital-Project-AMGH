@@ -16,4 +16,11 @@ namespace Hospital_Project.Models
 
         public ICollection<Questions> Questions { get; set; }
     }
+
+    public class SurveyDto
+    {
+        public int SurveyID { get; set; }
+        public string SurveyTitle { get; set; }
+        public string SurveyDescription { get; set; }
+    }
 }

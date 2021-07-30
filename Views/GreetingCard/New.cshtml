@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Hospital_Project.Models.AdmissionDto>
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create GreetingCard</h2>
+<form action="/GreetingCard/Create" method="POST">
+    <div>
+        <label>SenderFirstName:</label> <input type="text" name="SenderFirstName" />
+    </div>
+    <div>
+        <label>SenderLastName:</label> <input type="text" name="SenderLastName" />
+    </div>
+    <div>
+        <label>CardType:</label> <input type="text" name="CardType" />
+    </div>
+    <div>
+        <label>CardMessage:</label> <input type="text" name="CardMessage" />
+    </div>
+    <div>
+        <label>Room&Bed:</label>
+        <select name="AdmissionId">
+            @foreach (var admissions in Model)
+            {
+                <option value="@admissions.AdmissionId">@admissions.Room + @admissions.Bed</option>
+
+            }
+        </select>
+    </div>
+    <div>
+        <input type="submit" value="Add GreetingCard" />
+
+    </div>
+</form>
+
+

@@ -183,10 +183,16 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ApplicationController.cs" />
     <Compile Include="Controllers\ApplicationDataController.cs" />
+    <Compile Include="Controllers\GreetingCardController.cs" />
+    <Compile Include="Controllers\GreetingCardDataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PositionController.cs" />
     <Compile Include="Controllers\PositionDataController.cs" />
+    <Compile Include="Controllers\QuestionController.cs" />
+    <Compile Include="Controllers\QuestionDataController.cs" />
+    <Compile Include="Controllers\SurveyController.cs" />
+    <Compile Include="Controllers\SurveyDataController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -197,10 +203,6 @@
     <Compile Include="Migrations\202107251633019_Surveys.cs" />
     <Compile Include="Migrations\202107251633019_Surveys.Designer.cs">
       <DependentUpon>202107251633019_Surveys.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202107251633332_Questions.cs" />
-    <Compile Include="Migrations\202107251633332_Questions.Designer.cs">
-      <DependentUpon>202107251633332_Questions.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202107271453344_Surveys1.cs" />
     <Compile Include="Migrations\202107271453344_Surveys1.Designer.cs">
@@ -226,19 +228,44 @@
     <Compile Include="Migrations\202107280707051_DoctorDetail.Designer.cs">
       <DependentUpon>202107280707051_DoctorDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107290800165_greetingcard.cs" />
+    <Compile Include="Migrations\202107290800165_greetingcard.Designer.cs">
+      <DependentUpon>202107290800165_greetingcard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107300502531_questions.cs" />
+    <Compile Include="Migrations\202107300502531_questions.Designer.cs">
+      <DependentUpon>202107300502531_questions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107300745362_feedback.cs" />
+    <Compile Include="Migrations\202107300745362_feedback.Designer.cs">
+      <DependentUpon>202107300745362_feedback.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107302027054_cardmessage.cs" />
+    <Compile Include="Migrations\202107302027054_cardmessage.Designer.cs">
+      <DependentUpon>202107302027054_cardmessage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Admission.cs" />
     <Compile Include="Models\Application.cs" />
+    <Compile Include="Models\Blog.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\DoctorDetails.cs" />
+    <Compile Include="Models\Feedback.cs" />
+    <Compile Include="Models\GreetingCard.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Position.cs" />
     <Compile Include="Models\Questions.cs" />
+    <Compile Include="Models\SubscribedUser.cs" />
     <Compile Include="Models\Surveys.cs" />
     <Compile Include="Models\ViewModels\DetailsApplication.cs" />
     <Compile Include="Models\ViewModels\DetailsPosition.cs" />
+    <Compile Include="Models\ViewModels\DetailsQuestion.cs" />
+    <Compile Include="Models\ViewModels\DetailsSurvey.cs" />
+    <Compile Include="Models\ViewModels\GreetingCardDetails.cs" />
     <Compile Include="Models\ViewModels\UpdateApplication.cs" />
+    <Compile Include="Models\ViewModels\UpdateGreetingCard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -254,6 +281,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="jsondata\application.json" />
+    <Content Include="jsondata\GreetingCard.json" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -299,9 +327,28 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Survey\List.cshtml" />
+    <Content Include="Views\Survey\New.cshtml" />
+    <Content Include="Views\Survey\DeleteConfirm.cshtml" />
+    <Content Include="Views\Question\List.cshtml" />
+    <Content Include="Views\Question\New.cshtml" />
+    <Content Include="Views\Question\Edit.cshtml" />
+    <Content Include="Views\Survey\Edit.cshtml" />
+    <Content Include="Views\Question\DeleteConfirm.cshtml" />
+    <Content Include="Views\Survey\Details.cshtml" />
+    <Content Include="Views\Question\Details.cshtml" />
+    <Content Include="Views\Question\Error.cshtml" />
+    <Content Include="Views\Survey\Error.cshtml" />
+    <Content Include="Views\GreetingCard\New.cshtml" />
+    <Content Include="Views\GreetingCard\Error.cshtml" />
+    <Content Include="Views\GreetingCard\Details.cshtml" />
+    <Content Include="Views\GreetingCard\Edit.cshtml" />
+    <Content Include="Views\GreetingCard\List.cshtml" />
+    <Content Include="Views\GreetingCard\DeleteConfirm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Images\" />
     <Folder Include="Views\Application\" />
     <Folder Include="Views\Position\" />
   </ItemGroup>
@@ -325,9 +372,6 @@
     <EmbeddedResource Include="Migrations\202107251633019_Surveys.resx">
       <DependentUpon>202107251633019_Surveys.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202107251633332_Questions.resx">
-      <DependentUpon>202107251633332_Questions.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107271453344_Surveys1.resx">
       <DependentUpon>202107271453344_Surveys1.cs</DependentUpon>
     </EmbeddedResource>
@@ -345,6 +389,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107280707051_DoctorDetail.resx">
       <DependentUpon>202107280707051_DoctorDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107290800165_greetingcard.resx">
+      <DependentUpon>202107290800165_greetingcard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107300502531_questions.resx">
+      <DependentUpon>202107300502531_questions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107300745362_feedback.resx">
+      <DependentUpon>202107300745362_feedback.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107302027054_cardmessage.resx">
+      <DependentUpon>202107302027054_cardmessage.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

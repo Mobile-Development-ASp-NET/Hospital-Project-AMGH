@@ -1,0 +1,12 @@
+﻿@model Hospital_Project.Models.SurveyDto
+@{
+    ViewBag.Title = "DeleteConfirm";
+}
+
+<h2>DeleteConfirm</h2>
+<h2>@Model.SurveyTitle</h2>
+<div> @Model.SurveyDescription</div>
+<form action="/Survey/delete/@Model.SurveyID" method="POST">
+    <input type="submit" value="delete" />
+</form>
+

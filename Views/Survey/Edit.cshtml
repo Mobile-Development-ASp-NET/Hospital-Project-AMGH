@@ -1,0 +1,20 @@
+﻿@model Hospital_Project.Models.SurveyDto
+@{
+    ViewBag.Title = "Edit";
+}
+
+<form action="/Survey/Update/@Model.SurveyID" method="POST">
+    <div>
+        <label>Survey ID:</label><input type="text" name="SurveyID" value="@Model.SurveyID" />
+    </div>
+    <div>
+        <label>Survey Number:</label><input type="text" name="SurveyTitle" value="@Model.SurveyTitle" />
+    </div>
+    <div>
+        <label>Survey Description:</label><input type="text" name="SurveyDescription" value="@Model.SurveyDescription" />
+    </div>
+    <div>
+        <input type="submit" value="edit Survey" />
+    </div>
+</form>
+

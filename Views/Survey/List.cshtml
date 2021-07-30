@@ -1,0 +1,16 @@
+﻿@model List<Hospital_Project.Models.SurveyDto>
+@{
+    ViewBag.Title = "List";
+}
+<a href="/Survey/New" class="navlink">Add</a>
+<div class="detailInfo">
+    <h1>Survey List</h1>
+    <div>
+        @foreach (var survey in Model)
+        {
+            <h3>related surveys:</h3>
+            <a href="/survey/details/@survey.SurveyID"><h2>@survey.SurveyTitle</h2></a>
+            <p>@survey.SurveyDescription</p>
+        }
+    </div>
+</div>

@@ -22,7 +22,9 @@ namespace Hospital_Project.Models
             [ForeignKey("Department")]
             public int DepartmentId { get; set; }
             public virtual Department Department { get; set; }
-        
+            public ICollection<Admission> Admissions { get; set; }
+            public ICollection<Feedback> Feedbacks { get; set; }
+
     }
     public class DoctorDetailDto
     {

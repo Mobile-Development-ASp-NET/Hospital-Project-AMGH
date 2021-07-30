@@ -1,0 +1,24 @@
+﻿@model Hospital_Project.Models.ViewModels.DetailsQuestion
+@{
+    ViewBag.Title = "Details";
+}
+
+<a href="/question/list" class="navlink">Go back</a>
+<a href="/question/edit/@Model.selectedQuestion.QuestionID" class="navlink">Update</a>
+<a href="/question/DeleteConfirm/@Model.selectedQuestion.QuestionID" class="dellink">Delete</a>
+<div class="detailInfo">
+    <div>
+        <h1>@Model.selectedQuestion.QuestionTitle</h1>
+        <p>@Model.selectedQuestion.QuestionyDescription</p>
+    </div>
+
+    <div id="related-questions">
+        <h3>Related surveys:</h3>
+        @foreach (var survey in Model.relatedSurveys)
+        {
+            <a href="/survey/details/@survey.SurveyID" style="color:black; padding-right:2em; font-size:2em;">@survey.SurveyTitle</a>
+            <p>@survey.SurveyDescription</p>
+        }
+    </div>
+</div>
+

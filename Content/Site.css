@@ -23,4 +23,28 @@ textarea {
     max-width: 280px;
 }
 
-/* hell0oo*/
+.navlink {
+    float: left;
+    margin-right: 2em;
+    border: 1px solid black;
+    background-color: blue;
+    color: white;
+    padding: 0.1em;
+    margin-top: 1em;
+}
+
+.dellink {
+    color: white;
+    float: right;
+    border: 1px red black;
+    background-color: red;
+    margin-top: 1em;
+    padding: 3px;
+}
+
+/*detail information of questions and surveys container */
+.detailInfo {
+    margin-top: 5em;
+}
+
+

@@ -1,0 +1,61 @@
+﻿@model Hospital_Project.Models.ViewModels.UpdateGreetingCard
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Update GreetingCard</h2>
+<nav>
+    <ul>
+        <li><a href="/GreetingCard/List">Go back to list</a></li>
+
+        <li><a style="color:#ab2020;" href="/GreetingCard/DeleteConfirm/@Model.SelectedCard.CardId">Delete</a></li>
+    </ul>
+</nav>
+<form action="/GreetingCard/Update/@Model.SelectedCard" method="POST" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <div style="display:none;">
+                @* Pass through the card Id *@
+                <input type="text" name="CardId" value="@Model.SelectedCard.CardId" />
+            </div>
+            <div>
+                <label>SenderFirstName:</label> <input type="text" name="SenderFirstName" value="@Model.SelectedCard.SenderFirstName" />
+            </div>
+            <div>
+                <label>SenderLastName:</label> <input type="text" name="SenderLastName" value="@Model.SelectedCard.SenderLastName"/>
+            </div>
+            <div>
+                <label>CardType:</label> <input type="text" name="CardType" value="@Model.SelectedCard.CardType"/>
+            </div>
+            <div>
+                <label>CardMessage:</label> <input type="text" name="CardMessage" value="@Model.SelectedCard.CardMessage" />
+            </div>
+            
+            <div>
+                <label>Admission Id:</label>
+
+                <select name="AdmissionId">
+                    @foreach (var admissions in Model.AdmissionOptions)
+                    {
+                        var selected = "";
+                        if (admissions.AdmissionId == Model.SelectedCard.AdmissionId)
+                        {
+                            selected = "selected";
+                        }
+                        <option value="@admissions.AdmissionId" @selected>@admissions.Room +" " + @admissions.Bed</option>
+
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <input type="file" name="GreetinCardPic" />
+        </div>
+    </div>
+    <div>
+        <input type="submit" value="Update Greeting Card" />
+
+    </div>
+
+</form>
