@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Hospital_Project.Models.Admission>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ApplicationUser.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DoctorDetails.DrFname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Room)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bed)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApplicationUser.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DoctorDetails.DrFname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Room)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bed)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.AdmissionId }) |
+                @Html.ActionLink("Details", "Details", new { id=item.AdmissionId }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.AdmissionId })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

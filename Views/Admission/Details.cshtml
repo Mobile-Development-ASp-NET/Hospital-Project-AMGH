@@ -1,0 +1,58 @@
+﻿@model Hospital_Project.Models.Admission
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Admission</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ApplicationUser.Email)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ApplicationUser.Email)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DoctorDetails.DrFname)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DoctorDetails.DrFname)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Room)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Room)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Bed)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Bed)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.AdmissionId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>
