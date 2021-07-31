@@ -1,0 +1,16 @@
+﻿@model Hospital_Project.Models.ViewModels.DetailsSubscribedUser
+@{ 
+    ViewBag.Title = "Details";
+}
+
+<a href="/subscribeduser/list" class="navlink">Go back to List of subscribed users</a>
+<a href="/subscribeduser/edit/@Model.SelectedSubscribedUser.SubscribedUserID" class="navlink">Update</a>
+<a href="/subscribeduser/DeleteConfirm/@Model.SelectedSubscribedUser.SubscribedUserID" class="dellink">Delete</a>
+<div class="detailInfo">
+    <div>
+        <div>User Name : @Model.SelectedSubscribedUser.SubscribedUserID</div>
+        <div>User Name : @Model.SelectedSubscribedUser.Name</div>
+        <div>User Email : @Model.SelectedSubscribedUser.Email</div>
+    </div>
+</div>
+

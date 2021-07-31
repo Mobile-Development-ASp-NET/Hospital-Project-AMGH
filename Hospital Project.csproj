@@ -341,13 +341,18 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\SubscribedUser\DeleteConfirm.cshtml" />
+    <Content Include="Views\SubscribedUser\Details.cshtml" />
+    <Content Include="Views\SubscribedUser\Edit.cshtml" />
+    <Content Include="Views\SubscribedUser\Error.cshtml" />
+    <Content Include="Views\SubscribedUser\List.cshtml" />
+    <Content Include="Views\SubscribedUser\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Application\" />
     <Folder Include="Views\Blog\" />
     <Folder Include="Views\Position\" />
-    <Folder Include="Views\SubscribedUser\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -3,6 +3,7 @@ using Hospital_Project.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -69,94 +70,109 @@ namespace Hospital_Project.Controllers
 
             ViewModel.SelectedBlog = SelectedBlog;
 
-            /*url = "blogdata/ListArtistForArtForm/" + id;
+            url = "subscribeduserdata/listsubscribedusersforblog/" + id;
             response = client.GetAsync(url).Result;
 
-            IEnumerable<ArtistDto> relatedArtists = response.Content.ReadAsAsync<IEnumerable<ArtistDto>>().Result;
+            IEnumerable<SubscribedUserDto> SubscribedUsers = response.Content.ReadAsAsync<IEnumerable<SubscribedUserDto>>().Result;
 
-            viewModel.relatedArtist = relatedArtists;*/
+            ViewModel.ApprovedUsers = SubscribedUsers;
 
             return View(ViewModel);
         }
 
-        // GET: Blog/Create
-        public ActionResult Create()
+        // GET: Blog/Error
+        public ActionResult Error()
+        {
+            return View();
+        }
+
+        // GET: Blog/New
+        public ActionResult New()
         {
             return View();
         }
 
         // POST: Blog/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        /*[HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "BlogID,Title,Content")] Blog blog)
+        [HttpPost]
+        //[Authorize]
+        public ActionResult Create( Blog blog)
         {
-            if (ModelState.IsValid)
-            {
-                db.Blogs.Add(blog);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            GetApplicationCookie(); // get token credentials
 
-            return View(blog);
-        }*/
+            string url = "blogdata/addblog";
+
+            string jsonpayload = jss.Serialize(blog);
+            Debug.WriteLine(jsonpayload);
+
+            HttpContent content = new StringContent(jsonpayload);
+            content.Headers.ContentType.MediaType = "application/json";
+
+            HttpResponseMessage response = client.PostAsync(url, content).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("List");
+            }
+            else
+            {
+                return RedirectToAction("Error");
+            }
+        }
 
         // GET: Blog/Edit/5
-        /*public ActionResult Edit(int? id)
+        public ActionResult Edit(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Blog blog = db.Blogs.Find(id);
-            if (blog == null)
-            {
-                return HttpNotFound();
-            }
-            return View(blog);
-        }*/
+            string url = "blogdata/findblog/" + id;
+            HttpResponseMessage response = client.GetAsync(url).Result;
+            BlogDto blogDto = response.Content.ReadAsAsync<BlogDto>().Result;
+            return View(blogDto);
+        }
 
         // POST: Blog/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        /*[HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "BlogID,Title,Content")] Blog blog)
+        [HttpPost]
+        //[Authorize]
+        public ActionResult Update(int id, Blog blog)
         {
-            if (ModelState.IsValid)
+            string url = "blogdata/updateblog/" + id;
+            string jsonpayload = jss.Serialize(blog);
+            HttpContent content = new StringContent(jsonpayload);
+            content.Headers.ContentType.MediaType = "application/json";
+            HttpResponseMessage response = client.PostAsync(url, content).Result;
+            if (response.IsSuccessStatusCode)
             {
-                db.Entry(blog).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("List");
             }
-            return View(blog);
-        }*/
+            else
+            {
+                return RedirectToAction("Error");
+            }
+        }
 
         // GET: Blog/Delete/5
-        /*public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Blog blog = db.Blogs.Find(id);
-            if (blog == null)
-            {
-                return HttpNotFound();
-            }
-            return View(blog);
-        }*/
+            string url = "blogdata/deleteblog/" + id;
+            HttpContent content = new StringContent("");
+            content.Headers.ContentType.MediaType = "application/json";
+            HttpResponseMessage response = client.PostAsync(url, content).Result;
 
-        // POST: Blog/Delete/5
-        /*[HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("List");
+            }
+            else
+            {
+                return RedirectToAction("Error");
+            }
+        }
+
+        // POST: Blog/DeleteConfirmed/5
+        [HttpPost]
         public ActionResult DeleteConfirmed(int id)
         {
-            Blog blog = db.Blogs.Find(id);
-            db.Blogs.Remove(blog);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }*/
+            string url = "blogdata/findblog/" + id;
+            HttpResponseMessage response = client.GetAsync(url).Result;
+            BlogDto blogDto = response.Content.ReadAsAsync<BlogDto>().Result;
+            return View(blogDto);
+        }
     }
 }
