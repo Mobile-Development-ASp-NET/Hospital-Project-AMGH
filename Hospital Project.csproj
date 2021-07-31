@@ -244,6 +244,10 @@
     <Compile Include="Migrations\202107302027054_cardmessage.Designer.cs">
       <DependentUpon>202107302027054_cardmessage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107302158165_position-department.cs" />
+    <Compile Include="Migrations\202107302158165_position-department.Designer.cs">
+      <DependentUpon>202107302158165_position-department.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Admission.cs" />
@@ -401,6 +405,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107302027054_cardmessage.resx">
       <DependentUpon>202107302027054_cardmessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107302158165_position-department.resx">
+      <DependentUpon>202107302158165_position-department.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

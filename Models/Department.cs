@@ -13,6 +13,9 @@ namespace Hospital_Project.Models
         public int DepartmentID { get; set; }
         public string DepartmentName { get; set; }
         public string DepartmentDescription { get; set; }
+
+        // Added to relate to position table so that a department can be set for a position.
+        public virtual ICollection<Position> Positions { get; set; }
     }
 
     public class DepartmentDto
