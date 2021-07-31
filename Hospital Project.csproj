@@ -244,10 +244,19 @@
     <Compile Include="Migrations\202107302200396_addusername.Designer.cs">
       <DependentUpon>202107302200396_addusername.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107310606000_blogs.cs" />
+    <Compile Include="Migrations\202107310606000_blogs.Designer.cs">
+      <DependentUpon>202107310606000_blogs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107310606581_subscribedUsers.cs" />
+    <Compile Include="Migrations\202107310606581_subscribedUsers.Designer.cs">
+      <DependentUpon>202107310606581_subscribedUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Admission.cs" />
     <Compile Include="Models\Application.cs" />
+    <Compile Include="Models\Blog.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\DoctorDetails.cs" />
     <Compile Include="Models\Feedback.cs" />
@@ -256,6 +265,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Position.cs" />
     <Compile Include="Models\Questions.cs" />
+    <Compile Include="Models\SubscribedUser.cs" />
     <Compile Include="Models\Surveys.cs" />
     <Compile Include="Models\ViewModels\AdmissionDetails.cs" />
     <Compile Include="Models\ViewModels\DetailsApplication.cs" />
@@ -330,6 +340,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Views\Application\" />
     <Folder Include="Views\Position\" />
+    <Folder Include="Views\SubscribedUser\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -383,6 +394,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107302200396_addusername.resx">
       <DependentUpon>202107302200396_addusername.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107310606000_blogs.resx">
+      <DependentUpon>202107310606000_blogs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107310606581_subscribedUsers.resx">
+      <DependentUpon>202107310606581_subscribedUsers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

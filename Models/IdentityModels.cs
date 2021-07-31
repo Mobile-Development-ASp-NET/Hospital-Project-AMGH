@@ -55,6 +55,10 @@ namespace Hospital_Project.Models
         public DbSet<GreetingCard> GreetingCards { get; set; }
         public DbSet<Admission> Admissions { get; set; }
 
+        //Blog and Subscribed Users
+        public DbSet<Blog> Blogs { get; set; }
+        public DbSet<SubscribedUser> SubscribedUsers { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
