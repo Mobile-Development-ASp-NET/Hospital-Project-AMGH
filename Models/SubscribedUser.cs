@@ -14,5 +14,11 @@ namespace Hospital_Project.Models
         public string Email { get; set; }
         public ICollection<Blog> Blogs { get; set; }
     }
+    public class SubscribedUserDto
+    {
+        public int SubscribedUserID { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+    }
 
 }
