@@ -181,6 +181,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdmissionController.cs" />
+    <Compile Include="Controllers\AdmissionDataController.cs" />
     <Compile Include="Controllers\ApplicationController.cs" />
     <Compile Include="Controllers\ApplicationDataController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
@@ -201,10 +203,6 @@
     <Compile Include="Migrations\202107251633019_Surveys.cs" />
     <Compile Include="Migrations\202107251633019_Surveys.Designer.cs">
       <DependentUpon>202107251633019_Surveys.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202107251633332_Questions.cs" />
-    <Compile Include="Migrations\202107251633332_Questions.Designer.cs">
-      <DependentUpon>202107251633332_Questions.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202107271453344_Surveys1.cs" />
     <Compile Include="Migrations\202107271453344_Surveys1.Designer.cs">
@@ -234,13 +232,21 @@
     <Compile Include="Migrations\202107290800165_greetingcard.Designer.cs">
       <DependentUpon>202107290800165_greetingcard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202107291943245_subscribed_user.cs" />
-    <Compile Include="Migrations\202107291943245_subscribed_user.Designer.cs">
-      <DependentUpon>202107291943245_subscribed_user.cs</DependentUpon>
+    <Compile Include="Migrations\202107300502531_questions.cs" />
+    <Compile Include="Migrations\202107300502531_questions.Designer.cs">
+      <DependentUpon>202107300502531_questions.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202107291944365_blog.cs" />
-    <Compile Include="Migrations\202107291944365_blog.Designer.cs">
-      <DependentUpon>202107291944365_blog.cs</DependentUpon>
+    <Compile Include="Migrations\202107300745362_feedback.cs" />
+    <Compile Include="Migrations\202107300745362_feedback.Designer.cs">
+      <DependentUpon>202107300745362_feedback.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107302027054_cardmessage.cs" />
+    <Compile Include="Migrations\202107302027054_cardmessage.Designer.cs">
+      <DependentUpon>202107302027054_cardmessage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107302200396_addusername.cs" />
+    <Compile Include="Migrations\202107302200396_addusername.Designer.cs">
+      <DependentUpon>202107302200396_addusername.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -249,6 +255,7 @@
     <Compile Include="Models\Blog.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\DoctorDetails.cs" />
+    <Compile Include="Models\Feedback.cs" />
     <Compile Include="Models\GreetingCard.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -256,11 +263,13 @@
     <Compile Include="Models\Questions.cs" />
     <Compile Include="Models\SubscribedUser.cs" />
     <Compile Include="Models\Surveys.cs" />
+    <Compile Include="Models\ViewModels\AdmissionDetails.cs" />
     <Compile Include="Models\ViewModels\DetailsApplication.cs" />
     <Compile Include="Models\ViewModels\DetailsBlog.cs" />
     <Compile Include="Models\ViewModels\DetailsPosition.cs" />
     <Compile Include="Models\ViewModels\DetailsSubscribedUser.cs" />
     <Compile Include="Models\ViewModels\UpdateApplication.cs" />
+    <Compile Include="Models\ViewModels\UpdateGreetingCard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -269,6 +278,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\GreetingCards\default.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -276,6 +286,8 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="jsondata\application.json" />
+    <Content Include="jsondata\GreetingCard.json" />
+    <Content Include="jsondata\Admission.json" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -357,9 +369,6 @@
     <EmbeddedResource Include="Migrations\202107251633019_Surveys.resx">
       <DependentUpon>202107251633019_Surveys.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202107251633332_Questions.resx">
-      <DependentUpon>202107251633332_Questions.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107271453344_Surveys1.resx">
       <DependentUpon>202107271453344_Surveys1.cs</DependentUpon>
     </EmbeddedResource>
@@ -381,11 +390,17 @@
     <EmbeddedResource Include="Migrations\202107290800165_greetingcard.resx">
       <DependentUpon>202107290800165_greetingcard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202107291943245_subscribed_user.resx">
-      <DependentUpon>202107291943245_subscribed_user.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202107300502531_questions.resx">
+      <DependentUpon>202107300502531_questions.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202107291944365_blog.resx">
-      <DependentUpon>202107291944365_blog.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202107300745362_feedback.resx">
+      <DependentUpon>202107300745362_feedback.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107302027054_cardmessage.resx">
+      <DependentUpon>202107302027054_cardmessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107302200396_addusername.resx">
+      <DependentUpon>202107302200396_addusername.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

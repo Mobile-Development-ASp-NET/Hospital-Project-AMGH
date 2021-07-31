@@ -1,0 +1,15 @@
+﻿@model IEnumerable<Hospital_Project.Models.GreetingCardDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+<a href="/GreetingCard/New">New Greeting Card</a>
+@foreach (var greetingcard in Model)
+{
+    <h2><a href="/GreetingCard/Details/@greetingcard.CardId">@greetingcard.CardMessage</a></h2>
+    <div>By @greetingcard.SenderFirstName @greetingcard.SenderLastName</div>
+    <div>To @greetingcard.Room  @greetingcard.Bed</div>
+
+
+}

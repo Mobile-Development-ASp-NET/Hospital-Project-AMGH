@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>New Survey</h2>
+<form action="/Survey/Create" method="POST">
+    <div>
+        <label>Survey title:</label><input name="SurveyTitle" />
+    </div>
+    <div>
+        <label>Survey Description:</label><input name="SurveyDescription" />
+    </div>
+    <div>
+        <input type="submit" value="add survey" />
+    </div>
+</form>
+

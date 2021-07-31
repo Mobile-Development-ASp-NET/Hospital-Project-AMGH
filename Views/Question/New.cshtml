@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>New Question</h2>
+<form action="/Question/Create" method="POST">
+    <div>
+        <label>Question Number:</label><input name="QuestionTitle" />
+    </div>
+    <div>
+        <label>Question Description:</label><input name="QuestionyDescription" />
+    </div>
+    <div>
+        <input type="submit" value="add Question" />
+    </div>
+</form>
+

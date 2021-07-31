@@ -1,0 +1,20 @@
+﻿@model Hospital_Project.Models.QuestionDto
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit question</h2>
+<form action="/question/Update/@Model.QuestionID" method="POST">
+    <div>
+        <label>Question ID:</label><input type="text" name="QuestionID" value="@Model.QuestionID" />
+    </div>
+    <div>
+        <label>Question Number:</label><input type="text" name="QuestionTitle" value="@Model.QuestionTitle" />
+    </div>
+    <div>
+        <label>Question Description:</label><input type="text" name="QuestionyDescription" value="@Model.QuestionyDescription" />
+    </div>
+    <div>
+        <input type="submit" value="edit question" />
+    </div>
+</form>
