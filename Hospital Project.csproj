@@ -181,18 +181,14 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdmissionController.cs" />
+    <Compile Include="Controllers\AdmissionDataController.cs" />
     <Compile Include="Controllers\ApplicationController.cs" />
     <Compile Include="Controllers\ApplicationDataController.cs" />
-    <Compile Include="Controllers\GreetingCardController.cs" />
-    <Compile Include="Controllers\GreetingCardDataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PositionController.cs" />
     <Compile Include="Controllers\PositionDataController.cs" />
-    <Compile Include="Controllers\QuestionController.cs" />
-    <Compile Include="Controllers\QuestionDataController.cs" />
-    <Compile Include="Controllers\SurveyController.cs" />
-    <Compile Include="Controllers\SurveyDataController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -244,11 +240,14 @@
     <Compile Include="Migrations\202107302027054_cardmessage.Designer.cs">
       <DependentUpon>202107302027054_cardmessage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107302200396_addusername.cs" />
+    <Compile Include="Migrations\202107302200396_addusername.Designer.cs">
+      <DependentUpon>202107302200396_addusername.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Admission.cs" />
     <Compile Include="Models\Application.cs" />
-    <Compile Include="Models\Blog.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\DoctorDetails.cs" />
     <Compile Include="Models\Feedback.cs" />
@@ -257,13 +256,10 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Position.cs" />
     <Compile Include="Models\Questions.cs" />
-    <Compile Include="Models\SubscribedUser.cs" />
     <Compile Include="Models\Surveys.cs" />
+    <Compile Include="Models\ViewModels\AdmissionDetails.cs" />
     <Compile Include="Models\ViewModels\DetailsApplication.cs" />
     <Compile Include="Models\ViewModels\DetailsPosition.cs" />
-    <Compile Include="Models\ViewModels\DetailsQuestion.cs" />
-    <Compile Include="Models\ViewModels\DetailsSurvey.cs" />
-    <Compile Include="Models\ViewModels\GreetingCardDetails.cs" />
     <Compile Include="Models\ViewModels\UpdateApplication.cs" />
     <Compile Include="Models\ViewModels\UpdateGreetingCard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -274,6 +270,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\GreetingCards\default.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -282,6 +279,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="jsondata\application.json" />
     <Content Include="jsondata\GreetingCard.json" />
+    <Content Include="jsondata\Admission.json" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -327,28 +325,9 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Survey\List.cshtml" />
-    <Content Include="Views\Survey\New.cshtml" />
-    <Content Include="Views\Survey\DeleteConfirm.cshtml" />
-    <Content Include="Views\Question\List.cshtml" />
-    <Content Include="Views\Question\New.cshtml" />
-    <Content Include="Views\Question\Edit.cshtml" />
-    <Content Include="Views\Survey\Edit.cshtml" />
-    <Content Include="Views\Question\DeleteConfirm.cshtml" />
-    <Content Include="Views\Survey\Details.cshtml" />
-    <Content Include="Views\Question\Details.cshtml" />
-    <Content Include="Views\Question\Error.cshtml" />
-    <Content Include="Views\Survey\Error.cshtml" />
-    <Content Include="Views\GreetingCard\New.cshtml" />
-    <Content Include="Views\GreetingCard\Error.cshtml" />
-    <Content Include="Views\GreetingCard\Details.cshtml" />
-    <Content Include="Views\GreetingCard\Edit.cshtml" />
-    <Content Include="Views\GreetingCard\List.cshtml" />
-    <Content Include="Views\GreetingCard\DeleteConfirm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\Images\" />
     <Folder Include="Views\Application\" />
     <Folder Include="Views\Position\" />
   </ItemGroup>
@@ -401,6 +380,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107302027054_cardmessage.resx">
       <DependentUpon>202107302027054_cardmessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107302200396_addusername.resx">
+      <DependentUpon>202107302200396_addusername.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

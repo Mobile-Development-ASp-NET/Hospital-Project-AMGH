@@ -3,7 +3,7 @@ namespace Hospital_Project.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class blog : DbMigration
+    public partial class addusername : DbMigration
     {
         public override void Up()
         {
