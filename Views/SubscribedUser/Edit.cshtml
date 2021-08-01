@@ -1,0 +1,20 @@
+﻿@model Hospital_Project.Models.SubscribedUserDto
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Subscribed User</h2>
+<form action="/SubscribedUser/Update/@Model.SubscribedUserID" method="POST">
+    <div>
+        <label>Subscribed User ID:</label><input type="text" name="SubscribedUserID" value="@Model.SubscribedUserID" />
+    </div>
+    <div>
+        <label>Subscribed User Name:</label><input type="text" name="Name" value="@Model.Name" />
+    </div>
+    <div>
+        <label>Subscribed User Email:</label><input type="text" name="Email" value="@Model.Email" />
+    </div>
+    <div>
+        <input type="submit" value="EDIT" />
+    </div>
+</form>

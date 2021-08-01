@@ -185,10 +185,16 @@
     <Compile Include="Controllers\AdmissionDataController.cs" />
     <Compile Include="Controllers\ApplicationController.cs" />
     <Compile Include="Controllers\ApplicationDataController.cs" />
+    <Compile Include="Controllers\BlogController.cs" />
+    <Compile Include="Controllers\BlogDataController.cs" />
+    <Compile Include="Controllers\GreetingCardController.cs" />
+    <Compile Include="Controllers\GreetingCardDataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PositionController.cs" />
     <Compile Include="Controllers\PositionDataController.cs" />
+    <Compile Include="Controllers\SubscribedUserController.cs" />
+    <Compile Include="Controllers\SubscribedUserDataControllerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -244,10 +250,19 @@
     <Compile Include="Migrations\202107302200396_addusername.Designer.cs">
       <DependentUpon>202107302200396_addusername.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107310606000_blogs.cs" />
+    <Compile Include="Migrations\202107310606000_blogs.Designer.cs">
+      <DependentUpon>202107310606000_blogs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107310606581_subscribedUsers.cs" />
+    <Compile Include="Migrations\202107310606581_subscribedUsers.Designer.cs">
+      <DependentUpon>202107310606581_subscribedUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Admission.cs" />
     <Compile Include="Models\Application.cs" />
+    <Compile Include="Models\Blog.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\DoctorDetails.cs" />
     <Compile Include="Models\Feedback.cs" />
@@ -256,10 +271,15 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Position.cs" />
     <Compile Include="Models\Questions.cs" />
+    <Compile Include="Models\SubscribedUser.cs" />
     <Compile Include="Models\Surveys.cs" />
     <Compile Include="Models\ViewModels\AdmissionDetails.cs" />
     <Compile Include="Models\ViewModels\DetailsApplication.cs" />
+    <Compile Include="Models\ViewModels\DetailsBlog.cs" />
     <Compile Include="Models\ViewModels\DetailsPosition.cs" />
+    <Compile Include="Models\ViewModels\DetailsSubscribedUser.cs" />
+    <Compile Include="Models\ViewModels\GreetingCardDetails.cs" />
+    <Compile Include="Models\ViewModels\UpdateAdmission.cs" />
     <Compile Include="Models\ViewModels\UpdateApplication.cs" />
     <Compile Include="Models\ViewModels\UpdateGreetingCard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -329,6 +349,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Application\" />
+    <Folder Include="Views\Blog\" />
     <Folder Include="Views\Position\" />
   </ItemGroup>
   <ItemGroup>
@@ -383,6 +404,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107302200396_addusername.resx">
       <DependentUpon>202107302200396_addusername.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107310606000_blogs.resx">
+      <DependentUpon>202107310606000_blogs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107310606581_subscribedUsers.resx">
+      <DependentUpon>202107310606581_subscribedUsers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

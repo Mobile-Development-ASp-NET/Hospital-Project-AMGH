@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>New User</h2>
+<form action="/subscribedusers/Create" method="POST">
+    <div>
+        <label>Subscribed User Name:</label><input name="Name" />
+    </div>
+    <div>
+        <label>Subscribed User Email:</label><input name="Email" />
+    </div>
+    <div>
+        <input type="submit" value="ADD" />
+    </div>
+</form>
+

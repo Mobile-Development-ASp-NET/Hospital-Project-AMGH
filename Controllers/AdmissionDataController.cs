@@ -48,6 +48,36 @@ namespace Hospital_Project.Controllers
 
             return Ok(AdmissionDtos);
         }
+        /// <summary>
+        /// Gathers information about all GreetingCards related to a particular admissions id
+        /// </summary>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// CONTENT: all GreetingCards in the database, including their associated admissions matched with a particular admissions ID
+        /// </returns>
+        /// <param name="id">Admission Id.</param>
+        /// <example>
+        /// GET: api/GreetingCardData/ListGreetingCardsForAdmission/3
+        /// </example>
+        [HttpGet]
+        [ResponseType(typeof(GreetingCardDto))]
+        public IHttpActionResult ListAdmissionsForDoctor(int id)
+        {
+            List<Admission> Admissions = db.Admissions.Where(a => a.DrId == id).ToList();
+            List<AdmissionDto> AdmissionDtos = new List<AdmissionDto>();
+
+            Admissions.ForEach(a => AdmissionDtos.Add(new AdmissionDto()
+            {
+                AdmissionId = a.AdmissionId,
+                Room = a.Room,
+                Bed = a.Bed,
+                DrId = a.DoctorDetails.DrId,
+                DrFname = a.DoctorDetails.DrFname,
+                DrLname = a.DoctorDetails.DrLname
+            }));
+
+            return Ok(AdmissionDtos);
+        }
 
         /// <summary>
         /// Returns a particular admission  in the system.

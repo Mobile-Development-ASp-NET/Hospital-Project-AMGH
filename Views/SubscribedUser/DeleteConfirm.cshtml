@@ -1,0 +1,10 @@
+﻿@model Hospital_Project.Models.SubscribedUserDto
+@{
+    ViewBag.Title = "DeleteConfirm";
+}
+
+<h2>Confirm Deletion</h2>
+<h2>You want to delete @Model.Name ?</h2>
+<form action="/SubscribedUser/delete/@Model.SubscribedUserID" method="POST">
+    <input type="submit" value="delete" class="btn btn-danger" />
+</form>

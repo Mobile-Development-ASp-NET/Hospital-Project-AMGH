@@ -1,69 +1,53 @@
-﻿@model Hospital_Project.Models.Admission
+﻿@model Hospital_Project.Models.ViewModels.UpdateAdmission
 
 @{
-    Layout = null;
+    ViewBag.Title = "Edit";
 }
 
-<!DOCTYPE html>
+<h2>Update Admission</h2>
+<nav>
+    <ul>
+        <li><a href="/Admission/List">Go back to list</a></li>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Edit</title>
-</head>
-<body>
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-        
-        <div class="form-horizontal">
-            <h4>Admission</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            @Html.HiddenFor(model => model.AdmissionId)
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.Room, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Room, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Room, "", new { @class = "text-danger" })
-                </div>
+        <li><a style="color:#ab2020;" href="/Admission/DeleteConfirm/@Model.SelectedAdmission.AdmissionId">Delete</a></li>
+    </ul>
+</nav>
+<form action="/Admission/Update/@Model.SelectedAdmission" method="POST">
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <div style="display:none;">
+                @* Pass through the card Id *@
+                <input type="text" name="AdmissionId" value="@Model.SelectedAdmission.AdmissionId" />
             </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.Bed, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Bed, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Bed, "", new { @class = "text-danger" })
-                </div>
+            <div>
+                <label>Room:</label> <input type="text" name="Room" value="@Model.SelectedAdmission.Room" />
             </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.DrId, "DrId", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList("DrId", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.DrId, "", new { @class = "text-danger" })
-                </div>
+            <div>
+                <label>Bed:</label> <input type="text" name="Bed" value="@Model.SelectedAdmission.Bed" />
             </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.UserId, "UserId", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList("UserId", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.UserId, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-default" />
-                </div>
+
+            <div>
+                <label>Doctor Id:</label>
+
+                <select name="DrId">
+                    @foreach (var doctors in Model.DoctorOptions)
+                    {
+                        var selected = "";
+                        if (doctors.DrId == Model.SelectedAdmission.DrId)
+                        {
+                            selected = "selected";
+                        }
+                        <option value="@doctors.DrId" @selected>Dr @doctors.DrFname  @doctors.DrLname</option>
+
+                    }
+                </select>
             </div>
         </div>
-    }
-    
-    <div>
-        @Html.ActionLink("Back to List", "Index")
+        
     </div>
-</body>
-</html>
+    <div>
+        <input type="submit" value="Update Admission" />
+
+    </div>
+
+</form>
