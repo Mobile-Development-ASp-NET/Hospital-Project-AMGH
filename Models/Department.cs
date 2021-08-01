@@ -13,6 +13,9 @@ namespace Hospital_Project.Models
         public int DepartmentID { get; set; }
         public string DepartmentName { get; set; }
         public string DepartmentDescription { get; set; }
+
+        // Adds a one to many relationship with positions.
+        public virtual ICollection<Position> Positions { get; set; }
     }
 
     public class DepartmentDto
