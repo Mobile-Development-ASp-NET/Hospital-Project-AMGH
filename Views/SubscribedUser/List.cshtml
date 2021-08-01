@@ -1,0 +1,17 @@
+﻿@model List<Hospital_Project.Models.SubscribedUserDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<a href="/SubscribedUser/New" class="navlink">Add New User</a>
+<div class="detailInfo">
+    <h1>Subscribed User List</h1>
+    <div>
+        @foreach (var user in Model)
+        {
+            <a href="/SubscribedUser/details/@user.SubscribedUserID"><h2>@user.Name</h2></a>
+            <p>@user.Email</p>
+        }
+    </div>
+</div>
+
