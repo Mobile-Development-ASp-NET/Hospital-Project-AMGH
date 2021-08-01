@@ -345,6 +345,18 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Admission\DeleteConfirm.cshtml" />
+    <Content Include="Views\Admission\Details.cshtml" />
+    <Content Include="Views\Admission\Edit.cshtml" />
+    <Content Include="Views\Admission\Error.cshtml" />
+    <Content Include="Views\Admission\List.cshtml" />
+    <Content Include="Views\Admission\New.cshtml" />
+    <Content Include="Views\GreetingCard\DeleteConfirm.cshtml" />
+    <Content Include="Views\GreetingCard\Details.cshtml" />
+    <Content Include="Views\GreetingCard\Edit.cshtml" />
+    <Content Include="Views\GreetingCard\Error.cshtml" />
+    <Content Include="Views\GreetingCard\List.cshtml" />
+    <Content Include="Views\GreetingCard\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

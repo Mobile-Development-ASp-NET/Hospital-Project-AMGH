@@ -32,7 +32,7 @@ namespace Hospital_Project.Controllers
             //curl https://localhost:44342/api/Admissiondata/listAdmissions
 
 
-            string url = "Admissiondata/listAdmission";
+            string url = "Admissiondata/listAdmissions";
             HttpResponseMessage response = client.GetAsync(url).Result;
 
             //Debug.WriteLine("The response code is ");
