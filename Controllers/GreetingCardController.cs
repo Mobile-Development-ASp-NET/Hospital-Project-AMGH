@@ -168,7 +168,7 @@ namespace Hospital_Project.Controllers
 
             // all Admissions to choose from when updating this GreetingCard
             //the existing GreetingCard information
-            url = "admissionsdata/listadmissions/";
+            url = "admissiondata/listadmissions/";
             response = client.GetAsync(url).Result;
             IEnumerable<AdmissionDto> AdmissionOptions = response.Content.ReadAsAsync<IEnumerable<AdmissionDto>>().Result;
 

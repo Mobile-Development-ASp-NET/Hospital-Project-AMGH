@@ -49,15 +49,15 @@ namespace Hospital_Project.Controllers
             return Ok(AdmissionDtos);
         }
         /// <summary>
-        /// Gathers information about all GreetingCards related to a particular admissions id
+        /// Gathers information about all admissions related to a particular dr id
         /// </summary>
         /// <returns>
         /// HEADER: 200 (OK)
-        /// CONTENT: all GreetingCards in the database, including their associated admissions matched with a particular admissions ID
+        /// CONTENT: all admissions in the database, including their associated doctors matched with a particular dr ID
         /// </returns>
         /// <param name="id">Admission Id.</param>
         /// <example>
-        /// GET: api/GreetingCardData/ListGreetingCardsForAdmission/3
+        /// GET: api/GreetingCardData/ListAdmissionssForDotor/3
         /// </example>
         [HttpGet]
         [ResponseType(typeof(GreetingCardDto))]
@@ -134,7 +134,7 @@ namespace Hospital_Project.Controllers
         /// </example>
         [ResponseType(typeof(void))]
         [HttpPost]
-        public IHttpActionResult UpdateAdmissions(int id, Admission Admission)
+        public IHttpActionResult UpdateAdmission(int id, Admission Admission)
         {
             if (!ModelState.IsValid)
             {
@@ -183,7 +183,7 @@ namespace Hospital_Project.Controllers
         /// </example>
         [ResponseType(typeof(Admission))]
         [HttpPost]
-        public IHttpActionResult AddAdmissions(Admission Admission)
+        public IHttpActionResult AddAdmission(Admission Admission)
         {
             if (!ModelState.IsValid)
             {

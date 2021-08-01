@@ -15,9 +15,9 @@
     <div>
         <label>Doctor:</label>
         <select name="DrId">
-            @foreach (var doctordetails in Model)
+            @foreach (var doctors in Model)
             {
-                <option value="@doctordetails.DrId">Dr @doctordetails.DrFname  @doctordetails.DrLname</option>
+                <option value="@doctors.DrId">Dr @doctors.DrFname  @doctors.DrLname</option>
 
             }
         </select>
