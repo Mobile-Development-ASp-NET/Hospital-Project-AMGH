@@ -88,7 +88,7 @@ namespace Hospital_Project.Controllers
         }
 
         /// <summary>
-        /// Returns all GreetingCards in the system.
+        /// Returns GreetingCard of a particular id in the system.
         /// </summary>
         /// <returns>
         /// HEADER: 200 (OK)

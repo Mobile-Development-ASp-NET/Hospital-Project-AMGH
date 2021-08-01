@@ -187,6 +187,8 @@
     <Compile Include="Controllers\ApplicationDataController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\BlogDataController.cs" />
+    <Compile Include="Controllers\GreetingCardController.cs" />
+    <Compile Include="Controllers\GreetingCardDataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PositionController.cs" />
@@ -276,6 +278,8 @@
     <Compile Include="Models\ViewModels\DetailsBlog.cs" />
     <Compile Include="Models\ViewModels\DetailsPosition.cs" />
     <Compile Include="Models\ViewModels\DetailsSubscribedUser.cs" />
+    <Compile Include="Models\ViewModels\GreetingCardDetails.cs" />
+    <Compile Include="Models\ViewModels\UpdateAdmission.cs" />
     <Compile Include="Models\ViewModels\UpdateApplication.cs" />
     <Compile Include="Models\ViewModels\UpdateGreetingCard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -341,6 +345,18 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\GreetingCard\DeleteConfirm.cshtml" />
+    <Content Include="Views\GreetingCard\Details.cshtml" />
+    <Content Include="Views\GreetingCard\Edit.cshtml" />
+    <Content Include="Views\GreetingCard\Error.cshtml" />
+    <Content Include="Views\GreetingCard\List.cshtml" />
+    <Content Include="Views\GreetingCard\New.cshtml" />
+    <Content Include="Views\Admission\DeleteConfirm.cshtml" />
+    <Content Include="Views\Admission\Details.cshtml" />
+    <Content Include="Views\Admission\Edit.cshtml" />
+    <Content Include="Views\Admission\Error.cshtml" />
+    <Content Include="Views\Admission\List.cshtml" />
+    <Content Include="Views\Admission\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
