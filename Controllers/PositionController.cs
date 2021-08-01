@@ -68,6 +68,11 @@ namespace Hospital_Project.Controllers
             ViewModel.RelatedApplication = RelatedApplications;
 
             // showcase information on positions related to the departments
+            url = "positiondata/listpositionfordepartment/" + id;
+            response = client.GetAsync(url).Result;
+            IEnumerable<DepartmentDto> RelatedDepartments = response.Content.ReadAsAsync<IEnumerable<DepartmentDto>>().Result;
+
+            ViewModel.RelatedDepartment = RelatedDepartments;
 
             return View(ViewModel);
         }

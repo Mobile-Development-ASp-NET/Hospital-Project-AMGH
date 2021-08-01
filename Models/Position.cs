@@ -35,8 +35,8 @@ namespace Hospital_Project.Models
         public string PositionDescription { get; set; }
         public DateTime PositionPostedDate { get; set; }
         public DateTime ApplicationDeadLine { get; set; }
-      //  public int DepartmentID { get; set; }
-       // public string DepartmentName { get; set; }
+        public int DepartmentID { get; set; }
+        public string DepartmentName { get; set; }
 
     }
 }
