@@ -160,7 +160,7 @@ namespace Hospital_Project.Controllers
 
             try
             {
-                db.SaveChanges();
+                db.SaveChanges(); // Error when updating the application
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -204,7 +204,7 @@ namespace Hospital_Project.Controllers
             }
 
             db.Applications.Add(application);
-            db.SaveChanges();
+            db.SaveChanges(); // Error Occurs when adding an applicant to the system
 
             return CreatedAtRoute("DefaultApi", new { id = application.ApplicationID }, application);
         }

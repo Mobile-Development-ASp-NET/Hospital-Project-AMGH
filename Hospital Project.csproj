@@ -361,10 +361,15 @@
     <Content Include="Views\GreetingCard\Error.cshtml" />
     <Content Include="Views\GreetingCard\List.cshtml" />
     <Content Include="Views\GreetingCard\New.cshtml" />
+    <Content Include="Views\Application\New.cshtml" />
+    <Content Include="Views\Application\List.cshtml" />
+    <Content Include="Views\Application\Error.cshtml" />
+    <Content Include="Views\Application\Edit.cshtml" />
+    <Content Include="Views\Application\Details.cshtml" />
+    <Content Include="Views\Application\DeleteConfirm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Application\" />
     <Folder Include="Views\Blog\" />
     <Folder Include="Views\Position\" />
   </ItemGroup>
