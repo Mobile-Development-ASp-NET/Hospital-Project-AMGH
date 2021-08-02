@@ -12,6 +12,7 @@
   - Estevan Cordero
   - Alby Baby
   - Tingwei Xie
+  - Uditesh Jha
   
 ## Features
   - Volunteer Application Form - Estevan Cordero
@@ -25,3 +26,11 @@
   
   - Survey Form - Tingwei xie
     - This feature allows a user to select a survey, then answer the questions of the selected survey. The responses will be saved in the database. The admin user read, delete, update the information of the selected survey or selected question. The admin user can also add new surveys and new questions. For MVP, surveys and questions models have been created. For the final product, the response model will be added to the project.
+  
+  - Blogs - Uditesh Jha
+    - This feature allows a user to read blogs in the blogs web page. Firstly, to get access to the blogs or updates regarding hospital, user has to subscribe for blogs. This         feature is an admin side functionality so an admin can view the list of subscribed users, create new user or delete them as well. An admin can view the list of blogs,           update the blog, create new blog and delete the particular blog. Here, admmin can approve the users for particular blog in the blog details page.
+    - Models
+      - Subscribed user
+      - Blog
+
+  
