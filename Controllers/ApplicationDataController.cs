@@ -204,7 +204,7 @@ namespace Hospital_Project.Controllers
             }
 
             db.Applications.Add(application);
-            db.SaveChanges(); // Error Occurs when adding an applicant to the system
+            db.SaveChanges(); 
 
             return CreatedAtRoute("DefaultApi", new { id = application.ApplicationID }, application);
         }

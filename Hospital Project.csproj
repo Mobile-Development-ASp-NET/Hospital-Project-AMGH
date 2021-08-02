@@ -367,11 +367,16 @@
     <Content Include="Views\Application\Edit.cshtml" />
     <Content Include="Views\Application\Details.cshtml" />
     <Content Include="Views\Application\DeleteConfirm.cshtml" />
+    <Content Include="Views\Position\New.cshtml" />
+    <Content Include="Views\Position\List.cshtml" />
+    <Content Include="Views\Position\Error.cshtml" />
+    <Content Include="Views\Position\Edit.cshtml" />
+    <Content Include="Views\Position\Details.cshtml" />
+    <Content Include="Views\Position\DeleteConfirm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Blog\" />
-    <Folder Include="Views\Position\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

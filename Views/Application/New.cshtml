@@ -4,12 +4,17 @@
 }
 
 <h2>Create Application</h2>
+<nav>
+    <ul>
+        <li><a href="/Application/List">Cancel</a></li>
+    </ul>
+</nav>
 <form action="/Application/Create" method="post">
     <div>
         <label>Applicants Full Name:</label> <input type="text" name="ApplicationName" />
     </div>
     <div>
-        <label>Applicants DOB:</label> <input type="text" name="ApplicationDOB" />
+        <label>Applicants DOB:</label> <input type="date" name="ApplicationDOB" />
     </div>
     <div>
         <label>Applicants Email:</label> <input type="text" name="ApplicationEmail" />

@@ -1,0 +1,14 @@
+﻿@model IEnumerable<Hospital_Project.Models.PositionDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+<a href="/Position/New">New Position</a>
+@foreach(var position in Model)
+{
+    <h2><a href="/Position/Details/@position.PositionID">@position.PositionJob</a></h2>
+    <div>@position.PositionDescription</div>
+    <div>Posted Date: @position.PositionPostedDate</div>
+    <div>Application Deadline: @position.ApplicationDeadLine</div>
+}

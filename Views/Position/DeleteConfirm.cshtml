@@ -1,0 +1,15 @@
+﻿@model Hospital_Project.Models.PositionDto
+@{
+    ViewBag.Title = "DeleteConfirm";
+}
+
+<h2>Are you sure you want to delete this position?</h2>
+<a href="/Position/List">Cancel</a>
+<h3>@Model.PositionJob</h3>
+<p>Description: @Model.PositionDescription</p>
+<div>Posted Date: @Model.PositionPostedDate</div>
+<div>Application Deadline: @Model.ApplicationDeadLine</div>
+<div>Department Assigned: @Model.DepartmentName</div>
+<form action="/Position/Delete/@Model.PositionID" method="post">
+    <input type="submit" value="Confirm Delete"/>
+</form>

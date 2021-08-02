@@ -31,8 +31,9 @@ namespace Hospital_Project.Controllers
 
         /// <summary>
         /// Grabs the authentication cookie sent to this controller.
-        /// </summary>
-        private void GetApplicationCookie()
+        /// </summary> 
+        /// Not needed for MVP but will be for the final portion
+       /* private void GetApplicationCookie()
         {
             string token = "";
             
@@ -44,13 +45,7 @@ namespace Hospital_Project.Controllers
             if (token != "") client.DefaultRequestHeaders.Add("Cookie", ".AspNet.ApplicationCookie=" + token);
 
             return;
-        }
-
-        // GET: Application
-        /*public ActionResult Index()
-        {
-            return View();
-        }*/
+        } */
 
         // Get: Appication/List
         //[Authorize]
@@ -112,7 +107,7 @@ namespace Hospital_Project.Controllers
         //[Authorize]
         public ActionResult Create(Application application)
         {
-            GetApplicationCookie(); // get token credentials
+            //GetApplicationCookie(); // get token credentials
 
             // objective: add a new application into our system using the api.
             // curl -H "Content-Type:application/json" -d @application.json https://localhost:44342/api/applicationdata/
@@ -195,7 +190,7 @@ namespace Hospital_Project.Controllers
         //[Authorize]
         public ActionResult Delete(int id)
         {
-            GetApplicationCookie();
+            //GetApplicationCookie();
             string url = "applicationdata/deleteapplication/" + id;
             HttpContent content = new StringContent("");
             content.Headers.ContentType.MediaType = "application/json";
