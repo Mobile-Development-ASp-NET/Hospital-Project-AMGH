@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Hospital_Project.Models.PositionDto>
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>Create Application</h2>
+<nav>
+    <ul>
+        <li><a href="/Application/List">Cancel</a></li>
+    </ul>
+</nav>
+<form action="/Application/Create" method="post">
+    <div>
+        <label>Applicants Full Name:</label> <input type="text" name="ApplicationName" />
+    </div>
+    <div>
+        <label>Applicants DOB:</label> <input type="date" name="ApplicationDOB" />
+    </div>
+    <div>
+        <label>Applicants Email:</label> <input type="text" name="ApplicationEmail" />
+    </div>
+    <div>
+        <label>Criminal Record:</label> <input type="checkbox" name="ApplicationCriminalRecord" />
+    </div>
+    <div>
+        <label>Applicant Status:</label> <input type="text" name="ApplicationStatus" />
+    </div>
+    <div>
+        <label>Positions Applying For:</label>
+        <select name="PositionID">
+            @foreach (var positions in Model)
+            {
+                <option value="@positions.PositionID">@positions.PositionJob</option>
+            }
+        </select>
+    </div>
+    <div>
+        <input type="submit" value="Add Application" />
+    </div>
+</form>

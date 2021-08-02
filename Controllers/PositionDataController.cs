@@ -43,11 +43,43 @@ namespace Hospital_Project.Controllers
                 PositionDescription = p.PositionDescription,
                 PositionPostedDate = p.PositionPostedDate,
                 ApplicationDeadLine = p.ApplicationDeadLine,
-                //DepartmentID = p.Department.DepartmentID,
-                //DepartmentName = p.Department.DepartmentName
+                DepartmentID = p.Department.DepartmentID,
+                DepartmentName = p.Department.DepartmentName
             }));
 
             return Ok(PositionDtos);
+        }
+
+        /// <summary>
+        /// Gathers information that all positions related to a particular department ID
+        /// </summary>
+        /// <param name="id">Department ID</param>
+        /// <returns>
+        /// HEADER 200 : Ok
+        /// CONTENT : all positions in the database, including their associated department that matched with a picticular Department ID
+        /// </returns>
+        /// <example>
+        //  GET: api/PositionData/ListPositionForDepartment/1
+        /// </example>
+        [HttpGet]
+        [ResponseType(typeof(PositionDto))]
+        public IHttpActionResult ListPostionsForDepartment(int id)
+        {
+            List<Position> Positions = db.Positions.Where(p => p.DepartmentID == id).ToList();
+            List<PositionDto> PositionsDtos = new List<PositionDto>();
+
+            Positions.ForEach(p => PositionsDtos.Add(new PositionDto()
+            { 
+                PositionID = p.PositionID,
+                PositionJob = p.PositionJob,
+                PositionDescription = p.PositionDescription,
+                PositionPostedDate = p.PositionPostedDate,
+                ApplicationDeadLine = p.ApplicationDeadLine,
+                DepartmentID = p.Department.DepartmentID,
+                DepartmentName = p.Department.DepartmentName
+            }));
+
+            return Ok(PositionsDtos);
         }
 
         // Admin Credentials
@@ -75,9 +107,9 @@ namespace Hospital_Project.Controllers
                 PositionJob = Positions.PositionJob,
                 PositionDescription = Positions.PositionDescription,
                 PositionPostedDate = Positions.PositionPostedDate,
-                ApplicationDeadLine = Positions.ApplicationDeadLine
-                //DepartmentID = Positions.Department.DepartmentID,
-                //DepartmentName = Positions.Department.DepartmentName
+                ApplicationDeadLine = Positions.ApplicationDeadLine,
+                DepartmentID = Positions.Department.DepartmentID,
+                DepartmentName = Positions.Department.DepartmentName
             };
             if (Positions == null)
             {

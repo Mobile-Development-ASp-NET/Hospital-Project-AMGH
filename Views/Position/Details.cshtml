@@ -1,0 +1,29 @@
+﻿@model Hospital_Project.Models.ViewModels.DetailsPosition
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Position Details For: @Model.SelectedPositions.PositionJob</h2>
+<nav>
+    <ul>
+        <li><a href="/Position/List">Back to List</a></li>
+        <li><a href="/Position/Edit/@Model.SelectedPositions.PositionID">Update</a></li>
+        <li><a style="color:red;" href="/Position/DeleteConfirm/@Model.SelectedPositions.PositionID">Delete</a></li>
+    </ul>
+</nav>
+
+<div class="row">
+    <div class="col-md-6 col-sm-12">
+        <div>Description: @Model.SelectedPositions.PositionDescription</div>
+        <div>Posted Date: @Model.SelectedPositions.PositionPostedDate</div>
+        <div>Application Deadline: @Model.SelectedPositions.ApplicationDeadLine</div>
+        <div>Department Assigned: @Model.SelectedPositions.DepartmentName</div>
+    </div>
+    <div class="col-md-6 col-sm-12">
+        <h3>Applications Submitted:</h3>
+        @foreach(var applications in Model.RelatedApplication)
+        {
+            <a href="/Application/Details/@applications.ApplicationID">@applications.ApplicationName</a>
+        }
+    </div>
+</div>

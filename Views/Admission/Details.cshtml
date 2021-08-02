@@ -1,58 +1,21 @@
-﻿@model Hospital_Project.Models.Admission
-
+﻿@model Hospital_Project.Models.ViewModels.AdmissionDetails
 @{
-    Layout = null;
+    ViewBag.Title = "View";
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
-<body>
-    <div>
-        <h4>Admission</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.ApplicationUser.Email)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.ApplicationUser.Email)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.DoctorDetails.DrFname)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.DoctorDetails.DrFname)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Room)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Room)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Bed)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Bed)
-            </dd>
-    
-        </dl>
+<h2>@Model.SelectedAdmission.UserName</h2>
+<nav>
+    <ul>
+        <li><a href="/Admission/List">Go back to list</a></li>
+        <li><a href="/Admission/Edit/@Model.SelectedAdmission.AdmissionId">Update</a></li>
+        <li><a style="color:#ab2020;" href="/Admission/DeleteConfirm/@Model.SelectedAdmission.AdmissionId">Delete</a></li>
+    </ul>
+</nav>
+<div class="row">
+    <div class="col-md-6 col-sm-12">
+       
+        <div>Room and Bed: @Model.SelectedAdmission.Room @Model.SelectedAdmission.Bed</div>
+        <div>Doctor: Dr @Model.SelectedAdmission.DrFname  @Model.SelectedAdmission.DrLname</div>
     </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.AdmissionId }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
-</body>
-</html>
+
+
+</div>

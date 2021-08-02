@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Hospital_Project.Models.ApplicationDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+<a href="/Application/New">New Application</a>
+@foreach(var application in Model)
+{
+    <h2><a href="/Application/Details/@application.ApplicationID">@application.ApplicationName</a></h2>
+    <div>Status: @application.ApplicationStatus</div>
+    <div>
+        Criminal Record:
+        @{
+            string cr = "";
+            if (application.ApplicationCriminalRecord == false)
+            {
+                cr = "No Criminal Record";
+                @cr
+            }
+            else
+            {
+                cr = "Applicant Has Checked for Record Record";
+                @cr
+            }
+        }
+    </div>
+}

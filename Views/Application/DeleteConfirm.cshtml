@@ -1,0 +1,35 @@
+﻿@model Hospital_Project.Models.ApplicationDto
+    @{
+        ViewBag.Title = "DeleteConfirm";
+    }
+
+    <h2>Are you sure you want to delete this applicant?</h2>
+    <nav>
+        <ul>
+            <li><a href="/Application/List">Cancel</a></li>
+            <li><a href="/Application/Edit/@Model.ApplicationID">Update</a></li>
+        </ul>
+    </nav>
+    <h3>@Model.ApplicationName</h3>
+    <div>Date of Birth: @Model.ApplicationDOB</div>
+    <div>Contact Email: @Model.ApplicationEmail</div>
+    <div>Status: @Model.ApplicationStatus</div>
+    <div>
+        Criminal Record:
+        @{
+            string cr = "";
+            if (Model.ApplicationCriminalRecord == false)
+            {
+                cr = "No Criminal Record";
+                @cr
+            }
+            else
+            {
+                cr = "Applicant Has Checked for Record Record";
+                @cr
+            }
+        }
+    </div>
+    <form action="/Application/Delete/@Model.ApplicationID" method="post">
+        <input type="submit" value="Confirm Delete" />
+    </form>

@@ -1,0 +1,42 @@
+﻿@model Hospital_Project.Models.ViewModels.UpdateApplication
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Update Application</h2>
+<nav>
+    <ul>
+        <li><a href="/Application/List">Back to List</a></li>
+        <li><a style="color:red;" href="/Application/DeleteConfirm/@Model.SelectedApplication.ApplicationID">Delete</a></li>
+    </ul>
+</nav>
+<form action="/Application/Update/@Model.SelectedApplication.ApplicationID" method="post" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <div style="display:none;">
+                <input type="text" name="ApplicationID" value="@Model.SelectedApplication.ApplicationID" />
+            </div>
+            <div>
+                <label>Applicant Status:</label>
+                <input type="text" name="ApplicationStatus" value="@Model.SelectedApplication.ApplicationStatus" />
+            </div>
+            <div>
+                <label>Change Applicant Position:</label>
+                <select name="ApplicationID">
+                    @foreach (var positions in Model.PositionOptions)
+                     {
+                        var selected = "";
+                        if(positions.PositionID == Model.SelectedApplication.PositionID)
+                        {
+                            selected = "selected";
+                        }
+                        <option value="@positions.PositionID" @selected>@positions.PositionJob</option>
+                     }
+                </select>
+            </div>
+        </div>
+    </div>
+    <div>
+        <input type="submit" value="Update Application" />
+    </div>
+</form>

@@ -21,13 +21,6 @@ namespace Hospital_Project.Controllers
             client.BaseAddress = new Uri("https://localhost:44342/api/");
         }
 
-        /* GET Position
-         * public ActionResult Index()
-        {
-
-            return View();
-        }*/
-
         // GET: Position/List
         //[Authorize]
         public ActionResult List()
@@ -64,10 +57,16 @@ namespace Hospital_Project.Controllers
             url = "applicationdata/listapplicationforposition/" + id;
             response = client.GetAsync(url).Result;
             IEnumerable<ApplicationDto> RelatedApplications = response.Content.ReadAsAsync<IEnumerable<ApplicationDto>>().Result;
+            // Error found when selecting the applications assigned to that position
 
             ViewModel.RelatedApplication = RelatedApplications;
 
             // showcase information on positions related to the departments
+            url = "positiondata/listpositionfordepartment/" + id;
+            response = client.GetAsync(url).Result;
+            IEnumerable<DepartmentDto> RelatedDepartments = response.Content.ReadAsAsync<IEnumerable<DepartmentDto>>().Result;
+
+            ViewModel.RelatedDepartment = RelatedDepartments;
 
             return View(ViewModel);
         }
@@ -85,8 +84,8 @@ namespace Hospital_Project.Controllers
         }
 
         // POST: Position/Create
-        [HttpPost]
         //[Authorize]
+        [HttpPost]
         public ActionResult Create(Position Position)
         {
             // objective: add a new position into our system using the api
@@ -120,8 +119,8 @@ namespace Hospital_Project.Controllers
         }
 
         // POST: Position/Edit/5
-        [HttpPost]
         //[Authorize]
+        [HttpPost]
         public ActionResult Update(int id, Position Position)
         {
             string url = "positiondata/updateposition/" + id;
@@ -150,8 +149,8 @@ namespace Hospital_Project.Controllers
         }
 
         // POST: Position/Delete/5
-        [HttpPost]
         //[Authorize]
+        [HttpPost]
         public ActionResult Delete(int id, Position Position)
         {
             string url = "positiondata/deleteposition/" + id;

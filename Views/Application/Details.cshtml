@@ -1,0 +1,34 @@
+﻿@model Hospital_Project.Models.ViewModels.DetailsApplication
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@Model.SelectedApplication.ApplicationName</h2>
+<nav>
+    <ul>
+        <li><a href="/Application/List">Back to List</a></li>
+        <li><a href="/Application/Edit/@Model.SelectedApplication.ApplicationID">Update</a></li>
+        <li><a style="color:red;" href="/Application/DeleteConfirm/@Model.SelectedApplication.ApplicationID">Delete</a></li>
+    </ul>
+</nav>
+<div class="col-md-6 col-sm-12">
+    <div>Date of Birth: @Model.SelectedApplication.ApplicationDOB</div> <!--Not Sure how to hide the time-->
+    <div>Contact Email: @Model.SelectedApplication.ApplicationEmail</div>
+    <div>Criminal Record: 
+            @{ 
+                string cr = "";
+                if (Model.SelectedApplication.ApplicationCriminalRecord == false)
+                {
+                    cr = "No Criminal Record";
+                    @cr
+                }
+                else
+                {
+                    cr = "Applicant Has Checked for Record Record";
+                    @cr
+                }
+            }
+    </div>
+    <div>Status of Application: @Model.SelectedApplication.ApplicationStatus</div>
+    <div>Applied Position: @Model.SelectedApplication.PositionJob</div>
+</div>
