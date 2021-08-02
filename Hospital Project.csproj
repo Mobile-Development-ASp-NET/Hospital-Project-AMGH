@@ -192,7 +192,7 @@
     <Compile Include="Controllers\PositionController.cs" />
     <Compile Include="Controllers\PositionDataController.cs" />
     <Compile Include="Controllers\SubscribedUserController.cs" />
-    <Compile Include="Controllers\SubscribedUserDataControllerController.cs" />
+    <Compile Include="Controllers\SubscribedUserDataController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -347,11 +347,16 @@
     <Content Include="Views\SubscribedUser\Error.cshtml" />
     <Content Include="Views\SubscribedUser\List.cshtml" />
     <Content Include="Views\SubscribedUser\New.cshtml" />
+    <Content Include="Views\Blog\DeleteConfirm.cshtml" />
+    <Content Include="Views\Blog\Details.cshtml" />
+    <Content Include="Views\Blog\Edit.cshtml" />
+    <Content Include="Views\Blog\Error.cshtml" />
+    <Content Include="Views\Blog\List.cshtml" />
+    <Content Include="Views\Blog\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Application\" />
-    <Folder Include="Views\Blog\" />
     <Folder Include="Views\Position\" />
   </ItemGroup>
   <ItemGroup>

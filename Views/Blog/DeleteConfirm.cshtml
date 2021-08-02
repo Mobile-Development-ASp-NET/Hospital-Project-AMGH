@@ -1,0 +1,10 @@
+﻿@model Hospital_Project.Models.BlogDto
+@{
+    ViewBag.Title = "DeleteConfirm";
+}
+
+<h2>Confirm Deletion</h2>
+<h2>You want to delete blog titled @Model.Title ?</h2>
+<form action="/blog/delete/@Model.BlogID" method="POST">
+    <input type="submit" value="delete" class="btn btn-danger" />
+</form>

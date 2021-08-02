@@ -11,7 +11,7 @@ using System.Web.Http.Description;
 
 namespace Hospital_Project.Controllers
 {
-    public class SubscribedUserDataControllerController : ApiController
+    public class SubscribedUserDataController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 

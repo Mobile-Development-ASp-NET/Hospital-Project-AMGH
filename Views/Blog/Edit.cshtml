@@ -1,0 +1,19 @@
+﻿@model Hospital_Project.Models.BlogDto
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Subscribed User</h2>
+<form action="/blog/Update/@Model.BlogID" method="POST">
+    <div>
+        <label>Blog ID:</label><input type="text" name="BlogID" value="@Model.SubscribedUserID" />
+    </div>
+    <div>
+        <label>Blog Title:</label><input type="text" name="Title" value="@Model.Title" />
+    </div>
+    <div>
+        <label>Blog Content:</label><input type="text" name="Content" value="@Model.Content" />
+    </div>
+    <div>
+        <input type="submit" value="EDIT" />
+    </div>
+</form>

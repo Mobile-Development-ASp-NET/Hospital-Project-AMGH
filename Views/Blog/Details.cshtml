@@ -1,0 +1,16 @@
+﻿@model Hospital_Project.Models.ViewModels.DetailsBlog
+@{ 
+    ViewBag.Title = "Details";
+}
+
+<a href="/blog/list" class="navlink">Go back to List of Blogs</a>
+<a href="/blog/edit/@Model.SelectedBlog.BlogID" class="navlink">Update</a>
+<a href="/blog/DeleteConfirm/@Model.SelectedBlog.BlogID" class="dellink">Delete</a>
+<div class="detailInfo">
+    <div>
+        <div>Blog ID : @Model.SelectedBlog.BlogID</div>
+        <div>Blog Title : @Model.SelectedBlog.Title</div>
+        <div>Blog Content : @Model.SelectedBlog.Content</div>
+    </div>
+</div>
+

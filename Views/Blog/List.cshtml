@@ -1,0 +1,17 @@
+﻿@model List<Hospital_Project.Models.BlogDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<a href="/blog/New" class="navlink">Add A New Blog</a>
+<div class="detailInfo">
+    <h1>Blog List</h1>
+    <div>
+        @foreach (var blogObj in Model)
+        {
+            <h3>Blog Title</h3>
+            <a href="/blog/details/@blogObj.BlogID"><h2>@blogObj.Title</h2></a>          
+        }
+    </div>
+</div>
+

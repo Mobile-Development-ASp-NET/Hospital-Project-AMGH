@@ -26,7 +26,7 @@ namespace Hospital_Project.Controllers
             };
 
             client = new HttpClient(handler);
-            client.BaseAddress = new Uri("https://localhost:44344/api/");
+            client.BaseAddress = new Uri("https://localhost:44342/api/");
         }
 
         /// <summary>
@@ -141,6 +141,7 @@ namespace Hospital_Project.Controllers
         }
 
         // GET: SubscribedUser/Delete/5
+        [HttpPost]
         public ActionResult Delete(int id)
         {
             string url = "subscribeduserdata/deletesubscribeduser/" + id;
@@ -159,7 +160,7 @@ namespace Hospital_Project.Controllers
         }
 
         // POST: SubscribedUser/DeleteConfirmed/5
-        [HttpPost]
+        
         //[Authorize]
         public ActionResult DeleteConfirmed(int id)
         {

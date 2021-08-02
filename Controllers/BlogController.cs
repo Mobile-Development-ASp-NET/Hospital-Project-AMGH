@@ -27,7 +27,7 @@ namespace Hospital_Project.Controllers
             };
 
             client = new HttpClient(handler);
-            client.BaseAddress = new Uri("https://localhost:44344/api/");
+            client.BaseAddress = new Uri("https://localhost:44342/api/");
         }
 
         /// <summary>
