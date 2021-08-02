@@ -11,7 +11,7 @@
 ## Group Members
   - Estevan Cordero
   - Alby Baby
-  -Tingwei Xie
+  - Tingwei Xie
   
 ## Features
   - Volunteer Application Form - Estevan Cordero
