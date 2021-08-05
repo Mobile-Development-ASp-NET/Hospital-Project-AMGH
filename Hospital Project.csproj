@@ -187,6 +187,7 @@
     <Compile Include="Controllers\ApplicationDataController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\BlogDataController.cs" />
+    <Compile Include="Controllers\FeedbackDataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PositionController.cs" />

@@ -31,7 +31,7 @@ namespace Hospital_Project.Models
 
     {
         public int FeedbackId { get; set; }
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         public string UserName { get; set; }
         public int DrId { get; set; }
         public string DrFname { get; set; }
