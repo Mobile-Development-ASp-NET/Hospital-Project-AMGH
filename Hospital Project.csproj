@@ -261,6 +261,10 @@
     <Compile Include="Migrations\202108052008379_test.Designer.cs">
       <DependentUpon>202108052008379_test.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202108052014149_change_feedback_datatype.cs" />
+    <Compile Include="Migrations\202108052014149_change_feedback_datatype.Designer.cs">
+      <DependentUpon>202108052014149_change_feedback_datatype.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Admission.cs" />
@@ -425,6 +429,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202108052008379_test.resx">
       <DependentUpon>202108052008379_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108052014149_change_feedback_datatype.resx">
+      <DependentUpon>202108052014149_change_feedback_datatype.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
