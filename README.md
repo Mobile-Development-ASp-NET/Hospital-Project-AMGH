@@ -14,6 +14,7 @@
   - Tingwei Xie
   - Uditesh Jha
   - Majdi Nawfal
+  - Manal Solanki
   
 ## Features
   - Volunteer Application Form - Estevan Cordero
@@ -38,3 +39,10 @@
     - This feature allows a user to provide feedback upon visiting a doctor in the hospital. The feedback will be saved in the database, and all users will be able to see a list of the patient's feedback. Admin and logged in users will be able to add new feedback. Admin will be able to update and delete an existing feedback. 
     - Model
       - Feedback
+  
+  -Doctor Details - Manal Solanki 
+    - This feature would list all the doctors according to their department and their individual details of a dr. Admin can create ,update and delete dr whereas Users can view the list of doctor and their details.
+
+  - Model 
+    - Department
+    - DoctorDetails
