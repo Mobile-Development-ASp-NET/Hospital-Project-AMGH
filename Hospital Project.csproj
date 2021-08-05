@@ -188,12 +188,18 @@
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\BlogDataController.cs" />
     <Compile Include="Controllers\FeedbackDataController.cs" />
+    <Compile Include="Controllers\GreetingCardController.cs" />
+    <Compile Include="Controllers\GreetingCardDataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PositionController.cs" />
     <Compile Include="Controllers\PositionDataController.cs" />
+    <Compile Include="Controllers\QuestionController.cs" />
+    <Compile Include="Controllers\QuestionDataController.cs" />
     <Compile Include="Controllers\SubscribedUserController.cs" />
     <Compile Include="Controllers\SubscribedUserDataController.cs" />
+    <Compile Include="Controllers\SurveyController.cs" />
+    <Compile Include="Controllers\SurveyDataController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
