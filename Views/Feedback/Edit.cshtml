@@ -1,0 +1,36 @@
+﻿@model Hospital_Project.Models.FeedbackDto
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Update Feedback</h2>
+<nav>
+    <ul>
+        <li><a href="/Feedback/List">Go back to list</a></li>
+
+        <li><a style="color:#ab2020;" href="/Feedback/DeleteConfirm/@Model.FeedbackId">Delete</a></li>
+    </ul>
+</nav>
+<form action="/Feedback/Update/@Model.FeedbackId" method="POST">
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <div style="display:none;">
+                @* Pass through the Feedback ID *@
+                <input type="text" name="FeedbackId" value="@Model.FeedbackId" />
+            </div>
+            <div>
+                <label>Patient:</label> <input type="text" name="UserName" value="@Model.UserName" />
+            </div>
+            <div>
+                <label>Content:</label> <input type="text" name="FeedbackContent" value="@Model.FeedbackContent" />
+            </div>
+            <div>
+                <label>Date:</label> <input type="date" value="@Model.FeedbackDate.ToString("yyyy-MM-dd")" name="FeedbackDate" />
+            </div>
+        </div>
+    </div>
+    <div>
+        <input type="submit" value="Update Feedback" />
+    </div>
+</form>
+

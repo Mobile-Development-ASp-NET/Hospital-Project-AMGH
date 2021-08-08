@@ -40,9 +40,9 @@
     - Model
       - Feedback
   
-  -Doctor Details - Manal Solanki 
+  - Doctor Details - Manal Solanki 
     - This feature would list all the doctors according to their department and their individual details of a dr. Admin can create ,update and delete dr whereas Users can view the list of doctor and their details.
 
-  - Model 
-    - Department
-    - DoctorDetails
+    - Models 
+      - Department
+      - DoctorDetails

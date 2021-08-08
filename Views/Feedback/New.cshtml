@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Hospital_Project.Models.DoctorDetailDto>
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create Feedback</h2>
+<form action="/Feedback/Create" method="POST">
+    <div>
+        <label>Doctor:</label>
+        <select name="DrId">
+            @foreach (var doctors in Model)
+            {
+                <option value="@doctors.DrId">Dr @doctors.DrFname  @doctors.DrLname</option>
+            }
+        </select>
+    </div>
+    <div>
+        <label>Content</label> <input type="text" name="FeedbackContent" />
+    </div>
+    <div>
+        <label>Date:</label> <input type="date" value="@System.DateTime.Now.ToString("yyyy-MM-dd")" name="FeedbackDate" />
+    </div>
+    <div>
+        <input type="submit" value="Add Feedback" />
+
+    </div>
+</form>
+

@@ -50,34 +50,74 @@ namespace Hospital_Project.Controllers
             return Ok(FeedbackDtos);
         }
 
-        // GET: api/FeedbackData/5
-        [ResponseType(typeof(Feedback))]
-        public IHttpActionResult GetFeedback(int id)
+        /// <summary>
+        /// Returns a particular Feedback in the system.
+        /// </summary>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// CONTENT: A Feedback in the system matching up to the Feedback ID primary key
+        /// or
+        /// HEADER: 404 (NOT FOUND)
+        /// </returns>
+        /// <param name="id">The primary key of the Feedback</param>
+        /// <example>
+        /// GET: api/FeedbackData/FindFeedback/3
+        /// </example>
+        [ResponseType(typeof(FeedbackDto))]
+        [HttpGet]
+        public IHttpActionResult FindFeedback(int id)
         {
-            Feedback feedback = db.Feedbacks.Find(id);
-            if (feedback == null)
+            Feedback Feedback = db.Feedbacks.Find(id);
+            FeedbackDto FeedbackDto = new FeedbackDto()
+            {
+                FeedbackId = Feedback.FeedbackId,
+                UserId = Feedback.UserId,
+                UserName = Feedback.ApplicationUser.UserName,
+                DrId = Feedback.DoctorDetails.DrId,
+                DrFname = Feedback.DoctorDetails.DrFname,
+                DrLname = Feedback.DoctorDetails.DrLname,
+                FeedbackContent = Feedback.FeedbackContent,
+                FeedbackDate = Feedback.FeedbackDate
+            };
+            if (Feedback == null)
             {
                 return NotFound();
             }
 
-            return Ok(feedback);
+            return Ok(FeedbackDto);
         }
 
-        // PUT: api/FeedbackData/5
+        /// <summary>
+        /// Updates a particular Feedback in the system with POST Data input
+        /// </summary>
+        /// <param name="id">Represents the Feedback ID primary key</param>
+        /// <param name="Feedback">JSON FORM DATA of a Feedback</param>
+        /// <returns>
+        /// HEADER: 204 (Success, No Content Response)
+        /// or
+        /// HEADER: 400 (Bad Request)
+        /// or
+        /// HEADER: 404 (Not Found)
+        /// </returns>
+        /// <example>
+        /// POST: api/FeedbackData/UpdateFeedback/3
+        /// FORM DATA: Feedback JSON Object
+        /// </example>
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutFeedback(int id, Feedback feedback)
+        [HttpPost]
+        public IHttpActionResult PutFeedback(int id, Feedback Feedback)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != feedback.FeedbackId)
+            if (id != Feedback.FeedbackId)
             {
                 return BadRequest();
             }
 
-            db.Entry(feedback).State = EntityState.Modified;
+            db.Entry(Feedback).State = EntityState.Modified;
 
             try
             {
@@ -98,35 +138,62 @@ namespace Hospital_Project.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/FeedbackData
+        /// <summary>
+        /// Adds a Feedback to the system
+        /// </summary>
+        /// <param name="Feedback">JSON FORM DATA of a Feedback</param>
+        /// <returns>
+        /// HEADER: 201 (Created)
+        /// CONTENT: Feedback ID, Feedback Data
+        /// or
+        /// HEADER: 400 (Bad Request)
+        /// </returns>
+        /// <example>
+        /// POST: api/FeedbackData/Feedback
+        /// FORM DATA: Feedback JSON Object
+        /// </example>
         [ResponseType(typeof(Feedback))]
-        public IHttpActionResult PostFeedback(Feedback feedback)
+        [HttpPost]
+        public IHttpActionResult AddFeedback(Feedback Feedback)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Feedbacks.Add(feedback);
+            db.Feedbacks.Add(Feedback);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = feedback.FeedbackId }, feedback);
+            return CreatedAtRoute("DefaultApi", new { id = Feedback.FeedbackId }, Feedback);
         }
 
-        // DELETE: api/FeedbackData/5
+        /// <summary>
+        /// Deletes a Feedback from the system by it's ID.
+        /// </summary>
+        /// <param name="id">The primary key of the Feedback</param>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// or
+        /// HEADER: 404 (NOT FOUND)
+        /// </returns>
+        /// <example>
+        /// POST: api/FeedbackData/DeleteFeedback/3
+        /// FORM DATA: (empty)
+        /// </example>
         [ResponseType(typeof(Feedback))]
+        [HttpPost]
         public IHttpActionResult DeleteFeedback(int id)
         {
-            Feedback feedback = db.Feedbacks.Find(id);
-            if (feedback == null)
+            Feedback Feedback = db.Feedbacks.Find(id);
+            if (Feedback == null)
             {
                 return NotFound();
             }
 
-            db.Feedbacks.Remove(feedback);
+            db.Feedbacks.Remove(Feedback);
             db.SaveChanges();
 
-            return Ok(feedback);
+            return Ok();
         }
 
         protected override void Dispose(bool disposing)

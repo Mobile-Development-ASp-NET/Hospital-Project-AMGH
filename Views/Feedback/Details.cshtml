@@ -1,0 +1,19 @@
+﻿@model Hospital_Project.Models.ViewModels.DetailsFeedback
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@Model.SelectedFeedback.UserName</h2>
+<nav>
+    <ul>
+        <li><a href="/Feedback/List">Go back to list</a></li>
+        <li><a href="/Feedback/Edit/@Model.SelectedFeedback.FeedbackId">Update</a></li>
+        <li><a style="color: #ab2020;" href="/Feedback/DeleteConfirm/@Model.SelectedFeedback.FeedbackId">Delete</a></li>
+    </ul>
+</nav>
+<div class="row">
+    <div class="col-md-6 col-sm-12">
+        <div>Doctor: Dr @Model.SelectedFeedback.DrFname  @Model.SelectedFeedback.DrLname</div>
+        <div>Content: @Model.SelectedFeedback.FeedbackContent</div>
+    </div>
+</div>
