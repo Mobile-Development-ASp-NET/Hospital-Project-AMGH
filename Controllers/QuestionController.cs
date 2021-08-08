@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
+using System.Diagnostics;
 
 namespace Hospital_Project.Controllers
 {
@@ -86,7 +87,11 @@ namespace Hospital_Project.Controllers
         // GET: Question/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            //Accessing the selected question that we want to update
+            string url = "QuestionData/FindQuestion/" + id;
+            HttpResponseMessage response = client.GetAsync(url).Result;
+            QuestionDto selectedquestion = response.Content.ReadAsAsync<QuestionDto>().Result;
+            return View(selectedquestion);
         }
 
         public ActionResult Error()
@@ -98,11 +103,20 @@ namespace Hospital_Project.Controllers
         [HttpPost]
         public ActionResult Update(int id, Questions question)
         {
-            //Accessing the selected question that we want to update
+            //Use the UpdateSurveys(int id) Method to update the selected Survey's information
             string url = "QuestionData/UpdateQuestions/" + id;
-            HttpResponseMessage response = client.GetAsync(url).Result;
-            QuestionDto selectedquestion = response.Content.ReadAsAsync<QuestionDto>().Result;
-            return View(selectedquestion);
+            string jsonpayload = jss.Serialize(question);
+            HttpContent content = new StringContent(jsonpayload);
+            content.Headers.ContentType.MediaType = "application/json";
+            HttpResponseMessage response = client.PostAsync(url, content).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("List");
+            }
+            else
+            {
+                return RedirectToAction("Error");
+            }
         }
 
         // GET: Question/Delete/5
