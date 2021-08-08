@@ -43,7 +43,8 @@
     @RenderSection("scripts", required: false)
     <script>
         tinymce.init({
-            selector: 'textarea'
+            selector: 'textarea',
+            encoding: "xml"
         });
     </script>
 </body>
