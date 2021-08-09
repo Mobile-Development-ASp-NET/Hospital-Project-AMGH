@@ -187,6 +187,8 @@
     <Compile Include="Controllers\ApplicationDataController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\BlogDataController.cs" />
+    <Compile Include="Controllers\DepartmentDataController.cs" />
+    <Compile Include="Controllers\DoctorDetailsDataController.cs" />
     <Compile Include="Controllers\FeedbackController.cs" />
     <Compile Include="Controllers\FeedbackDataController.cs" />
     <Compile Include="Controllers\GreetingCardController.cs" />
@@ -325,6 +327,7 @@
     <Content Include="jsondata\Admission.json" />
     <Content Include="README.md" />
     <Content Include="jsondata\Feedback.json" />
+    <Content Include="jsondata\department.json" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
