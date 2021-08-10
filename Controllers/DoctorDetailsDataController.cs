@@ -16,28 +16,72 @@ namespace Hospital_Project.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: api/DoctorDetailsData
-        public IQueryable<DoctorDetails> GetDoctorDetails()
+        /// <summary>
+        /// List of all the doctors along with their respective departments.
+        /// </summary>
+        /// <returns>List of Doctors.</returns>
+        // GET: api/DoctorDetailsData/ListDoctorDetails
+        
+        [HttpGet]
+        [ResponseType(typeof(DoctorDetailDto))]
+        public IHttpActionResult ListDoctorDetails()
         {
-            return db.DoctorDetails;
-        }
+            List<DoctorDetails> doctorDetails = db.DoctorDetails.ToList();
+            List<DoctorDetailDto> doctorDetailDtos = new List<DoctorDetailDto>();
+            doctorDetails.ForEach(element => doctorDetailDtos.Add(new DoctorDetailDto()
+            {
+                DrId = element.DrId,
+                DrFname = element.DrFname,
+                DrLname = element.DrLname,
+                DrEmail = element.DrEmail,
+                DrBio = element.DrBio,
+                DrPosition = element.DrPosition,
+                DrStudies = element.DrStudies ,
+                DepartmentId = element.DepartmentId,
+                DepartmentName =element.Department.DepartmentName
 
-        // GET: api/DoctorDetailsData/5
+            }));
+            return Ok(doctorDetailDtos);
+        }
+       
+
+        /// <summary>
+        /// Finds a Doctor with specific Id.
+        /// </summary>
+        /// <param name="id">Doctor Id</param>
+        /// <returns>A specific doctor details</returns>
+        // GET: api/DoctorDetailsData/FindDoctorDetail/1
         [ResponseType(typeof(DoctorDetails))]
-        public IHttpActionResult GetDoctorDetails(int id)
+        [HttpGet]
+        public IHttpActionResult FindDoctorDetail(int id)
         {
             DoctorDetails doctorDetails = db.DoctorDetails.Find(id);
+            DoctorDetailDto doctorDetailDto = new DoctorDetailDto()
+            {
+                DrId = doctorDetails.DrId,
+                DrFname = doctorDetails.DrFname,
+                DrLname = doctorDetails.DrLname,
+                DrBio = doctorDetails.DrBio,
+                DrEmail = doctorDetails.DrEmail,
+                DrPosition = doctorDetails.DrPosition,
+                DrStudies = doctorDetails.DrStudies,
+                DepartmentId = doctorDetails.DepartmentId,
+                DepartmentName = doctorDetails.Department.DepartmentName
+            };
             if (doctorDetails == null)
             {
                 return NotFound();
             }
 
-            return Ok(doctorDetails);
+            return Ok(doctorDetailDto);
         }
 
-        // PUT: api/DoctorDetailsData/5
+        // POST: api/DoctorDetailsData/UpdateDoctorDetail/3
+        // curl -H "Content-Type:application/json" -d @DoctorDetail.json https://localhost:44342/api/DoctorDetailsData/UpdateDoctorDetail/3
+
+        [HttpPost]
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutDoctorDetails(int id, DoctorDetails doctorDetails)
+        public IHttpActionResult UpdateDoctorDetail(int id, DoctorDetails doctorDetails)
         {
             if (!ModelState.IsValid)
             {
@@ -70,9 +114,16 @@ namespace Hospital_Project.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/DoctorDetailsData
+        /// <summary>
+        /// Adds a new Doctor to the database.
+        /// </summary>
+        /// <param name="doctorDetails"></param>
+        /// <returns></returns>
+        // curl -d @DoctorDetail.json -H "Content-type:application/json" https://localhost:44342/api/DoctorDetailsData/AddDoctor
+        // POST: api/DoctorDetailsData/AddDoctor
         [ResponseType(typeof(DoctorDetails))]
-        public IHttpActionResult PostDoctorDetails(DoctorDetails doctorDetails)
+        [HttpPost]
+        public IHttpActionResult AddDoctor(DoctorDetails doctorDetails)
         {
             if (!ModelState.IsValid)
             {
@@ -85,9 +136,11 @@ namespace Hospital_Project.Controllers
             return CreatedAtRoute("DefaultApi", new { id = doctorDetails.DrId }, doctorDetails);
         }
 
-        // DELETE: api/DoctorDetailsData/5
+        //POST: api/DoctorDetailsData/DeletDoctorDetail/3
+        // curl -d "" https://localhost:44324/api/doctorDetailsData/deleteDoctorDetail/3
+        [HttpPost]
         [ResponseType(typeof(DoctorDetails))]
-        public IHttpActionResult DeleteDoctorDetails(int id)
+        public IHttpActionResult DeleteDoctorDetail(int id)
         {
             DoctorDetails doctorDetails = db.DoctorDetails.Find(id);
             if (doctorDetails == null)
