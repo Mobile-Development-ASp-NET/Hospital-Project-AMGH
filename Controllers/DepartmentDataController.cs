@@ -44,7 +44,7 @@ namespace Hospital_Project.Controllers
         /// </summary>
         /// <param name="id">Department Id</param>
         /// <returns>A sepcific Department.</returns>
-        // GET: api/DepartmentData/FindDeparment/1
+        // GET: api/DepartmentData/FindDepartment/1
         [ResponseType(typeof(Department))]
         [HttpGet]
         public IHttpActionResult FindDepartment(int id)
