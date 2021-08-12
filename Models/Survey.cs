@@ -7,14 +7,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Hospital_Project.Models
 {
-    public class Surveys
+    public class Survey
     {
         [Key]
         public int SurveyID { get; set; }
         public string SurveyTitle { get; set; }
         public string SurveyDescription { get; set; }
 
-        public ICollection<Questions> Questions { get; set; }
+        public ICollection<Question> Questions { get; set; }
     }
 
     public class SurveyDto

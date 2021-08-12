@@ -50,7 +50,7 @@ namespace Hospital_Project.Controllers
             ViewModel.selectedQuestion = selectedquestion;
 
             //show all surveys that are related to one question
-            url = "SurveyData/ListSurveysForQuestions/" + id;
+            url = "SurveyData/ListSurveysForQuestion/" + id;
             response = client.GetAsync(url).Result;
             List<SurveyDto> relatedSurveys = response.Content.ReadAsAsync<List<SurveyDto>>().Result;
             ViewModel.relatedSurveys = relatedSurveys;
@@ -66,10 +66,10 @@ namespace Hospital_Project.Controllers
 
         // POST: Question/Create
         [HttpPost]
-        public ActionResult Create(Questions question)
+        public ActionResult Create(Question question)
         {
             //creating an actor json data, turn into a string, then eject it into the database
-            string url = "QuestionData/AddQuestions";
+            string url = "QuestionData/AddQuestion";
             string jsonpayload = jss.Serialize(question);
             HttpContent content = new StringContent(jsonpayload);
             content.Headers.ContentType.MediaType = "application/json";
@@ -101,10 +101,10 @@ namespace Hospital_Project.Controllers
 
         // POST: Question/Edit/5
         [HttpPost]
-        public ActionResult Update(int id, Questions question)
+        public ActionResult Update(int id, Question question)
         {
             //Use the UpdateSurveys(int id) Method to update the selected Survey's information
-            string url = "QuestionData/UpdateQuestions/" + id;
+            string url = "QuestionData/UpdateQuestion/" + id;
             string jsonpayload = jss.Serialize(question);
             HttpContent content = new StringContent(jsonpayload);
             content.Headers.ContentType.MediaType = "application/json";
@@ -133,7 +133,7 @@ namespace Hospital_Project.Controllers
         public ActionResult Delete(int id)
         {
             //Accessing the DeleteQuestion(int id) method to delete the selected question
-            string url = "QuestionData/DeleteQuestions/" + id;
+            string url = "QuestionData/DeleteQuestion/" + id;
             HttpContent content = new StringContent("");
             content.Headers.ContentType.MediaType = "application/json";
             HttpResponseMessage response = client.PostAsync(url, content).Result;

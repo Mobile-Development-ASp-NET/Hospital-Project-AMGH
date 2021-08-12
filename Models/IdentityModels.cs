@@ -43,8 +43,8 @@ namespace Hospital_Project.Models
 
         public DbSet<DoctorDetails> DoctorDetails { get; set; }
         // #######
-        public DbSet<Questions> Questions { get; set; }
-        public DbSet<Surveys> Surveys { get; set; }
+        public DbSet<Question> Questions { get; set; }
+        public DbSet<Survey> Surveys { get; set; }
 
         //Volunteer Application Entities
         public DbSet<Application> Applications { get; set; }

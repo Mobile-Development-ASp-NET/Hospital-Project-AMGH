@@ -25,7 +25,7 @@ namespace Hospital_Project.Controllers
         [HttpGet]
         public List<QuestionDto> ListQuestions()
         {
-            List<Questions> Questions = db.Questions.ToList();
+            List<Question> Questions = db.Questions.ToList();
             List<QuestionDto> QuestionDtos = new List<QuestionDto>();
 
             Questions.ForEach(q => QuestionDtos.Add(new QuestionDto()
@@ -49,7 +49,7 @@ namespace Hospital_Project.Controllers
         [HttpGet]
         public List<QuestionDto> ListQuestionsForSurvey(int id)
         {
-            List<Questions> Questions = db.Questions.Where(q => q.Surveys.Any(
+            List<Question> Questions = db.Questions.Where(q => q.Surveys.Any(
                 s => s.SurveyID == id)).ToList();
             List<QuestionDto> QuestionDtos = new List<QuestionDto>();
             Questions.ForEach(q => QuestionDtos.Add(new QuestionDto()
@@ -69,10 +69,10 @@ namespace Hospital_Project.Controllers
         /// <return>The selected question</return>
         ///<example>GET: api/QuestionData/FindQuestion/{id}</example>
         [HttpGet]
-        [ResponseType(typeof(Questions))]
+        [ResponseType(typeof(Question))]
         public IHttpActionResult FindQuestion(int id)
         {
-            Questions Question = db.Questions.Find(id);
+            Question Question = db.Questions.Find(id);
             QuestionDto QuestionDto = new QuestionDto()
             {
                 QuestionID = Question.QuestionID,
@@ -101,10 +101,10 @@ namespace Hospital_Project.Controllers
         /// or
         /// HEADER: 404 (Not Found)
         /// </returns>
-        ///<example>POST: api/QuestionData/UpdateQuestions/{id}</example>
+        ///<example>POST: api/QuestionData/UpdateQuestion/{id}</example>
         [ResponseType(typeof(void))]
         [HttpPost]
-        public IHttpActionResult UpdateQuestions(int id, Questions questions)
+        public IHttpActionResult UpdateQuestion(int id, Question questions)
         {
             if (!ModelState.IsValid)
             {
@@ -147,10 +147,10 @@ namespace Hospital_Project.Controllers
         /// or
         /// HEADER: 400 (Bad Request)
         /// </returns>
-        ///<example>POST: api/QuestionData/AddQuestions</example>
-        [ResponseType(typeof(Questions))]
+        ///<example>POST: api/QuestionData/AddQuestion</example>
+        [ResponseType(typeof(Question))]
         [HttpPost]
-        public IHttpActionResult AddQuestions(Questions questions)
+        public IHttpActionResult AddQuestion(Question questions)
         {
             if (!ModelState.IsValid)
             {
@@ -173,12 +173,12 @@ namespace Hospital_Project.Controllers
         /// or
         /// HEADER: 404 (NOT FOUND)
         /// </returns>
-        ///<example>POST: api/QuestionData/DeleteQuestions/{id}</example>
-        [ResponseType(typeof(Questions))]
+        ///<example>POST: api/QuestionData/DeleteQuestion/{id}</example>
+        [ResponseType(typeof(Question))]
         [HttpPost]
-        public IHttpActionResult DeleteQuestions(int id)
+        public IHttpActionResult DeleteQuestion(int id)
         {
-            Questions questions = db.Questions.Find(id);
+            Question questions = db.Questions.Find(id);
             if (questions == null)
             {
                 return NotFound();
