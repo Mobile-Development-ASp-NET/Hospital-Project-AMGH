@@ -1,0 +1,15 @@
+﻿@model IEnumerable<Hospital_Project.Models.DoctorDetailDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List of all Doctors</h2>
+<a href ="/doctordetail/new">Add new Doctor</a>
+<ul>
+    @foreach (var drdetail in Model)
+    {
+        <li><h3><a href="/doctorDetail/Details/@drdetail.DrId">@drdetail.DrFname @drdetail.DrLname</a></h3></li>
+        
+    }
+</ul>
+

@@ -189,6 +189,7 @@
     <Compile Include="Controllers\BlogDataController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\DepartmentDataController.cs" />
+    <Compile Include="Controllers\DoctorDetailController.cs" />
     <Compile Include="Controllers\DoctorDetailsDataController.cs" />
     <Compile Include="Controllers\FeedbackController.cs" />
     <Compile Include="Controllers\FeedbackDataController.cs" />
@@ -302,6 +303,7 @@
     <Compile Include="Models\ViewModels\GreetingCardDetails.cs" />
     <Compile Include="Models\ViewModels\UpdateAdmission.cs" />
     <Compile Include="Models\ViewModels\UpdateApplication.cs" />
+    <Compile Include="Models\ViewModels\UpdateDoctorDetails.cs" />
     <Compile Include="Models\ViewModels\UpdateGreetingCard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -436,6 +438,12 @@
     <Content Include="Views\Department\Error.cshtml" />
     <Content Include="Views\Department\Update.cshtml" />
     <Content Include="Views\Department\DeleteConfirmation.cshtml" />
+    <Content Include="Views\DoctorDetail\List.cshtml" />
+    <Content Include="Views\DoctorDetail\Details.cshtml" />
+    <Content Include="Views\DoctorDetail\New.cshtml" />
+    <Content Include="Views\DoctorDetail\Error.cshtml" />
+    <Content Include="Views\DoctorDetail\Update.cshtml" />
+    <Content Include="Views\DoctorDetail\DeleteConfirmation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include=".vs\Hospital Project\v16\" />
