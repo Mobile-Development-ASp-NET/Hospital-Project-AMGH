@@ -46,5 +46,5 @@
     - Models 
       - Department
       - DoctorDetails
-  - Work Completed : MVP thats is CRUD for both the models is completed and in the doctor details view all the information related to department is being display.
-  - To Do : List all the dr related to department on the list department View , Styling as well as authorization.
+    - Work Completed : MVP thats is CRUD for both the models is completed and in the doctor details view all the information related to department is being display.
+    - To Do : List all the dr related to department on the list department View , Styling as well as authorization.
