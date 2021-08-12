@@ -187,6 +187,10 @@
     <Compile Include="Controllers\ApplicationDataController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\BlogDataController.cs" />
+    <Compile Include="Controllers\DepartmentController.cs" />
+    <Compile Include="Controllers\DepartmentDataController.cs" />
+    <Compile Include="Controllers\DoctorDetailController.cs" />
+    <Compile Include="Controllers\DoctorDetailsDataController.cs" />
     <Compile Include="Controllers\FeedbackController.cs" />
     <Compile Include="Controllers\FeedbackDataController.cs" />
     <Compile Include="Controllers\GreetingCardController.cs" />
@@ -290,6 +294,7 @@
     <Compile Include="Models\ViewModels\AdmissionDetails.cs" />
     <Compile Include="Models\ViewModels\DetailsApplication.cs" />
     <Compile Include="Models\ViewModels\DetailsBlog.cs" />
+    <Compile Include="Models\ViewModels\DetailsDepartment.cs" />
     <Compile Include="Models\ViewModels\DetailsFeedback.cs" />
     <Compile Include="Models\ViewModels\DetailsPosition.cs" />
     <Compile Include="Models\ViewModels\DetailsQuestion.cs" />
@@ -298,6 +303,7 @@
     <Compile Include="Models\ViewModels\GreetingCardDetails.cs" />
     <Compile Include="Models\ViewModels\UpdateAdmission.cs" />
     <Compile Include="Models\ViewModels\UpdateApplication.cs" />
+    <Compile Include="Models\ViewModels\UpdateDoctorDetails.cs" />
     <Compile Include="Models\ViewModels\UpdateGreetingCard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -325,6 +331,8 @@
     <Content Include="jsondata\Admission.json" />
     <Content Include="README.md" />
     <Content Include="jsondata\Feedback.json" />
+    <Content Include="jsondata\department.json" />
+    <Content Include="jsondata\DoctorDetail.json" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -424,6 +432,18 @@
     <Content Include="Views\Feedback\Error.cshtml" />
     <Content Include="Views\Feedback\New.cshtml" />
     <Content Include="Views\Feedback\Edit.cshtml" />
+    <Content Include="Views\Department\List.cshtml" />
+    <Content Include="Views\Department\Details.cshtml" />
+    <Content Include="Views\Department\New.cshtml" />
+    <Content Include="Views\Department\Error.cshtml" />
+    <Content Include="Views\Department\Update.cshtml" />
+    <Content Include="Views\Department\DeleteConfirmation.cshtml" />
+    <Content Include="Views\DoctorDetail\List.cshtml" />
+    <Content Include="Views\DoctorDetail\Details.cshtml" />
+    <Content Include="Views\DoctorDetail\New.cshtml" />
+    <Content Include="Views\DoctorDetail\Error.cshtml" />
+    <Content Include="Views\DoctorDetail\Update.cshtml" />
+    <Content Include="Views\DoctorDetail\DeleteConfirmation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include=".vs\Hospital Project\v16\" />

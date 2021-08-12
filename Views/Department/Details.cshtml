@@ -1,0 +1,14 @@
+﻿@model Hospital_Project.Models.ViewModels.DetailsDepartment
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+<h5><a href="/Department/Update/@Model.SelectedDepartment.DepartmentID">Update Department Details</a></h5>
+<h5><a href="/Department/DeleteConfirmation/@Model.SelectedDepartment.DepartmentID">Delete Department Details</a></h5>
+
+<div>
+    <h1>Department Name : @Model.SelectedDepartment.DepartmentName</h1>
+    <h3>Department Description : @Model.SelectedDepartment.DepartmentDescription</h3>
+</div>
+

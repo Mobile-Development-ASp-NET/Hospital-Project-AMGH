@@ -1,0 +1,14 @@
+﻿@model Hospital_Project.Models.DoctorDetailDto
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details of a Doctor</h2>
+<h4><a href="/doctorDetail/Update/@Model.DrId">Update Details</a></h4>
+<h4><a href="/doctorDetail/DeleteConfirmation/@Model.DrId">Delete Doctor</a></h4>
+<h3>Dr Full Name  : <i>@Model.DrFname @Model.DrLname</i></h3>
+<p>Dr Email: <i>@Model.DrEmail</i></p>
+<p>Dr Studies : <i>@Model.DrStudies</i></p>
+<p>Dr Position : <i>@Model.DrPosition</i></p>
+<p>Dr Bio : <i>@Model.DrBio</i></p>
+<h3>Department : <i>@Model.DepartmentName</i></h3>
