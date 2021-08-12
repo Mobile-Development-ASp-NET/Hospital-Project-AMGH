@@ -1,4 +1,4 @@
-﻿
+﻿@model Hospital_Project.Models.SurveyDto
 @{
     ViewBag.Title = "New";
 }
@@ -6,11 +6,14 @@
 <h2>New Survey</h2>
 <form action="/Survey/Create" method="POST">
     <div>
-        <label>Survey title:</label><input name="SurveyTitle" />
+        <label>Survey title:</label><input type="text" name="SurveyTitle" data-val="true" data-val-required="Please enter a title" />
+
+        @Html.ValidationMessageFor(model => model.SurveyTitle, "", new { @class = "text-danger", data_valmsg_for = "SurveyTitle" })
     </div>
     <div>
         <label>Survey Description:</label>
-        <textarea name="SurveyDescription"></textarea>
+        <textarea name="SurveyDescription" data-val="true" data-val-required="Please enter a description"></textarea>
+        @Html.ValidationMessageFor(model => model.SurveyDescription, "", new { @class = "text-danger", data_valmsg_for = "SurveyDescription" })
     </div>
     <div>
         <input type="submit" value="add survey" />

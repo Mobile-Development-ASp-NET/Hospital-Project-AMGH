@@ -20,7 +20,9 @@ namespace Hospital_Project.Models
     public class QuestionDto
     {
         public int QuestionID { get; set; }
+        [Required(ErrorMessage ="Please enter a question title")]
         public string QuestionTitle { get; set; }
+        [Required(ErrorMessage ="Please enter a description of the question")]
         public string QuestionyDescription { get; set; }
     }
 }

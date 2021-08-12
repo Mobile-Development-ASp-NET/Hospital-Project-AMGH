@@ -20,7 +20,9 @@ namespace Hospital_Project.Models
     public class SurveyDto
     {
         public int SurveyID { get; set; }
+        [Required(ErrorMessage ="Please enter a title of the survey")]
         public string SurveyTitle { get; set; }
+        [Required(ErrorMessage ="Please enter the description of the survey")]
         public string SurveyDescription { get; set; }
     }
 }
