@@ -196,8 +196,8 @@ namespace Hospital_Project.Controllers
                 //Updating the GreetingCard picture as a separate request
                 Debug.WriteLine("Calling Update Image method.");
                 //Send over image data for player
-                url = "greetingcarddata/uploadgreetingcardpic/" + id;
-                //Debug.WriteLine("Received GreetingCard Picture "+GreetingCardPic.FileName);
+                url = "GreetingCardData/UploadGreetingCardPic/" + id;
+                Debug.WriteLine("Received GreetingCard Picture "+GreetingCardPic.FileName);
 
                 MultipartFormDataContent requestcontent = new MultipartFormDataContent();
                 HttpContent imagecontent = new StreamContent(GreetingCardPic.InputStream);

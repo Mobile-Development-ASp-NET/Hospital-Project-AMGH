@@ -1,4 +1,4 @@
-﻿@model Hospital_Project.Models.PositionDto
+﻿@model Hospital_Project.Models.ViewModels.UpdatePosition
 @{
     ViewBag.Title = "Edit";
 }
@@ -7,27 +7,38 @@
 <nav>
     <ul>
         <li><a href="/Position/List">Back to List</a></li>
-        <li><a style="color:red;" href="/Position/DeleteConfirm/@Model.PositionID"/>Delete</li>
+        <li><a style="color:red;" href="/Position/DeleteConfirm/@Model.SelectedPosition.PositionID">Delete</a></li>
     </ul>
 </nav>
-<form action="/Position/Update/@Model.PositionID" method="post">
+<form action="/Position/Update/@Model.SelectedPosition.PositionID" method="post">
     <div style="display:none;">
-        <input type="text" name="PositionID" value="@Model.PositionID" />
+        <input type="text" name="PositionID" value="@Model.SelectedPosition.PositionID" />
     </div>
     <div>
-        <label>Name:</label> <input type="text" name="PositionJob" value="@Model.PositionJob" />
+        <label>Name:</label> <input type="text" name="PositionJob" value="@Model.SelectedPosition.PositionJob" />
     </div>
     <div>
-        <label>Description:</label> <input type="text" name="PositionDescription" value="@Model.PositionDescription"/>
+        <label>Description:</label> <input type="text" name="PositionDescription" value="@Model.SelectedPosition.PositionDescription"/>
     </div>
     <div>
-        <label>Posted Date:</label> <input type="date" name="PositionPostedDate" value="@Model.PositionPostedDate"/>
+        <label>Posted Date:</label> <input type="date" name="PositionPostedDate" value="@Model.SelectedPosition.PositionPostedDate"/>
     </div>
     <div>
-        <label>Application Deadline</label> <input type="date" name="ApplicationDeadLine" value="@Model.ApplicationDeadLine" />
+        <label>Application Deadline</label> <input type="date" name="ApplicationDeadLine" value="@Model.SelectedPosition.ApplicationDeadLine" />
     </div>
     <div>
-        <label>Department Assigned:</label><label>@Model.DepartmentName</label>
+        <label>Change Department Assign:</label>
+        <select name="PositionID">
+            @foreach (var departments in Model.DepartmentOptions)
+            {
+                var selected = "";
+                if (departments.DepartmentID == Model.SelectedPosition.DepartmentID)
+                {
+                    selected = "selected";
+                }
+                <option value="@departments.DepartmentID" @selected>@departments.DepartmentName</option>
+            }
+        </select>
     </div>
     <div>
         <input type="submit" value="Update Position" />

@@ -65,7 +65,7 @@ namespace Hospital_Project.Controllers
         /// </example>
         [HttpGet]
         [ResponseType(typeof(ApplicationDto))]
-        public IHttpActionResult ListApplicationsForPositions(int id)
+        public IHttpActionResult ListApplicationsForPosition(int id)
         {
             List<Application> Applications = db.Applications.Where(a => a.PositionID == id).ToList();
             List<ApplicationDto> ApplicationDtos = new List<ApplicationDto>();

@@ -54,7 +54,7 @@ namespace Hospital_Project.Controllers
 
             // showcase information about applications related to this position
             // send a request tp gather information about application related to a particular position ID
-            url = "applicationdata/listapplicationforposition/" + id;
+            url = "ApplicationData/ListApplicationsForPosition/" + id;
             response = client.GetAsync(url).Result;
             IEnumerable<ApplicationDto> RelatedApplications = response.Content.ReadAsAsync<IEnumerable<ApplicationDto>>().Result;
             // Error found when selecting the applications assigned to that position
@@ -62,7 +62,7 @@ namespace Hospital_Project.Controllers
             ViewModel.RelatedApplication = RelatedApplications;
 
             // showcase information on positions related to the departments
-            url = "positiondata/listpositionfordepartment/" + id;
+            url = "PositionData/ListPostionsForDepartment/" + id;
             response = client.GetAsync(url).Result;
             IEnumerable<DepartmentDto> RelatedDepartments = response.Content.ReadAsAsync<IEnumerable<DepartmentDto>>().Result;
 
@@ -78,9 +78,15 @@ namespace Hospital_Project.Controllers
         }
 
         // GET: Position/New
+        //[Authorize]
         public ActionResult New()
         {
-            return View();
+            // information about all departments in the system
+            // GET api/departmentdata/listdepartments
+            string url = "departmentdata/listdepartments";
+            HttpResponseMessage response = client.GetAsync(url).Result;
+            IEnumerable<DepartmentDto> DepartmentOptions = response.Content.ReadAsAsync<IEnumerable<DepartmentDto>>().Result;
+            return View(DepartmentOptions);
         }
 
         // POST: Position/Create
@@ -112,10 +118,23 @@ namespace Hospital_Project.Controllers
         //[Authorize]
         public ActionResult Edit(int id)
         {
+            UpdatePosition ViewModel = new UpdatePosition();
+
+            // the existing position information
             string url = "positiondata/findposition/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
+            
             PositionDto SelectedPosition = response.Content.ReadAsAsync<PositionDto>().Result;
-            return View(SelectedPosition);
+            ViewModel.SelectedPosition = SelectedPosition;
+
+            // all department to choose from when updating the position
+            url = "departmentdata/listdepartments/";
+            response = client.GetAsync(url).Result;
+            IEnumerable<DepartmentDto> DepartmentOptions = response.Content.ReadAsAsync<IEnumerable<DepartmentDto>>().Result;
+
+            ViewModel.DepartmentOptions = DepartmentOptions;
+            
+            return View(ViewModel);
         }
 
         // POST: Position/Edit/5
