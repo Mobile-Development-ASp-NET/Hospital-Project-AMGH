@@ -87,7 +87,10 @@ namespace Hospital_Project.Controllers
         // GET: Feedback/New
         public ActionResult New()
         {
-            return View();
+            string url = "doctordetailsdata/listdoctordetails";
+            HttpResponseMessage response = client.GetAsync(url).Result;
+            IEnumerable<DoctorDetailDto> DoctorDetail = response.Content.ReadAsAsync<IEnumerable<DoctorDetailDto>>().Result;
+            return View(DoctorDetail);
         }
 
         // POST: Feedback/Create
