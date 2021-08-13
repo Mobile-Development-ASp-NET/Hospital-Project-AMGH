@@ -2,16 +2,19 @@
 @{
     ViewBag.Title = "View";
 }
-<h2>@Model.SelectedCard.CardMessage</h2>
-<nav>
+<nav class="buttons">
     <ul>
         <li><a href="/GreetingCard/List">Go back to list</a></li>
         <li><a href="/GreetingCard/Edit/@Model.SelectedCard.CardId">Update</a></li>
-        <li><a style="color:#ab2020;" href="/GreetingCard/DeleteConfirm/@Model.SelectedCard.CardId">Delete</a></li>
+        @if (Model.IsAdmin)
+        {
+            <li><a style="color:#ab2020;" href="/GreetingCard/DeleteConfirm/@Model.SelectedCard.CardId">Delete</a></li>
+        }
     </ul>
+        
 </nav>
-<div class="row">
-    <div class="col-md-6 col-sm-12">
+
+    
         @{
             string imageurl = "/Content/Images/GreetingCards/default.jpg";
             if (Model.SelectedCard.CardHasPic)
@@ -19,10 +22,13 @@
                 imageurl = "/Content/Images/GreetingCards/" + Model.SelectedCard.CardId + "." + Model.SelectedCard.PicExtension;
             }
         }
-        <div><img style="display:block; max-width:100%;" alt="@Model.SelectedCard.CardMessage" src="@imageurl" /></div>
-        <div>By @Model.SelectedCard.SenderFirstName @Model.SelectedCard.SenderLastName</div>
-        <div>To @Model.SelectedCard.Room  @Model.SelectedCard.Bed</div>
-    </div>
+        <div class="cardcontainer">
+            <div class="greetingcard"><img  alt="@Model.SelectedCard.CardMessage" src="@imageurl" height="500" width="500"/></div>
+            <div class="cardmessage">
+                <h2>@Model.SelectedCard.CardMessage</h2>
+            </div>
+            <div class="sender">By @Model.SelectedCard.SenderFirstName @Model.SelectedCard.SenderLastName</div>
+            <div class="receiver">To @Model.SelectedCard.Room  @Model.SelectedCard.Bed</div>
+        </div>
     
-
-</div>
+    

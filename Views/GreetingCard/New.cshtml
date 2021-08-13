@@ -1,27 +1,38 @@
-﻿@model IEnumerable<Hospital_Project.Models.AdmissionDto>
+﻿@model Hospital_Project.Models.ViewModels.UpdateGreetingCard
 
 @{
     ViewBag.Title = "Create";
 }
-
+<div class="addcard">
 <h2>Create GreetingCard</h2>
 <form action="/GreetingCard/Create" method="POST">
     <div>
         <label>SenderFirstName:</label> <input type="text" name="SenderFirstName" />
+
+        @Html.ValidationMessageFor(model => model.SelectedCard.SenderFirstName, "", new { @class = "text-danger", data_valmsg_for = "SenderFirstName" })
     </div>
     <div>
         <label>SenderLastName:</label> <input type="text" name="SenderLastName" />
+
+        @Html.ValidationMessageFor(model => model.SelectedCard.SenderLastName, "", new { @class = "text-danger", data_valmsg_for = "SenderLastName" })
     </div>
     <div>
-        <label>CardType:</label> <input type="text" name="CardType" />
+        <label>CardType:</label> 
+        <select name="CardType">
+            <option>WellWishes</option>
+            <option>GetWellSoon</option>
+            <option>Congragulations</option>
+            <option>ThankYou</option>
+        </select>
     </div>
     <div>
-        <label>CardMessage:</label> <input type="text" name="CardMessage" />
+        <label>CardMessage:</label> <textarea name="CardMessage"></textarea>
+        @Html.ValidationMessageFor(model => model.SelectedCard.CardMessage, "", new { @class = "text-danger", data_valmsg_for = "CardMessage" })
     </div>
     <div>
         <label>Room&Bed:</label>
         <select name="AdmissionId">
-            @foreach (var admissions in Model)
+            @foreach (var admissions in Model.AdmissionOptions)
             {
                 <option value="@admissions.AdmissionId">@admissions.Room + @admissions.Bed</option>
 
@@ -33,5 +44,8 @@
 
     </div>
 </form>
+
+</div>
+
 
 

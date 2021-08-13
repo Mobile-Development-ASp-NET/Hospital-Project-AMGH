@@ -5,7 +5,7 @@
 }
 
 <h2>Update GreetingCard</h2>
-<nav>
+<nav class="buttons">
     <ul>
         <li><a href="/GreetingCard/List">Go back to list</a></li>
 
@@ -18,18 +18,28 @@
             <div style="display:none;">
                 @* Pass through the card Id *@
                 <input type="text" name="CardId" value="@Model.SelectedCard.CardId" />
+                
             </div>
             <div>
-                <label>SenderFirstName:</label> <input type="text" name="SenderFirstName" value="@Model.SelectedCard.SenderFirstName" />
+                <label>SenderFirstName:</label> <input type="text" name="SenderFirstName" value="@Model.SelectedCard.SenderFirstName" data-val="true" data-val-required="please enter sender firstname"/>
+                @Html.ValidationMessageFor(model => model.SelectedCard.SenderFirstName, "", new { @class = "text-danger", data_valmsg_for = "SenderFirstName" })
             </div>
             <div>
-                <label>SenderLastName:</label> <input type="text" name="SenderLastName" value="@Model.SelectedCard.SenderLastName"/>
+                <label>SenderLastName:</label> <input type="text" name="SenderLastName" value="@Model.SelectedCard.SenderLastName" data-val="true" data-val-required="please enter sender lastname" />
+                @Html.ValidationMessageFor(model => model.SelectedCard.SenderLastName, "", new { @class = "text-danger", data_valmsg_for = "SenderLastName" })
             </div>
             <div>
-                <label>CardType:</label> <input type="text" name="CardType" value="@Model.SelectedCard.CardType"/>
+                <label>CardType:</label> 
+                <select name="CardType" value="@Model.SelectedCard.CardType">
+                    <option>WellWishes</option>
+                    <option>GetWellSoon</option>
+                    <option>Congragulations</option>
+                    <option>ThankYou</option>
+                </select>
             </div>
             <div>
-                <label>CardMessage:</label> <input type="text" name="CardMessage" value="@Model.SelectedCard.CardMessage" />
+                <label>CardMessage:</label> <textarea name="CardMessage" data-val="true" data-val-required="please enter a message " >@Model.SelectedCard.CardMessage </textarea>
+                @Html.ValidationMessageFor(model => model.SelectedCard.CardMessage, "", new { @class = "text-danger", data_valmsg_for = "CardMessage" })
             </div>
             
             <div>
@@ -43,7 +53,7 @@
                         {
                             selected = "selected";
                         }
-                        <option value="@admissions.AdmissionId" @selected>@admissions.Room +" " + @admissions.Bed</option>
+                        <option value="@admissions.AdmissionId" @selected>@admissions.Room @admissions.Bed</option>
 
                     }
                 </select>

@@ -11,7 +11,12 @@ namespace Hospital_Project.Models
     public class ApplicationUser : IdentityUser
     {
         //Users can have many admissions 
+
         public ICollection<Admission> Admissions { get; set; }
+
+        //users can have many greeting cards
+
+        public ICollection<GreetingCard> GreetingCards { get; set; }
 
         //Users can have many feedbacks 
         public ICollection<Feedback> Feedbacks { get; set; }
