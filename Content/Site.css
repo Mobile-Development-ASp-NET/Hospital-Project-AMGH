@@ -62,6 +62,10 @@ textarea {
         color: white;
 }
 
+.col-md-4 > h2 {
+    color: #BA1200;
+}
+
 .navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {
     margin-left: -15px;
     color: darkred;
