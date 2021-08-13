@@ -13,5 +13,17 @@ namespace Hospital_Project.Models
         public int ResponseID { get; set; }
         public string Answer { get; set; }
 
+        [ForeignKey("Question")]
+        public int QuestionID { get; set; }
+        public virtual Question Question { get; set; }
+
+    }
+
+    public class ResponseDto
+    {
+        public int QuestionID { get; set; }
+        public string QuestionTitle { get; set; }
+        public int ResponseID { get; set; }
+        public string Answer { get; set; }
     }
 }

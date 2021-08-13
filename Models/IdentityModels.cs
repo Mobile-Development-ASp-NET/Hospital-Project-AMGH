@@ -42,9 +42,10 @@ namespace Hospital_Project.Models
         public DbSet<Department> Departments { get; set; }
 
         public DbSet<DoctorDetails> DoctorDetails { get; set; }
-        // #######
+        // ####### Survey - Detail Entities
         public DbSet<Question> Questions { get; set; }
         public DbSet<Survey> Surveys { get; set; }
+        public DbSet<Response> Responses { get; set; }
 
         //Volunteer Application Entities
         public DbSet<Application> Applications { get; set; }
