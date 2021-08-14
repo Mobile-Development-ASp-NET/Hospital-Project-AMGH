@@ -1,10 +1,12 @@
 ﻿body {
-    padding-top: 50px;
+    padding-top: 257px;
     padding-bottom: 20px;
+    background: #fff8e8;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
+    margin-top: -15em;
     padding-left: 15px;
     padding-right: 15px;
 }
@@ -47,4 +49,112 @@ textarea {
     margin-top: 5em;
 }
 
+#homepage-heading {
+    margin-bottom: 1em;
+    margin-top: 3em;
+    margin-left: 8em;
+    color: #BA1200;
+}
 
+.navbar-inverse {
+    background-color: cornflowerblue;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+        color: white;
+}
+
+.col-md-4 > h2 {
+    color: #BA1200;
+}
+
+.navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {
+    margin-left: -15px;
+    color: darkred;
+}
+
+.record {
+    /*4 column layout*/
+    width: 22%;
+    margin-right: 1.5%;
+    margin-left: 1.5%;
+    float: left;
+    position: relative;
+    border: 1px solid #dedede;
+    margin-bottom: 20px;
+}
+
+._record {
+    padding: 10px;
+}
+
+.recordtitle {
+    text-align: center;
+    margin-top: 15px;
+}
+.recordtitle a{
+    color:lightcoral;
+    font-family:cursive;
+    font-size:30px;
+    text-decoration:none;
+    text-transform:capitalize;
+}
+
+.imagecontainer {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 80%;
+    margin: 0 auto;
+}
+
+    .imagecontainer.featured {
+        max-width: 200px;
+    }
+
+    .imagecontainer img {
+        width: 100%;
+    }
+.cardcontainer {
+    max-width: 500px;
+    margin-top:100px;
+    margin-left:300px;
+    position:relative;
+    text-align: center;
+    color: white;
+}
+.cardmessage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.sender{
+    position:absolute;
+    top:100px;
+    left:100px;
+}
+.receiver{
+    position:absolute;
+    top:300px;
+    left:400px;
+}
+.buttons{
+    position:absolute;
+    top:100px;
+    right:0;
+    
+}
+    .buttons li {
+        text-decoration: none;
+        display: inline-block;
+        margin-left: 50px;
+        background-color: black;
+        padding: 10px;
+        border-radius: 10px;
+        color: violet;
+    }
+.addcard{
+    max-width:700px;
+    margin:auto;
+    text-align:center;
+}

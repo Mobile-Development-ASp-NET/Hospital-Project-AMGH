@@ -6,25 +6,36 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" type="text/css" href="~/Content/lightbox.css" />
     <script src="https://cdn.tiny.cloud/1/e9d46d8j1eliyt2jvqtu4ew4mdb4mezaenryqmahtp67scsw/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
+
             <div class="navbar-header">
+
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <img src="~/Content/Images/homePage/logo.png" alt="logo" id="logo" height="50" style="margin-right:2em;" />
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Admission", "List", "Admission")</li>
+                    <li>@Html.ActionLink("Application", "List", "Application")</li>
+                    <li>@Html.ActionLink("Blog", "List", "Blog")</li>
+                    <li>@Html.ActionLink("Department", "List", "Department")</li>
+                    <li>@Html.ActionLink("DoctorDetail", "List", "DoctorDetail")</li>
+                    <li>@Html.ActionLink("Feedback", "List", "Feedback")</li>
+                    <li>@Html.ActionLink("GreetingCard", "List", "GreetingCard")</li>
+                    <li>@Html.ActionLink("Position", "List", "Position")</li>
+                    <li>@Html.ActionLink("Question", "List", "Question")</li>
+                    <li>@Html.ActionLink("Survey", "List", "Survey")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -42,6 +53,7 @@
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script src="~/Scripts/lightbox.js"></script>
     <script>
         tinymce.init({
             selector: 'textarea',

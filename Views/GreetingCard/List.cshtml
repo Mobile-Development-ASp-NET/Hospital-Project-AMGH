@@ -1,15 +1,46 @@
-﻿@model IEnumerable<Hospital_Project.Models.GreetingCardDto>
+﻿@model Hospital_Project.Models.ViewModels.GreetingCardList
 @{
     ViewBag.Title = "List";
 }
 
 <h2>List</h2>
 <a href="/GreetingCard/New">New Greeting Card</a>
-@foreach (var greetingcard in Model)
-{
-    <h2><a href="/GreetingCard/Details/@greetingcard.CardId">@greetingcard.CardMessage</a></h2>
-    <div>By @greetingcard.SenderFirstName @greetingcard.SenderLastName</div>
-    <div>To @greetingcard.Room  @greetingcard.Bed</div>
+<div>
+    @if (Model.GreetingCards.Count() > 0 && ViewData["PageNum"] != null)
+    {
+        int PrevPage = Convert.ToInt32(ViewData["PageNum"]) - 1;
+        int NextPage = Convert.ToInt32(ViewData["PageNum"]) + 1;
+        @Html.ActionLink("Prev", "List", new { PageNum = PrevPage })
+        @ViewData["PageSummary"]
+        @Html.ActionLink("Next", "List", new { PageNum = NextPage })
+    }
+</div>
+<div>
+    @foreach (var greetingcard in Model.GreetingCards)
+    {
+        <div class="record">
+            <div class="_record">
+                @{
+                    //Use server rendering to determine an image
+                    string pic = "/Content/Images/GreetingCards/default.jpg";
+                    string alt = "No Profile Picture Provided.";
+                    if (greetingcard.CardHasPic)
+                    {
+                        pic = "/Content/Images/GreetingCards/" + greetingcard.CardId + "." + greetingcard.PicExtension;
+                        alt =  greetingcard.CardType + "Card";
+                    }
+                }
 
-
-}
+                <div class="imagecontainer">
+                    <a data-lightbox="greetingcard-@greetingcard.CardId" href="@pic" data-title="@alt">
+                        <img src="@pic" alt="@alt" />
+                    </a>
+                </div>
+                <div class="recordtitle">
+                    <a href="/GreetingCard/Details/@greetingcard.CardId">@greetingcard.CardMessage </a>
+                </div>
+            </div>
+        </div>
+    }
+    <div style="clear:both"></div>
+</div>

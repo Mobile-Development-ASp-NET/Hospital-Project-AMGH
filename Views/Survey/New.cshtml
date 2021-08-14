@@ -1,4 +1,4 @@
-﻿
+﻿@model Hospital_Project.Models.SurveyDto
 @{
     ViewBag.Title = "New";
 }
@@ -6,11 +6,11 @@
 <h2>New Survey</h2>
 <form action="/Survey/Create" method="POST">
     <div>
-        <label>Survey title:</label><input name="SurveyTitle" />
+        <label>Survey title:</label><input type="text" name="SurveyTitle" data-val="true" data-val-required="Please enter a title" />
     </div>
     <div>
         <label>Survey Description:</label>
-        <textarea name="SurveyDescription"></textarea>
+        <textarea name="SurveyDescription" data-val="true" data-val-required="Please enter a description"></textarea>
     </div>
     <div>
         <input type="submit" value="add survey" />

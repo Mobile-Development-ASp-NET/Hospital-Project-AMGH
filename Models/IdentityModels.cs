@@ -11,7 +11,12 @@ namespace Hospital_Project.Models
     public class ApplicationUser : IdentityUser
     {
         //Users can have many admissions 
+
         public ICollection<Admission> Admissions { get; set; }
+
+        //users can have many greeting cards
+
+        public ICollection<GreetingCard> GreetingCards { get; set; }
 
         //Users can have many feedbacks 
         public ICollection<Feedback> Feedbacks { get; set; }
@@ -42,9 +47,10 @@ namespace Hospital_Project.Models
         public DbSet<Department> Departments { get; set; }
 
         public DbSet<DoctorDetails> DoctorDetails { get; set; }
-        // #######
-        public DbSet<Questions> Questions { get; set; }
-        public DbSet<Surveys> Surveys { get; set; }
+        // ####### Survey - Detail Entities
+        public DbSet<Question> Questions { get; set; }
+        public DbSet<Survey> Surveys { get; set; }
+        public DbSet<Response> Responses { get; set; }
 
         //Volunteer Application Entities
         public DbSet<Application> Applications { get; set; }

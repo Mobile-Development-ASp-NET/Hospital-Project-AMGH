@@ -25,7 +25,7 @@ namespace Hospital_Project.Controllers
         [HttpGet]
         public List<SurveyDto> ListSurveys()
         {
-            List<Surveys> Surveys = db.Surveys.ToList();
+            List<Survey> Surveys = db.Surveys.ToList();
             List<SurveyDto> SurveyDtos = new List<SurveyDto>();
 
             Surveys.ForEach(s => SurveyDtos.Add(new SurveyDto()
@@ -47,11 +47,11 @@ namespace Hospital_Project.Controllers
         /// <param name="id">surveyID</param>
         /// <return>The selected survey</return>
         ///<example>GET: api/surveyData/Findsurvey/{id}</example>
-        [ResponseType(typeof(Surveys))]
+        [ResponseType(typeof(Survey))]
         [HttpGet]
         public IHttpActionResult FindSurvey(int id)
         {
-            Surveys Survey = db.Surveys.Find(id);
+            Survey Survey = db.Surveys.Find(id);
             SurveyDto SurveyDto = new SurveyDto()
             {
                 SurveyID = Survey.SurveyID,
@@ -74,11 +74,11 @@ namespace Hospital_Project.Controllers
         /// </summary>
         /// <param name="id">questionID</param>
         /// <returns>List of surveys that are related to the selected question</returns>
-        ///<example>GET: api/SurveyData/ListSurveysForQuestions</example>
+        ///<example>GET: api/SurveyData/ListSurveysForQuestion</example>
         [HttpGet]
-        public List<SurveyDto> ListSurveysForQuestions(int id)
+        public List<SurveyDto> ListSurveysForQuestion(int id)
         {
-            List<Surveys> Surveys = db.Surveys.Where(s => s.Questions.Any(
+            List<Survey> Surveys = db.Surveys.Where(s => s.Questions.Any(
                 q => q.QuestionID == id)).ToList();
             List<SurveyDto> SurveyDtos = new List<SurveyDto>();
             Surveys.ForEach(s => SurveyDtos.Add(new SurveyDto()
@@ -108,7 +108,7 @@ namespace Hospital_Project.Controllers
         ///<example>POST: api/surveyData/UpdateSurveys/{id}</example>
         [ResponseType(typeof(void))]
         [HttpPost]
-        public IHttpActionResult UpdateSurveys(int id, Surveys surveys)
+        public IHttpActionResult UpdateSurvey(int id, Survey surveys)
         {
             if (!ModelState.IsValid)
             {
@@ -154,9 +154,9 @@ namespace Hospital_Project.Controllers
         /// HEADER: 400 (Bad Request)
         /// </returns>
         ///<example>POST: api/SurveyrData/AddSurveys</example>
-        [ResponseType(typeof(Surveys))]
+        [ResponseType(typeof(Survey))]
         [HttpPost]
-        public IHttpActionResult AddSurveys(Surveys surveys)
+        public IHttpActionResult AddSurvey(Survey surveys)
         {
             if (!ModelState.IsValid)
             {
@@ -181,11 +181,11 @@ namespace Hospital_Project.Controllers
         /// HEADER: 404 (NOT FOUND)
         /// </returns>
         ///<example>POST: api/SurveyData/DeleteSurveys/{id}</example>
-        [ResponseType(typeof(Surveys))]
+        [ResponseType(typeof(Survey))]
         [HttpPost]
-        public IHttpActionResult DeleteSurveys(int id)
+        public IHttpActionResult DeleteSurvey(int id)
         {
-            Surveys surveys = db.Surveys.Find(id);
+            Survey surveys = db.Surveys.Find(id);
             if (surveys == null)
             {
                 return NotFound();

@@ -12,12 +12,17 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using Hospital_Project.Models;
 using System.Diagnostics;
+using Microsoft.AspNet.Identity;
 
 namespace Hospital_Project.Controllers
 {
+    /// <summary>
+    /// Greeting Data Controller that contains all the functions for the CRUD
+    /// </summary>
     public class GreetingCardDataController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+
         /// <summary>
         /// Returns all greeting cards in the system.
         /// </summary>
@@ -30,10 +35,24 @@ namespace Hospital_Project.Controllers
         /// </example>
         [HttpGet]
         [ResponseType(typeof(GreetingCardDto))]
+        [Authorize(Roles ="Admin,Guest")]
         public IHttpActionResult ListGreetingCards()
         {
-            List<GreetingCard> GreetingCards = db.GreetingCards.ToList();
+            bool isAdmin = User.IsInRole("Admin");
+
+            //Admins see all, guests only see their own
+            List<GreetingCard> GreetingCards;
+            Debug.WriteLine("id is " + User.Identity.GetUserId());
+            if (isAdmin) GreetingCards = db.GreetingCards.ToList();
+            else
+            {
+                string UserId = User.Identity.GetUserId();
+                GreetingCards = db.GreetingCards.Where(c => c.UserID == UserId).ToList();
+            }
+
             List<GreetingCardDto> GreetingCardDtos = new List<GreetingCardDto>();
+
+
 
             GreetingCards.ForEach(c => GreetingCardDtos.Add(new GreetingCardDto()
             {
@@ -46,7 +65,57 @@ namespace Hospital_Project.Controllers
                 PicExtension = c.PicExtension,
                 AdmissionId = c.Admissions.AdmissionId,
                 Room = c.Admissions.Room,
-                Bed = c.Admissions.Bed
+                Bed = c.Admissions.Bed,
+                UserId = c.UserID
+            }));
+
+            return Ok(GreetingCardDtos);
+        }
+
+        /// <summary>
+        /// Returns all greeting cards in the system.
+        /// </summary>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// CONTENT: all greeting card details in the database, including their associated patients.
+        /// </returns>
+        /// <example>
+        /// GET: api/GreetingCardData/ListGreetingCards
+        /// </example>
+        [HttpGet]
+        [ResponseType(typeof(GreetingCardDto))]
+        [Authorize(Roles ="Admin,Guest")]
+        [Route("api/GreetingCardData/ListGreetingCardsPage/{StartIndex}/{PerPage}")]
+        public IHttpActionResult ListGreetingCardsPage(int StartIndex , int PerPage)
+        {
+            bool isAdmin = User.IsInRole("Admin");
+
+            //Admins see all, guests only see their own
+            List<GreetingCard> GreetingCards;
+            Debug.WriteLine("id is " + User.Identity.GetUserId());
+            if (isAdmin) GreetingCards = db.GreetingCards.OrderBy(g => g.CardId).Skip(StartIndex).Take(PerPage).ToList();
+            else
+            {
+                string UserId = User.Identity.GetUserId();
+                GreetingCards = db.GreetingCards.Where(c => c.UserID == UserId).OrderBy(g => g.CardId).Skip(StartIndex).Take(PerPage).ToList();
+            }
+
+            List<GreetingCardDto> GreetingCardDtos = new List<GreetingCardDto>();
+
+
+            GreetingCards.ForEach(c => GreetingCardDtos.Add(new GreetingCardDto()
+            {
+                CardId = c.CardId,
+                SenderFirstName = c.SenderFirstName,
+                SenderLastName = c.SenderLastName,
+                CardType = c.CardType,
+                CardMessage = c.CardMessage,
+                CardHasPic = c.CardHasPic,
+                PicExtension = c.PicExtension,
+                AdmissionId = c.Admissions.AdmissionId,
+                Room = c.Admissions.Room,
+                Bed = c.Admissions.Bed,
+                UserId = c.UserID
             }));
 
             return Ok(GreetingCardDtos);
@@ -65,6 +134,7 @@ namespace Hospital_Project.Controllers
         /// </example>
         [HttpGet]
         [ResponseType(typeof(GreetingCardDto))]
+        [Authorize(Roles ="Admin")]
         public IHttpActionResult ListGreetingCardsForAdmission(int id)
         {
             List<GreetingCard> GreetingCards = db.GreetingCards.Where(c => c.AdmissionId == id).ToList();
@@ -102,6 +172,7 @@ namespace Hospital_Project.Controllers
         /// </example>
         [ResponseType(typeof(GreetingCardDto))]
         [HttpGet]
+        [Authorize(Roles = "Admin,Guest")]
         public IHttpActionResult FindGreetingCard(int id)
         {
             GreetingCard GreetingCard = db.GreetingCards.Find(id);
@@ -116,12 +187,18 @@ namespace Hospital_Project.Controllers
                 PicExtension = GreetingCard.PicExtension,
                 AdmissionId = GreetingCard.Admissions.AdmissionId,
                 Room = GreetingCard.Admissions.Room,
-                Bed = GreetingCard.Admissions.Bed
+                Bed = GreetingCard.Admissions.Bed,
+                UserId = GreetingCard.UserID
             };
             if (GreetingCard == null)
             {
                 return NotFound();
             }
+
+            //do not process if the (user is not an admin) and (the booking does not belong to the user)
+            bool isAdmin = User.IsInRole("Admin");
+            //Forbidden() isn't a natively implemented status like BadRequest()
+            if (!isAdmin && (GreetingCard.UserID != User.Identity.GetUserId())) return StatusCode(HttpStatusCode.Forbidden);
 
             return Ok(GreetingCardDto);
         }
@@ -144,18 +221,28 @@ namespace Hospital_Project.Controllers
         /// </example>
         [ResponseType(typeof(void))]
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles ="Admin,Guest")]
         public IHttpActionResult UpdateGreetingCard(int id, GreetingCard GreetingCard)
         {
             if (!ModelState.IsValid)
             {
+                Debug.WriteLine("bad model state");
                 return BadRequest(ModelState);
             }
 
             if (id != GreetingCard.CardId)
             {
-
+                Debug.WriteLine("id mismatch");
                 return BadRequest();
+            }
+
+            //do not process if the (user is not an admin) and (the card does not belong to the user)
+            bool isAdmin = User.IsInRole("Admin");
+            //Forbidden() isn't a natively implemented status like BadRequest()
+            if (!isAdmin && (GreetingCard.UserID != User.Identity.GetUserId()))
+            {
+                Debug.WriteLine("not allowed. card user" + GreetingCard.UserID + " user " + User.Identity.GetUserId());
+                return StatusCode(HttpStatusCode.Forbidden);
             }
 
             db.Entry(GreetingCard).State = EntityState.Modified;
@@ -195,6 +282,7 @@ namespace Hospital_Project.Controllers
         /// https://stackoverflow.com/questions/28369529/how-to-set-up-a-web-api-controller-for-multipart-form-data
 
         [HttpPost]
+        [Authorize(Roles = "Admin,Guest")]
         public IHttpActionResult UploadGreetingCardPic(int id)
         {
 
@@ -239,6 +327,16 @@ namespace Hospital_Project.Controllers
                                 GreetingCard SelectedGreetingCard = db.GreetingCards.Find(id);
                                 SelectedGreetingCard.CardHasPic = haspic;
                                 SelectedGreetingCard.PicExtension = extension;
+
+                                //do not process if the (user is not an admin) and (the card does not belong to the user)
+                                bool isAdmin = User.IsInRole("Admin");
+                                //Forbidden() isn't a natively implemented status like BadRequest()
+                                if (!isAdmin && (SelectedGreetingCard.UserID != User.Identity.GetUserId()))
+                                {
+                                    Debug.WriteLine("not allowed. card user" + SelectedGreetingCard.UserID + " user " + User.Identity.GetUserId());
+                                    return StatusCode(HttpStatusCode.Forbidden);
+                                }
+
                                 db.Entry(SelectedGreetingCard).State = EntityState.Modified;
 
                                 db.SaveChanges();
@@ -282,13 +380,16 @@ namespace Hospital_Project.Controllers
         /// </example>
         [ResponseType(typeof(GreetingCard))]
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles ="Admin,Guest")]
         public IHttpActionResult AddGreetingCard(GreetingCard GreetingCard)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+
+            //attach the id
+            GreetingCard.UserID = User.Identity.GetUserId();
 
             db.GreetingCards.Add(GreetingCard);
             db.SaveChanges();
@@ -311,7 +412,7 @@ namespace Hospital_Project.Controllers
         /// </example>
         [ResponseType(typeof(GreetingCard))]
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles ="Admin,Guest")]
         public IHttpActionResult DeleteGreetingCard(int id)
         {
             GreetingCard GreetingCard = db.GreetingCards.Find(id);
@@ -330,6 +431,10 @@ namespace Hospital_Project.Controllers
                     System.IO.File.Delete(path);
                 }
             }
+            //do not process if the (user is not an admin) and (the booking does not belong to the user)
+            bool isAdmin = User.IsInRole("Admin");
+            //Forbidden() isn't a natively implemented status like BadRequest()
+            if (!isAdmin && (GreetingCard.UserID != User.Identity.GetUserId())) return StatusCode(HttpStatusCode.Forbidden);
 
             db.GreetingCards.Remove(GreetingCard);
             db.SaveChanges();

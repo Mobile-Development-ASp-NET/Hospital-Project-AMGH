@@ -67,10 +67,10 @@ namespace Hospital_Project.Controllers
 
         // POST: Survey/Create
         [HttpPost]
-        public ActionResult Create(Surveys survey)
+        public ActionResult Create(Survey survey)
         {
             //creating an survey json data, turn into a string, then eject it into the database
-            string url = "SurveyData/AddSurveys";
+            string url = "SurveyData/AddSurvey";
             string jsonpayload = jss.Serialize(survey);
             HttpContent content = new StringContent(jsonpayload);
             content.Headers.ContentType.MediaType = "application/json";
@@ -102,10 +102,10 @@ namespace Hospital_Project.Controllers
 
         // POST: Survey/Edit/5
         [HttpPost]
-        public ActionResult Update(int id, Surveys survey)
+        public ActionResult Update(int id, Survey survey)
         {
             //Use the UpdateSurveys(int id) Method to update the selected Survey's information
-            string url = "SurveyData/UpdateSurveys/" + id;
+            string url = "SurveyData/UpdateSurvey/" + id;
             string jsonpayload = jss.Serialize(survey);
             HttpContent content = new StringContent(jsonpayload);
             content.Headers.ContentType.MediaType = "application/json";
@@ -136,7 +136,7 @@ namespace Hospital_Project.Controllers
         {
 
             //Accessing the DeleteSurvey(int id) method to delete the selected Survey
-            string url = "SurveyData/DeleteSurveys/" + id;
+            string url = "SurveyData/DeleteSurvey/" + id;
             HttpContent content = new StringContent("");
             content.Headers.ContentType.MediaType = "application/json";
             HttpResponseMessage response = client.PostAsync(url, content).Result;

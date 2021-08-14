@@ -201,6 +201,8 @@
     <Compile Include="Controllers\PositionDataController.cs" />
     <Compile Include="Controllers\QuestionController.cs" />
     <Compile Include="Controllers\QuestionDataController.cs" />
+    <Compile Include="Controllers\ResponseController.cs" />
+    <Compile Include="Controllers\ResponseDataController.cs" />
     <Compile Include="Controllers\SubscribedUserController.cs" />
     <Compile Include="Controllers\SubscribedUserDataController.cs" />
     <Compile Include="Controllers\SurveyController.cs" />
@@ -276,6 +278,22 @@
     <Compile Include="Migrations\202108052014149_change_feedback_datatype.Designer.cs">
       <DependentUpon>202108052014149_change_feedback_datatype.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202108122304572_survey.cs" />
+    <Compile Include="Migrations\202108122304572_survey.Designer.cs">
+      <DependentUpon>202108122304572_survey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108122305212_question.cs" />
+    <Compile Include="Migrations\202108122305212_question.Designer.cs">
+      <DependentUpon>202108122305212_question.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108130026502_Response.cs" />
+    <Compile Include="Migrations\202108130026502_Response.Designer.cs">
+      <DependentUpon>202108130026502_Response.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108131721134_updated-greetingcard-model.cs" />
+    <Compile Include="Migrations\202108131721134_updated-greetingcard-model.Designer.cs">
+      <DependentUpon>202108131721134_updated-greetingcard-model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Admission.cs" />
@@ -288,9 +306,10 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Position.cs" />
-    <Compile Include="Models\Questions.cs" />
+    <Compile Include="Models\Question.cs" />
+    <Compile Include="Models\Response.cs" />
     <Compile Include="Models\SubscribedUser.cs" />
-    <Compile Include="Models\Surveys.cs" />
+    <Compile Include="Models\Survey.cs" />
     <Compile Include="Models\ViewModels\AdmissionDetails.cs" />
     <Compile Include="Models\ViewModels\DetailsApplication.cs" />
     <Compile Include="Models\ViewModels\DetailsBlog.cs" />
@@ -301,6 +320,7 @@
     <Compile Include="Models\ViewModels\DetailsSubscribedUser.cs" />
     <Compile Include="Models\ViewModels\DetailsSurvey.cs" />
     <Compile Include="Models\ViewModels\GreetingCardDetails.cs" />
+    <Compile Include="Models\ViewModels\GreetingCardList.cs" />
     <Compile Include="Models\ViewModels\UpdateAdmission.cs" />
     <Compile Include="Models\ViewModels\UpdateApplication.cs" />
     <Compile Include="Models\ViewModels\UpdateDoctorDetails.cs" />
@@ -317,6 +337,8 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\GreetingCards\default.jpg" />
+    <Content Include="Content\Images\homePage\homebannerrailway.jpg" />
+    <Content Include="Content\lightbox.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -344,6 +366,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\lightbox.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -450,6 +473,7 @@
     <Folder Include=".vs\Hospital Project\v16\" />
     <Folder Include=".vs\Hospital-Project-AMGH\v16\" />
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Response\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -515,6 +539,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202108052014149_change_feedback_datatype.resx">
       <DependentUpon>202108052014149_change_feedback_datatype.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108122304572_survey.resx">
+      <DependentUpon>202108122304572_survey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108122305212_question.resx">
+      <DependentUpon>202108122305212_question.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108130026502_Response.resx">
+      <DependentUpon>202108130026502_Response.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108131721134_updated-greetingcard-model.resx">
+      <DependentUpon>202108131721134_updated-greetingcard-model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

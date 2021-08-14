@@ -14,6 +14,9 @@ using Hospital_Project.Models.ViewModels;
 
 namespace Hospital_Project.Controllers
 {
+    /// <summary>
+    /// A controller for the greeting card to connect the datacontroller to the view
+    /// </summary>
     public class GreetingCardController : Controller
     {
         private static readonly HttpClient client;
@@ -59,12 +62,22 @@ namespace Hospital_Project.Controllers
             return;
         }
 
-        // GET: GreetingCard/List
-        public ActionResult List()
+        // GET: GreetingCard/List?=PageNum = {PageNum}
+        /// <summary>
+        /// To list out all the greeting cards( to connect it to the list method and the list view)
+        /// </summary>
+        /// <param name="PageNum"></param>
+        /// <returns></returns>
+        /// objective: communicate with our greeting card data api to retrieve a list of greeting cards
+        ///curl https://localhost:44342/api/greetingcarddata/listgreetingcards
+        [Authorize (Roles ="Admin,Guest")]
+        public ActionResult List(int PageNum=0)
         {
-            //objective: communicate with our greeting card data api to retrieve a list of greeting cards
-            //curl https://localhost:44342/api/greetingcarddata/listgreetingcards
 
+            GetApplicationCookie();
+            GreetingCardList ViewModel = new GreetingCardList();
+            if (User.Identity.IsAuthenticated && User.IsInRole("Admin")) ViewModel.IsAdmin = true;
+            else ViewModel.IsAdmin = false;
 
             string url = "greetingcarddata/listgreetingcards";
             HttpResponseMessage response = client.GetAsync(url).Result;
@@ -76,17 +89,56 @@ namespace Hospital_Project.Controllers
             //Debug.WriteLine("Number of GreetingCards received : ");
             //Debug.WriteLine(GreetingCards.Count());
 
+            // -- Start of Pagination Algorithm --
 
-            return View(GreetingCards);
+            // Find the total number of greeting cards
+            int GreetingCardCount = GreetingCards.Count();
+            // Number of cards to display per page
+            int PerPage = 4;
+            // Determines the maximum number of pages (rounded up), assuming a page 0 start.
+            int MaxPage = (int)Math.Ceiling((decimal)GreetingCardCount / PerPage) - 1;
+
+            // Lower boundary for Max Page
+            if (MaxPage < 0) MaxPage = 0;
+            // Lower boundary for Page Number
+            if (PageNum < 0) PageNum = 0;
+            // Upper Bound for Page Number
+            if (PageNum > MaxPage) PageNum = MaxPage;
+
+            // The Record Index of our Page Start
+            int StartIndex = PerPage * PageNum;
+
+            //Helps us generate the HTML which shows "Page 1 of ..." on the list view
+            ViewData["PageNum"] = PageNum;
+            ViewData["PageSummary"] = " " + (PageNum + 1) + " of " + (MaxPage + 1) + " ";
+
+            // -- End of Pagination Algorithm --
+
+            //Send another request to get the page slice of the full list
+            url = "GreetingCardData/ListGreetingCardsPage/" + StartIndex + "/" + PerPage;
+            response = client.GetAsync(url).Result;
+
+            // Retrieve the response of the HTTP Request
+            IEnumerable<GreetingCardDto> SelectedGreetingCardsPage = response.Content.ReadAsAsync<IEnumerable<GreetingCardDto>>().Result;
+
+            ViewModel.GreetingCards = SelectedGreetingCardsPage;
+
+
+
+            return View(ViewModel);
         }
-
-        // GET: GreetingCard/Details/5
+        /// <summary>
+        /// objective: communicate with our GreetingCard data api to retrieve one GreetingCard
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// GET: GreetingCard/Details/5
+        /// curl https://localhost:44342/api/greetingcarddata/findgreetingcard/{id}
+        [Authorize(Roles ="Admin, Guest")]
         public ActionResult Details(int id)
         {
+            GetApplicationCookie();
             GreetingCardDetails ViewModel = new GreetingCardDetails();
-
-            //objective: communicate with our GreetingCard data api to retrieve one GreetingCard
-            //curl https://localhost:44342/api/greetingcarddata/findgreetingcard/{id}
 
             string url = "greetingcarddata/findgreetingcard/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
@@ -102,17 +154,26 @@ namespace Hospital_Project.Controllers
 
             return View(ViewModel);
         }
-
+        /// <summary>
+        /// to view the custom error messages
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Error()
         {
 
             return View();
         }
-
+        /// <summary>
+        /// to create new greeting cards (generate all the admissions in the system to choose from)
+        /// </summary>
+        /// <returns></returns>
         // GET: GreetingCard/New
-        [Authorize]
+        [Authorize(Roles = "Admin, Guest")]
         public ActionResult New()
         {
+            //need the greeting card DTO for validation
+            UpdateGreetingCard ViewModel = new UpdateGreetingCard();
+
             //information about all Admissions in the system.
             //GET api/Admissionsdata/listAdmissions
 
@@ -121,10 +182,14 @@ namespace Hospital_Project.Controllers
             IEnumerable<AdmissionDto> AdmissionOptions = response.Content.ReadAsAsync<IEnumerable<AdmissionDto>>().Result;
             return View(AdmissionOptions);
         }
-
+        /// <summary>
+        /// create new greeting card
+        /// </summary>
+        /// <param name="GreetingCard"></param>
+        /// <returns></returns>
         // POST: GreetingCard/Create
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Admin,Guest")]
         public ActionResult Create(GreetingCard GreetingCard)
         {
             GetApplicationCookie();//get token credentials
@@ -154,8 +219,14 @@ namespace Hospital_Project.Controllers
 
         }
 
+        /// <summary>
+        /// to update the greeting cards The update functionality is only for admin.
+        /// If the user wants to update they can reach out the admin for updating
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         // GET: GreetingCard/Edit/5
-        [Authorize]
+        [Authorize(Roles ="Admin,Guest")]
         public ActionResult Edit(int id)
         {
             UpdateGreetingCard ViewModel = new UpdateGreetingCard();
@@ -177,13 +248,20 @@ namespace Hospital_Project.Controllers
             return View(ViewModel);
         }
 
+        /// <summary>
+        /// to update the greeting card
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="GreetingCard"></param>
+        /// <param name="GreetingCardPic"></param>
+        /// <returns></returns>
         // POST: GreetingCard/Update/5
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles ="Admin,Guest")]
         public ActionResult Update(int id, GreetingCard GreetingCard, HttpPostedFileBase GreetingCardPic)
         {
             GetApplicationCookie();//get token credentials   
-            string url = "GreetingCarddata/updateGreetingCard/" + id;
+            string url = "GreetingCardData/UpdateGreetingCard/" + id;
             string jsonpayload = jss.Serialize(GreetingCard);
             HttpContent content = new StringContent(jsonpayload);
             content.Headers.ContentType.MediaType = "application/json";
@@ -216,9 +294,13 @@ namespace Hospital_Project.Controllers
                 return RedirectToAction("Error");
             }
         }
-
+        /// <summary>
+        /// to delete the greeting card a confirmation message
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         // GET: GreetingCard/Delete/5
-        [Authorize]
+        [Authorize (Roles ="Admin, Guest")]
         public ActionResult DeleteConfirm(int id)
         {
             string url = "GreetingCarddata/findGreetingCard/" + id;
@@ -227,9 +309,14 @@ namespace Hospital_Project.Controllers
             return View(selectedGreetingCard);
         }
 
+        /// <summary>
+        /// delete the greeting card from the database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         // POST: GreetingCard/Delete/5
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles ="Admin , Guest")]
         public ActionResult Delete(int id)
         {
             GetApplicationCookie();//get token credentials
