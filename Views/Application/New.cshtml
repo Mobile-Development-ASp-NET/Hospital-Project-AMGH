@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Hospital_Project.Models.PositionDto>
+﻿@model Hospital_Project.Models.ViewModels.UpdateApplication
 @{
     ViewBag.Title = "New";
 }
@@ -11,13 +11,16 @@
 </nav>
 <form action="/Application/Create" method="post">
     <div>
-        <label>Applicants Full Name:</label> <input type="text" name="ApplicationName" />
+        <label>Applicants Full Name:</label> <input type="text" name="ApplicationName" id="ApplicationName" data-val="true" data-val-required="Please Enter a Name." />
+        @Html.ValidationMessageFor(model => model.SelectedApplication.ApplicationName, "", new { @class = "text-danger", data_valmsg_for = "ApplicationName" })
     </div>
     <div>
-        <label>Applicants DOB:</label> <input type="date" name="ApplicationDOB" />
+        <label>Applicants DOB:</label> <input type="date" name="ApplicationDOB" id="ApplicationDOB" data-val="true" data-val-required="Please Enter a Date Of Birth."/>
+        @Html.ValidationMessageFor(model => model.SelectedApplication.ApplicationDOB, "", new { @class = "text-danger", data_valmsg_for = "ApplicationDOB" })
     </div>
     <div>
-        <label>Applicants Email:</label> <input type="text" name="ApplicationEmail" />
+        <label>Applicants Email:</label> <input type="text" name="ApplicationEmail" id="ApplicationEmail" data-val="true" data-val-required="Please Enter an Email." />
+        @Html.ValidationMessageFor(model => model.SelectedApplication.ApplicationEmail, "", new { @class = "text-danger", data_valmsg_for = "ApplicationEmail" })
     </div>
     <div>
         <label>Criminal Record:</label> <input type="checkbox" name="ApplicationCriminalRecord" />
@@ -28,7 +31,7 @@
     <div>
         <label>Positions Applying For:</label>
         <select name="PositionID">
-            @foreach (var positions in Model)
+            @foreach (var positions in Model.PositionOptions)
             {
                 <option value="@positions.PositionID">@positions.PositionJob</option>
             }

@@ -18,7 +18,8 @@
             </div>
             <div>
                 <label>Applicant Status:</label>
-                <input type="text" name="ApplicationStatus" value="@Model.SelectedApplication.ApplicationStatus" />
+                <input type="text" name="ApplicationStatus" id="ApplicationStatus" value="@Model.SelectedApplication.ApplicationStatus" data-val="true" data-val-required="Please Update the Applicant Status."/>
+                @Html.ValidationMessageFor(model => model.SelectedApplication.ApplicationStatus, "", new { @class = "text-danger", data_valmsg_for = "ApplicationStatus" })
             </div>
             <div>
                 <label>Change Applicant Position:</label>
