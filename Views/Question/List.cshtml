@@ -10,7 +10,7 @@
         @foreach (var question in Model)
         {
             <a href="/question/details/@question.QuestionID"><h2>@question.QuestionTitle</h2></a>
-            <p>@question.QuestionyDescription</p>
+            <p>@Html.Raw(question.QuestionyDescription)</p>
         }
     </div>
 </div>

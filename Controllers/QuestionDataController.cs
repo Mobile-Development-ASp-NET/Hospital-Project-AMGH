@@ -104,6 +104,7 @@ namespace Hospital_Project.Controllers
         ///<example>POST: api/QuestionData/UpdateQuestion/{id}</example>
         [ResponseType(typeof(void))]
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult UpdateQuestion(int id, Question questions)
         {
             if (!ModelState.IsValid)
@@ -150,6 +151,7 @@ namespace Hospital_Project.Controllers
         ///<example>POST: api/QuestionData/AddQuestion</example>
         [ResponseType(typeof(Question))]
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult AddQuestion(Question questions)
         {
             if (!ModelState.IsValid)
@@ -176,6 +178,7 @@ namespace Hospital_Project.Controllers
         ///<example>POST: api/QuestionData/DeleteQuestion/{id}</example>
         [ResponseType(typeof(Question))]
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult DeleteQuestion(int id)
         {
             Question questions = db.Questions.Find(id);
