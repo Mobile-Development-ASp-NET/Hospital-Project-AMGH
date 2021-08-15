@@ -180,7 +180,9 @@ namespace Hospital_Project.Controllers
             string url = "admissiondata/listadmissions";
             HttpResponseMessage response = client.GetAsync(url).Result;
             IEnumerable<AdmissionDto> AdmissionOptions = response.Content.ReadAsAsync<IEnumerable<AdmissionDto>>().Result;
-            return View(AdmissionOptions);
+            ViewModel.AdmissionOptions = AdmissionOptions;
+
+            return View(ViewModel);
         }
         /// <summary>
         /// create new greeting card
@@ -267,6 +269,7 @@ namespace Hospital_Project.Controllers
             content.Headers.ContentType.MediaType = "application/json";
             HttpResponseMessage response = client.PostAsync(url, content).Result;
             Debug.WriteLine(content);
+            Debug.WriteLine(GreetingCardPic);
 
             //update request is successful, and we have image data
             if (response.IsSuccessStatusCode && GreetingCardPic != null)

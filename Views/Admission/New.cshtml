@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Hospital_Project.Models.DoctorDetailDto>
+﻿@model Hospital_Project.Models.ViewModels.UpdateAdmission
 
 @{
     ViewBag.Title = "Create";
@@ -15,7 +15,7 @@
     <div>
         <label>Doctor:</label>
         <select name="DrId">
-            @foreach (var doctors in Model)
+            @foreach (var doctors in Model.DoctorOptions)
             {
                 <option value="@doctors.DrId">Dr @doctors.DrFname  @doctors.DrLname</option>
 

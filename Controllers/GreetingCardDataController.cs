@@ -238,6 +238,7 @@ namespace Hospital_Project.Controllers
 
             //do not process if the (user is not an admin) and (the card does not belong to the user)
             bool isAdmin = User.IsInRole("Admin");
+            Debug.WriteLine(GreetingCard.UserID);
             //Forbidden() isn't a natively implemented status like BadRequest()
             if (!isAdmin && (GreetingCard.UserID != User.Identity.GetUserId()))
             {
@@ -338,7 +339,8 @@ namespace Hospital_Project.Controllers
                                 }
 
                                 db.Entry(SelectedGreetingCard).State = EntityState.Modified;
-
+                                //do not modify the attached user id on update
+                                db.Entry(SelectedGreetingCard).Property(b => b.UserID).IsModified = false;
                                 db.SaveChanges();
 
                             }

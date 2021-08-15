@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Edit";
 }
-
+<div class="addcard">
 <h2>Update GreetingCard</h2>
 <nav class="buttons">
     <ul>
@@ -18,10 +18,14 @@
             <div style="display:none;">
                 @* Pass through the card Id *@
                 <input type="text" name="CardId" value="@Model.SelectedCard.CardId" />
-                
+
+            </div>
+            <div style="display:none;">
+                @* Pass through the user ID *@
+                <input type="text" name="UserID" value="@Model.SelectedCard.UserId" />
             </div>
             <div>
-                <label>SenderFirstName:</label> <input type="text" name="SenderFirstName" value="@Model.SelectedCard.SenderFirstName" data-val="true" data-val-required="please enter sender firstname"/>
+                <label>SenderFirstName:</label> <input type="text" name="SenderFirstName" value="@Model.SelectedCard.SenderFirstName" data-val="true" data-val-required="please enter sender firstname" />
                 @Html.ValidationMessageFor(model => model.SelectedCard.SenderFirstName, "", new { @class = "text-danger", data_valmsg_for = "SenderFirstName" })
             </div>
             <div>
@@ -29,7 +33,7 @@
                 @Html.ValidationMessageFor(model => model.SelectedCard.SenderLastName, "", new { @class = "text-danger", data_valmsg_for = "SenderLastName" })
             </div>
             <div>
-                <label>CardType:</label> 
+                <label>CardType:</label>
                 <select name="CardType" value="@Model.SelectedCard.CardType">
                     <option>WellWishes</option>
                     <option>GetWellSoon</option>
@@ -38,10 +42,10 @@
                 </select>
             </div>
             <div>
-                <label>CardMessage:</label> <textarea name="CardMessage" data-val="true" data-val-required="please enter a message " >@Model.SelectedCard.CardMessage </textarea>
+                <label>CardMessage:</label> <textarea name="CardMessage" data-val="true" data-val-required="please enter a message ">@Model.SelectedCard.CardMessage </textarea>
                 @Html.ValidationMessageFor(model => model.SelectedCard.CardMessage, "", new { @class = "text-danger", data_valmsg_for = "CardMessage" })
             </div>
-            
+
             <div>
                 <label>Admission Id:</label>
 
@@ -60,7 +64,7 @@
             </div>
         </div>
         <div class="col-md-6 col-sm-12">
-            <input type="file" name="GreetinCardPic" />
+            <input type="file" name="GreetingCardPic" />
         </div>
     </div>
     <div>
@@ -69,3 +73,4 @@
     </div>
 
 </form>
+</div>

@@ -156,5 +156,6 @@ textarea {
 .addcard{
     max-width:700px;
     margin:auto;
+    margin-top:200px;
     text-align:center;
 }

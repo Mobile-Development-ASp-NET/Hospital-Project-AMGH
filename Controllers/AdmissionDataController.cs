@@ -29,10 +29,17 @@ namespace Hospital_Project.Controllers
         /// </example>
         [HttpGet]
         [ResponseType(typeof(AdmissionDto))]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult ListAdmissions()
         {
+            bool isAdmin = User.IsInRole("Admin");
+            
+            
+
             List<Admission> Admissions = db.Admissions.ToList();
+
             List<AdmissionDto> AdmissionDtos = new List<AdmissionDto>();
+
 
             Admissions.ForEach(a => AdmissionDtos.Add(new AdmissionDto()
             {
@@ -41,12 +48,12 @@ namespace Hospital_Project.Controllers
                 Bed = a.Bed,
                 DrId = a.DoctorDetails.DrId,
                 DrFname = a.DoctorDetails.DrFname,
-                DrLname  =a.DoctorDetails.DrLname,
+                DrLname = a.DoctorDetails.DrLname,
                 UserId = a.UserId,
-                UserName  =a.ApplicationUser.UserName
+                UserName = a.ApplicationUser.UserName
             }));
-
-            return Ok(AdmissionDtos);
+        
+                return Ok(AdmissionDtos);
         }
         /// <summary>
         /// Gathers information about all admissions related to a particular dr id
@@ -61,8 +68,10 @@ namespace Hospital_Project.Controllers
         /// </example>
         [HttpGet]
         [ResponseType(typeof(GreetingCardDto))]
+        [Authorize(Roles ="Admin")]
         public IHttpActionResult ListAdmissionsForDoctor(int id)
         {
+          
             List<Admission> Admissions = db.Admissions.Where(a => a.DrId == id).ToList();
             List<AdmissionDto> AdmissionDtos = new List<AdmissionDto>();
 
@@ -94,6 +103,7 @@ namespace Hospital_Project.Controllers
         /// </example>
         [ResponseType(typeof(AdmissionDto))]
         [HttpGet]
+        [Authorize(Roles ="Admin")]
         public IHttpActionResult FindAdmission(int id)
         {
             Admission Admission = db.Admissions.Find(id);
@@ -134,6 +144,7 @@ namespace Hospital_Project.Controllers
         /// </example>
         [ResponseType(typeof(void))]
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult UpdateAdmission(int id, Admission Admission)
         {
             if (!ModelState.IsValid)
@@ -183,6 +194,7 @@ namespace Hospital_Project.Controllers
         /// </example>
         [ResponseType(typeof(Admission))]
         [HttpPost]
+        [Authorize(Roles ="Admin")]
         public IHttpActionResult AddAdmission(Admission Admission)
         {
             if (!ModelState.IsValid)
@@ -211,6 +223,7 @@ namespace Hospital_Project.Controllers
         /// </example>
         [ResponseType(typeof(Admission))]
         [HttpPost]
+        [Authorize(Roles ="Admin")]
         public IHttpActionResult DeleteAdmission(int id)
         {
             Admission Admission = db.Admissions.Find(id);
