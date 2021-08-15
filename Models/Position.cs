@@ -12,9 +12,17 @@ namespace Hospital_Project.Models
     {
         [Key]
         public int PositionID { get; set; }
+
+        [Required]
         public string PositionJob { get; set; }
+
+        [Required]
         public string PositionDescription { get; set; }
+
+        [Required]
         public DateTime PositionPostedDate { get; set; }
+
+        [Required]
         public DateTime ApplicationDeadLine { get; set; }
 
         /*
@@ -31,10 +39,20 @@ namespace Hospital_Project.Models
     public class PositionDto
     {
         public int PositionID { get; set; }
+
+        [Required(ErrorMessage = "Please Enter The Job Name.")]
         public string PositionJob { get; set; }
+
+        [Required(ErrorMessage = "Please Enter The Job Description.")]
         public string PositionDescription { get; set; }
+
+        [Required(ErrorMessage = "Please Enter The Posted Date For The Job.")]
         public DateTime PositionPostedDate { get; set; }
+
+        [Required(ErrorMessage = "Please Enter The Deadline For The Job.")]
         public DateTime ApplicationDeadLine { get; set; }
+
+
         public int DepartmentID { get; set; }
         public string DepartmentName { get; set; }
 

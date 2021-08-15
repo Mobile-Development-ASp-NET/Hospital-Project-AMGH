@@ -15,16 +15,20 @@
         <input type="text" name="PositionID" value="@Model.SelectedPosition.PositionID" />
     </div>
     <div>
-        <label>Name:</label> <input type="text" name="PositionJob" value="@Model.SelectedPosition.PositionJob" />
+        <label>Name:</label> <input type="text" name="PositionJob" id="PositionJob" value="@Model.SelectedPosition.PositionJob" data-val="true" data-val-required="Please Enter A Job Name." />
+        @Html.ValidationMessageFor(model => model.SelectedPosition.PositionJob, "", new { @class = "text-danger", data_valmsg_for = "PositionJob" })
     </div>
     <div>
-        <label>Description:</label> <input type="text" name="PositionDescription" value="@Model.SelectedPosition.PositionDescription"/>
+        <label>Description:</label> <input type="text" name="PositionDescription" id="PositionDescription" value="@Model.SelectedPosition.PositionDescription" data-val="true" data-val-required="Please Enter The Job Description." />
+        @Html.ValidationMessageFor(model => model.SelectedPosition.PositionDescription, "", new { @class = "text-danger", data_valmsg_for = "PositionDescription" })
     </div>
     <div>
-        <label>Posted Date:</label> <input type="date" name="PositionPostedDate" value="@Model.SelectedPosition.PositionPostedDate"/>
+        <label>Posted Date:</label> <input type="date" name="PositionPostedDate" id="PositionPostedDate" value="@Model.SelectedPosition.PositionPostedDate" data-val="true" data-val-required="Please Enter The Posted Date For The Job." />
+        @Html.ValidationMessageFor(model => model.SelectedPosition.PositionPostedDate, "", new { @class = "text-danger", data_valmsg_for = "PositionPostedDate" })
     </div>
     <div>
-        <label>Application Deadline</label> <input type="date" name="ApplicationDeadLine" value="@Model.SelectedPosition.ApplicationDeadLine" />
+        <label>Application Deadline</label> <input type="date" name="ApplicationDeadLine" id="ApplicationDeadLine" value="@Model.SelectedPosition.ApplicationDeadLine" data-val="true" data-val-required="Please Enter The Deadline For The Job." />
+        @Html.ValidationMessageFor(model => model.SelectedPosition.ApplicationDeadLine, "", new { @class = "text-danger", data_valmsg_for = "ApplicationDeadLine" })
     </div>
     <div>
         <label>Change Department Assign:</label>

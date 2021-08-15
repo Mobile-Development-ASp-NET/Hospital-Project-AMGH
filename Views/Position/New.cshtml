@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Hospital_Project.Models.DepartmentDto>
+﻿@model Hospital_Project.Models.ViewModels.UpdatePosition
 @{
     ViewBag.Title = "New";
 }
@@ -11,21 +11,25 @@
 </nav>
 <form action="/Position/Create" method="post">
     <div>
-        <label>Name:</label><input type="text" name="PositionJob" />
+        <label>Name:</label><input type="text" name="PositionJob" id="PositionJob" data-val="true" data-val-required="Please Enter A Job Name." />
+        @Html.ValidationMessageFor(model => model.SelectedPosition.PositionJob, "", new { @class = "text-danger", data_valmsg_for = "PositionJob" })
     </div>
     <div>
-        <label>Description:</label><input type="text" name="PositionDescription"/>
+        <label>Description:</label><input type="text" name="PositionDescription" id="PositionDescription" data-val="true" data-val-required="Please Enter The Job Description." />
+        @Html.ValidationMessageFor(model => model.SelectedPosition.PositionDescription, "", new { @class = "text-danger", data_valmsg_for = "PositionDescription" })
     </div>
     <div>
-        <label>Posted Date:</label><input type="date" name="PositionPostedDate"/>
+        <label>Posted Date:</label><input type="date" name="PositionPostedDate" id="PositionPostedDate" data-val="true" data-val-required="Please Enter The Posted Date For The Job." />
+        @Html.ValidationMessageFor(model => model.SelectedPosition.PositionPostedDate, "", new { @class = "text-danger", data_valmsg_for = "PositionPostedDate" })
     </div>
     <div>
-        <label>Application Deadline:</label><input type="date" name="ApplicationDeadLine"/>
+        <label>Application Deadline:</label><input type="date" name="ApplicationDeadLine" id="ApplicationDeadLine" data-val="true" data-val-required="Please Enter The Deadline For The Job." />
+        @Html.ValidationMessageFor(model => model.SelectedPosition.ApplicationDeadLine, "", new { @class = "text-danger", data_valmsg_for = "ApplicationDeadLine" })
     </div>
     <div>
         <label>Department Assigned:</label>
         <select name="DepartmentID">
-            @foreach (var department in Model)
+            @foreach (var department in Model.DepartmentOptions)
             {
                 <option value="@department.DepartmentID">@department.DepartmentName</option>
             }

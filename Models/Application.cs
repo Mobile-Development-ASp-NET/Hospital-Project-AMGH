@@ -11,10 +11,19 @@ namespace Hospital_Project.Models
     {
         [Key]
         public int ApplicationID { get; set; }
+
+        [Required]
         public string ApplicationName { get; set; }
+
+        [Required]
         public DateTime ApplicationDOB { get; set; }
+
+        [Required]
         public string ApplicationEmail { get; set; }
+
         public Boolean ApplicationCriminalRecord { get; set; }
+
+        [Required]
         public string ApplicationStatus { get; set; }
 
 
@@ -27,11 +36,23 @@ namespace Hospital_Project.Models
     public class ApplicationDto
     {
         public int ApplicationID { get; set; }
+
+        [Required(ErrorMessage = "Please Enter a Name.")]
         public string ApplicationName { get; set; }
+
+        [Required(ErrorMessage = "Please Enter Your Date Of Birth.")]
         public DateTime ApplicationDOB { get; set; }
+
+        [Required(ErrorMessage = "Please Enter an Email.")]
         public string ApplicationEmail { get; set; }
+
+
         public Boolean ApplicationCriminalRecord { get; set; }
+
+        [Required(ErrorMessage = "Please Update the Application Status.")]
         public string ApplicationStatus { get; set; }
+
+
         public int PositionID { get; set; }
         public string PositionJob { get; set; }
 
