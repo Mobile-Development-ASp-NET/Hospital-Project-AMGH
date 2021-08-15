@@ -95,11 +95,17 @@ namespace Hospital_Project.Controllers
             // information about all positions in the system
             // GET api/positiondata/listpositions
 
+            // Need the applicationdto for validation
+            UpdateApplication ViewModel = new UpdateApplication();
+
+            // information on all positions in the system
             string url = "positiondata/listpositions";
             HttpResponseMessage response = client.GetAsync(url).Result;
             IEnumerable<PositionDto> PositionsOptions = response.Content.ReadAsAsync<IEnumerable<PositionDto>>().Result;
 
-            return View(PositionsOptions);
+            ViewModel.PositionOptions = PositionsOptions;
+
+            return View(ViewModel);
         }
 
         // GET: Application/Create
@@ -130,6 +136,7 @@ namespace Hospital_Project.Controllers
             }
         }
 
+        // ERROR WHEN UPDATING THE APPLICATION STATUS
         // GET: Application/Edit/5
         //[Authorize]
         public ActionResult Edit(int id)

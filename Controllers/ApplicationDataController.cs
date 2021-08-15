@@ -193,7 +193,7 @@ namespace Hospital_Project.Controllers
         /// </example>
         // POST: api/ApplicationData/AddApplication
         // User Credential 
-        // Admind Credential
+        // Admin Credential
         [ResponseType(typeof(Application))]
         [HttpPost]
         public IHttpActionResult AddApplication(Application application)

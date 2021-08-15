@@ -81,12 +81,18 @@ namespace Hospital_Project.Controllers
         //[Authorize]
         public ActionResult New()
         {
+            // Need the positionDto for validation 
+            UpdatePosition ViewModel = new UpdatePosition();
+
             // information about all departments in the system
             // GET api/departmentdata/listdepartments
             string url = "departmentdata/listdepartments";
             HttpResponseMessage response = client.GetAsync(url).Result;
             IEnumerable<DepartmentDto> DepartmentOptions = response.Content.ReadAsAsync<IEnumerable<DepartmentDto>>().Result;
-            return View(DepartmentOptions);
+
+            ViewModel.DepartmentOptions = DepartmentOptions;
+            
+            return View(ViewModel);
         }
 
         // POST: Position/Create
