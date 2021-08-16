@@ -22,7 +22,9 @@
     - Models
       - Application
       - Position
-
+    - Know Bugs
+      - Update on Application Error
+      - On Methods used for Controllers the following line shows: CS1591 Missing XML Comment ... (Not sure what that means)
   - Greeting Cards-Alby Baby
     - This feature allows a person to send a greeting card to a patient admitted to the hospital.The admin can do the crud operations on the greeting card and also on the                admissions of the hospital.The user can see a list of their greeting cards which they can update and delete.
   
