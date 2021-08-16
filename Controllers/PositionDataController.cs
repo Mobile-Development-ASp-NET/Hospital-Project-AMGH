@@ -31,6 +31,7 @@ namespace Hospital_Project.Controllers
         /// </example>
         [HttpGet]
         [ResponseType(typeof(PositionDto))]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult ListPositions()
         {
             List<Position> Positions = db.Positions.ToList();
@@ -63,6 +64,7 @@ namespace Hospital_Project.Controllers
         /// </example>
         [HttpGet]
         [ResponseType(typeof(PositionDto))]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult ListPostionsForDepartment(int id)
         {
             List<Position> Positions = db.Positions.Where(p => p.DepartmentID == id).ToList();
@@ -98,6 +100,7 @@ namespace Hospital_Project.Controllers
         /// </example>
         [HttpGet]
         [ResponseType(typeof(PositionDto))]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult FindPosition(int id)
         {
             Position Positions = db.Positions.Find(id);
@@ -137,6 +140,7 @@ namespace Hospital_Project.Controllers
         /// </example>
         [HttpPost]
         [ResponseType(typeof(void))]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult UpdatePosition(int id, Position Position)
         {
             if (!ModelState.IsValid)
@@ -186,6 +190,7 @@ namespace Hospital_Project.Controllers
         /// </example>
         [HttpPost]
         [ResponseType(typeof(Position))]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult AddPosition(Position Position)
         {
             if (!ModelState.IsValid)
@@ -199,6 +204,7 @@ namespace Hospital_Project.Controllers
             return CreatedAtRoute("DefaultApi", new { id = Position.PositionID }, Position);
         }
 
+        // Admin Credentials
         /// <summary>
         /// Deletes a Position from the system base on it's ID.
         /// </summary>
@@ -213,6 +219,7 @@ namespace Hospital_Project.Controllers
         // FORM DATA: empty
         /// </example>
         [ResponseType(typeof(Position))]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult DeletePosition(int id)
         {
             Position Position = db.Positions.Find(id);

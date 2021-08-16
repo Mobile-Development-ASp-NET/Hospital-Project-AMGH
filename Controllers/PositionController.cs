@@ -20,11 +20,34 @@ namespace Hospital_Project.Controllers
             client = new HttpClient();
             client.BaseAddress = new Uri("https://localhost:44342/api/");
         }
+        // Note on Authentication
+        // Since this page contains information that users and non-login users should not view
+        // all information has been set authorize only to the admin role
+
+        /// <summary>
+        /// Grabs the authentication cookie sent to this controller.
+        /// </summary> 
+        private void GetApplicationCookie()
+        {
+            string token = "";
+            client.DefaultRequestHeaders.Remove("Cookie");
+            if (!User.Identity.IsAuthenticated) return;
+
+            HttpCookie cookie = System.Web.HttpContext.Current.Request.Cookies.Get(".AspNet.ApplicationCookie");
+            if (cookie != null) token = cookie.Value;
+
+            //Debug.WriteLine("Token Submitted is : " + token);
+            if (token != "") client.DefaultRequestHeaders.Add("Cookie", ".AspNet.ApplicationCookie=" + token);
+
+            return;
+        }
 
         // GET: Position/List
-        //[Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult List()
         {
+            GetApplicationCookie();//get token credentials
+
             // objective: communicate with the position data api to retreieve a list of positions
             // curl https://localhost:44342/api/positiondata/listposition
 
@@ -37,9 +60,11 @@ namespace Hospital_Project.Controllers
         }
 
         // GET: Position/Details/5
-        //[Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Details(int id)
         {
+            GetApplicationCookie();//get token credentials
+
             // objective: communicate with the position data api to retrieve one position
             // curl https://localhost:44342/api/positiondata/findposition/{id}
 
@@ -78,9 +103,11 @@ namespace Hospital_Project.Controllers
         }
 
         // GET: Position/New
-        //[Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult New()
         {
+            GetApplicationCookie();//get token credentials
+
             // Need the positionDto for validation 
             UpdatePosition ViewModel = new UpdatePosition();
 
@@ -96,10 +123,12 @@ namespace Hospital_Project.Controllers
         }
 
         // POST: Position/Create
-        //[Authorize]
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create(Position Position)
         {
+            GetApplicationCookie();//get token credentials
+
             // objective: add a new position into our system using the api
             // curl -H "Content-Type:application/json" -d @Position.json https://localhost:44342/api/positiondata/addposition
             string url = "positiondata/addposition";
@@ -121,9 +150,11 @@ namespace Hospital_Project.Controllers
         }
 
         // GET: Position/Edit/5
-        //[Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
+            GetApplicationCookie();//get token credentials
+
             UpdatePosition ViewModel = new UpdatePosition();
 
             // the existing position information
@@ -144,10 +175,12 @@ namespace Hospital_Project.Controllers
         }
 
         // POST: Position/Edit/5
-        //[Authorize]
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult Update(int id, Position Position)
         {
+            GetApplicationCookie();//get token credentials
+
             string url = "positiondata/updateposition/" + id;
             string jsonpayload = jss.Serialize(Position);
             HttpContent content = new StringContent(jsonpayload);
@@ -164,9 +197,11 @@ namespace Hospital_Project.Controllers
         }
 
         // GET: Position/Delete/5
-        //[Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirm(int id)
         {
+            GetApplicationCookie();//get token credentials
+
             string url = "positiondata/findposition/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
             PositionDto SelectedPosition = response.Content.ReadAsAsync<PositionDto>().Result;
@@ -174,10 +209,12 @@ namespace Hospital_Project.Controllers
         }
 
         // POST: Position/Delete/5
-        //[Authorize]
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id, Position Position)
         {
+            GetApplicationCookie();//get token credentials
+
             string url = "positiondata/deleteposition/" + id;
             HttpContent content = new StringContent("");
             content.Headers.ContentType.MediaType = "application/json";
