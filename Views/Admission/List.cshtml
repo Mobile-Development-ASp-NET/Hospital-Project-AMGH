@@ -1,11 +1,11 @@
-﻿@model IEnumerable<Hospital_Project.Models.AdmissionDto>
+﻿@model Hospital_Project.Models.ViewModels.AdmissionList
 @{
     ViewBag.Title = "List";
 }
 
 <h2>List</h2>
 <a href="/Admission/New">New Admission</a>
-@foreach (var admission in Model)
+@foreach(var admission in Model.Admissions)
 {
     <h2><a href="/Admission/Details/@admission.AdmissionId">@admission.UserName</a></h2>
     <div>Room:@admission.Room @admission.Bed</div>

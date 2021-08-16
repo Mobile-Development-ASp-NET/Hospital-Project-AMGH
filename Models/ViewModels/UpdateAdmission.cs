@@ -12,5 +12,7 @@ namespace Hospital_Project.Models.ViewModels
         // all doctors to choose from when updating this admission
 
         public IEnumerable<DoctorDetailDto> DoctorOptions { get; set; }
+
+        public IEnumerable<ApplicationUser> UserOptions { get; set; }
     }
 }
