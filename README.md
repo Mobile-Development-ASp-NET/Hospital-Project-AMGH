@@ -25,13 +25,13 @@
 
   - Greeting Cards-Alby Baby
     - This feature allows a person to send a greeting card to a patient admitted to the hospital.The admin can do the crud operations on the greeting card and also on the                admissions of the hospital.The user can see a list of their greeting cards which they can update and delete.
-  -Models
-   -GreetingCard
-   -Admission
-  -To do List
-   - Include the feature where admin can choose the patient to add the admissions from a drop down.
-   - Include a model for the greeting card types with default pictures for all of them
-   - Add more styles 
+    -Models
+      -GreetingCard
+      -Admission
+    -To do List
+      - Include the feature where admin can choose the patient to add the admissions from a drop down.
+      - Include a model for the greeting card types with default pictures for all of them
+      - Add more styles 
   
   - Survey Form - Tingwei xie
     - This feature allows a user to select a survey, then answer the questions of the selected survey. The responses will be saved in the database. The admin user read, delete, update the information of the selected survey or selected question. The admin user can also add new surveys and new questions. For MVP, surveys and questions models have been created. For the final product, the response model will be added to the project.
