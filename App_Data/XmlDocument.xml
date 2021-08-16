@@ -630,11 +630,10 @@
             FORM DATA: (empty)
             </example>
         </member>
-        <member name="M:Hospital_Project.Controllers.ApplicationController.List">
+        <member name="M:Hospital_Project.Controllers.ApplicationController.GetApplicationCookie">
             <summary>
             Grabs the authentication cookie sent to this controller.
             </summary> 
-            Not needed for MVP but will be for the final portion
         </member>
         <member name="M:Hospital_Project.Controllers.ApplicationDataController.ListApplications">
             <summary>
@@ -1039,6 +1038,11 @@
             POST: api/GreetingCardData/DeleteGreetingCard/5
             FORM DATA: (empty)
             </example>
+        </member>
+        <member name="M:Hospital_Project.Controllers.PositionController.GetApplicationCookie">
+            <summary>
+            Grabs the authentication cookie sent to this controller.
+            </summary> 
         </member>
         <!-- Badly formed XML comment ignored for member "M:Hospital_Project.Controllers.PositionDataController.ListPositions" -->
         <!-- Badly formed XML comment ignored for member "M:Hospital_Project.Controllers.PositionDataController.ListPostionsForDepartment(System.Int32)" -->
