@@ -28,6 +28,18 @@ namespace Hospital_Project.Controllers
             client.BaseAddress = new Uri("https://localhost:44342/api/");
         }
 
+        private void GetApplicationCookie()
+        {
+            string token = "";
+            client.DefaultRequestHeaders.Remove("Cookie");
+            if (!User.Identity.IsAuthenticated) return;
+
+            HttpCookie cookie = System.Web.HttpContext.Current.Request.Cookies.Get(".AspNet.ApplicationCookie");
+            if (cookie != null) token = cookie.Value;
+            if (token != "") client.DefaultRequestHeaders.Add("Cookie", ".AspNet.ApplicationCookie=" + token);
+
+            return;
+        }
 
 
         // GET: Survey
@@ -60,6 +72,7 @@ namespace Hospital_Project.Controllers
         }
 
         // GET: Survey/Create
+        [Authorize(Roles ="Admin")]
         public ActionResult New()
         {
             return View();
@@ -67,8 +80,10 @@ namespace Hospital_Project.Controllers
 
         // POST: Survey/Create
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create(Survey survey)
         {
+            GetApplicationCookie();
             //creating an survey json data, turn into a string, then eject it into the database
             string url = "SurveyData/AddSurvey";
             string jsonpayload = jss.Serialize(survey);
@@ -91,6 +106,7 @@ namespace Hospital_Project.Controllers
         }
 
         // GET: Survey/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
             //Accessing the selected survey that we want to update
@@ -102,8 +118,10 @@ namespace Hospital_Project.Controllers
 
         // POST: Survey/Edit/5
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult Update(int id, Survey survey)
         {
+            GetApplicationCookie();
             //Use the UpdateSurveys(int id) Method to update the selected Survey's information
             string url = "SurveyData/UpdateSurvey/" + id;
             string jsonpayload = jss.Serialize(survey);
@@ -122,6 +140,7 @@ namespace Hospital_Project.Controllers
         }
 
         // GET: Survey/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirm(int id)
         {
             string url = "SurveyData/FindSurvey/" + id;
@@ -132,9 +151,10 @@ namespace Hospital_Project.Controllers
 
         // POST: Survey/Delete/5
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
-
+            GetApplicationCookie();
             //Accessing the DeleteSurvey(int id) method to delete the selected Survey
             string url = "SurveyData/DeleteSurvey/" + id;
             HttpContent content = new StringContent("");

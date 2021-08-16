@@ -27,6 +27,19 @@ namespace Hospital_Project.Controllers
             client.BaseAddress = new Uri("https://localhost:44342/api/");
         }
 
+        private void GetApplicationCookie()
+        {
+            string token = "";
+            client.DefaultRequestHeaders.Remove("Cookie");
+            if (!User.Identity.IsAuthenticated) return;
+
+            HttpCookie cookie = System.Web.HttpContext.Current.Request.Cookies.Get(".AspNet.ApplicationCookie");
+            if (cookie != null) token = cookie.Value;
+            if (token != "") client.DefaultRequestHeaders.Add("Cookie", ".AspNet.ApplicationCookie=" + token);
+
+            return;
+        }
+
 
 
         // GET: Question
@@ -59,6 +72,7 @@ namespace Hospital_Project.Controllers
         }
 
         // GET: Question/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult New()
         {
             return View();
@@ -66,8 +80,10 @@ namespace Hospital_Project.Controllers
 
         // POST: Question/Create
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create(Question question)
         {
+            GetApplicationCookie();
             //creating an actor json data, turn into a string, then eject it into the database
             string url = "QuestionData/AddQuestion";
             string jsonpayload = jss.Serialize(question);
@@ -85,6 +101,7 @@ namespace Hospital_Project.Controllers
         }
 
         // GET: Question/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
             //Accessing the selected question that we want to update
@@ -101,8 +118,10 @@ namespace Hospital_Project.Controllers
 
         // POST: Question/Edit/5
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult Update(int id, Question question)
         {
+            GetApplicationCookie();
             //Use the UpdateSurveys(int id) Method to update the selected Survey's information
             string url = "QuestionData/UpdateQuestion/" + id;
             string jsonpayload = jss.Serialize(question);
@@ -120,6 +139,7 @@ namespace Hospital_Project.Controllers
         }
 
         // GET: Question/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirm(int id)
         {
             string url = "QuestionData/FindQuestion" + id;
@@ -130,8 +150,10 @@ namespace Hospital_Project.Controllers
 
         // POST: Question/Delete/5
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
+            GetApplicationCookie();
             //Accessing the DeleteQuestion(int id) method to delete the selected question
             string url = "QuestionData/DeleteQuestion/" + id;
             HttpContent content = new StringContent("");

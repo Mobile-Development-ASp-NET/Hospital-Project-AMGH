@@ -9,7 +9,7 @@
 <div class="detailInfo">
     <div>
         <h1>@Model.selectedQuestion.QuestionTitle</h1>
-        <p>@Model.selectedQuestion.QuestionyDescription</p>
+        <p>@Html.Raw(Model.selectedQuestion.QuestionyDescription)</p>
     </div>
 
     <div id="related-questions">

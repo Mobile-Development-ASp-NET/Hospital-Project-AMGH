@@ -76,6 +76,7 @@ namespace Hospital_Project.Controllers
         /// <returns>List of surveys that are related to the selected question</returns>
         ///<example>GET: api/SurveyData/ListSurveysForQuestion</example>
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public List<SurveyDto> ListSurveysForQuestion(int id)
         {
             List<Survey> Surveys = db.Surveys.Where(s => s.Questions.Any(
@@ -108,6 +109,7 @@ namespace Hospital_Project.Controllers
         ///<example>POST: api/surveyData/UpdateSurveys/{id}</example>
         [ResponseType(typeof(void))]
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult UpdateSurvey(int id, Survey surveys)
         {
             if (!ModelState.IsValid)
@@ -156,6 +158,7 @@ namespace Hospital_Project.Controllers
         ///<example>POST: api/SurveyrData/AddSurveys</example>
         [ResponseType(typeof(Survey))]
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult AddSurvey(Survey surveys)
         {
             if (!ModelState.IsValid)
@@ -183,6 +186,7 @@ namespace Hospital_Project.Controllers
         ///<example>POST: api/SurveyData/DeleteSurveys/{id}</example>
         [ResponseType(typeof(Survey))]
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult DeleteSurvey(int id)
         {
             Survey surveys = db.Surveys.Find(id);

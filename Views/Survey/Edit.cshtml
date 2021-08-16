@@ -6,9 +6,11 @@
 <form action="/Survey/Update/@Model.SurveyID" method="POST">
     <div>
         <label>Survey ID:</label><input type="text" name="SurveyID" value="@Model.SurveyID" />
+
     </div>
     <div>
-        <label>Survey Number:</label><input type="text" name="SurveyTitle" value="@Model.SurveyTitle" />
+        <label>Survey Title:</label><input type="text" name="SurveyTitle" value="@Model.SurveyTitle" data-val="true" data-val-required="Please enter a title"/>
+        @Html.ValidationMessageFor(model => model.SurveyTitle, "", new { @class = "text-danger", data_valmsg_for = "SurveyTitle" })
     </div>
     <div>
         <label>Survey Description:</label>

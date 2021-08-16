@@ -10,7 +10,7 @@
         {
             <h3>related surveys:</h3>
             <a href="/survey/details/@survey.SurveyID"><h2>@survey.SurveyTitle</h2></a>
-            <p>@survey.SurveyDescription</p>
+            <p>@Html.Raw(survey.SurveyDescription)</p>
         }
     </div>
 </div>

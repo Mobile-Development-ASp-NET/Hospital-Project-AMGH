@@ -244,14 +244,6 @@
     <Compile Include="Migrations\202107221958275_Add-Migration.Designer.cs">
       <DependentUpon>202107221958275_Add-Migration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202107251633019_Surveys.cs" />
-    <Compile Include="Migrations\202107251633019_Surveys.Designer.cs">
-      <DependentUpon>202107251633019_Surveys.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202107271453344_Surveys1.cs" />
-    <Compile Include="Migrations\202107271453344_Surveys1.Designer.cs">
-      <DependentUpon>202107271453344_Surveys1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\202107272130149_applications.cs" />
     <Compile Include="Migrations\202107272130149_applications.Designer.cs">
       <DependentUpon>202107272130149_applications.cs</DependentUpon>
@@ -275,10 +267,6 @@
     <Compile Include="Migrations\202107290800165_greetingcard.cs" />
     <Compile Include="Migrations\202107290800165_greetingcard.Designer.cs">
       <DependentUpon>202107290800165_greetingcard.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202107300502531_questions.cs" />
-    <Compile Include="Migrations\202107300502531_questions.Designer.cs">
-      <DependentUpon>202107300502531_questions.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202107300745362_feedback.cs" />
     <Compile Include="Migrations\202107300745362_feedback.Designer.cs">
@@ -308,14 +296,6 @@
     <Compile Include="Migrations\202108052014149_change_feedback_datatype.Designer.cs">
       <DependentUpon>202108052014149_change_feedback_datatype.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202108122304572_survey.cs" />
-    <Compile Include="Migrations\202108122304572_survey.Designer.cs">
-      <DependentUpon>202108122304572_survey.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202108122305212_question.cs" />
-    <Compile Include="Migrations\202108122305212_question.Designer.cs">
-      <DependentUpon>202108122305212_question.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\202108130026502_Response.cs" />
     <Compile Include="Migrations\202108130026502_Response.Designer.cs">
       <DependentUpon>202108130026502_Response.cs</DependentUpon>
@@ -324,17 +304,17 @@
     <Compile Include="Migrations\202108131721134_updated-greetingcard-model.Designer.cs">
       <DependentUpon>202108131721134_updated-greetingcard-model.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202108141839567_application-validation.cs" />
-    <Compile Include="Migrations\202108141839567_application-validation.Designer.cs">
-      <DependentUpon>202108141839567_application-validation.cs</DependentUpon>
+    <Compile Include="Migrations\202108132024508_DetailsSurvey.cs" />
+    <Compile Include="Migrations\202108132024508_DetailsSurvey.Designer.cs">
+      <DependentUpon>202108132024508_DetailsSurvey.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202108141847394_application-validation2.cs" />
-    <Compile Include="Migrations\202108141847394_application-validation2.Designer.cs">
-      <DependentUpon>202108141847394_application-validation2.cs</DependentUpon>
+    <Compile Include="Migrations\202108151614417_Survey.cs" />
+    <Compile Include="Migrations\202108151614417_Survey.Designer.cs">
+      <DependentUpon>202108151614417_Survey.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202108142108525_position-validation.cs" />
-    <Compile Include="Migrations\202108142108525_position-validation.Designer.cs">
-      <DependentUpon>202108142108525_position-validation.cs</DependentUpon>
+    <Compile Include="Migrations\202108151646114_Question.cs" />
+    <Compile Include="Migrations\202108151646114_Question.Designer.cs">
+      <DependentUpon>202108151646114_Question.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -556,12 +536,6 @@
     <EmbeddedResource Include="Migrations\202107221958275_Add-Migration.resx">
       <DependentUpon>202107221958275_Add-Migration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202107251633019_Surveys.resx">
-      <DependentUpon>202107251633019_Surveys.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202107271453344_Surveys1.resx">
-      <DependentUpon>202107271453344_Surveys1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107272130149_applications.resx">
       <DependentUpon>202107272130149_applications.cs</DependentUpon>
     </EmbeddedResource>
@@ -579,9 +553,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107290800165_greetingcard.resx">
       <DependentUpon>202107290800165_greetingcard.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202107300502531_questions.resx">
-      <DependentUpon>202107300502531_questions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107300745362_feedback.resx">
       <DependentUpon>202107300745362_feedback.cs</DependentUpon>
@@ -604,26 +575,20 @@
     <EmbeddedResource Include="Migrations\202108052014149_change_feedback_datatype.resx">
       <DependentUpon>202108052014149_change_feedback_datatype.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202108122304572_survey.resx">
-      <DependentUpon>202108122304572_survey.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202108122305212_question.resx">
-      <DependentUpon>202108122305212_question.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202108130026502_Response.resx">
       <DependentUpon>202108130026502_Response.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202108131721134_updated-greetingcard-model.resx">
       <DependentUpon>202108131721134_updated-greetingcard-model.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202108141839567_application-validation.resx">
-      <DependentUpon>202108141839567_application-validation.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202108132024508_DetailsSurvey.resx">
+      <DependentUpon>202108132024508_DetailsSurvey.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202108141847394_application-validation2.resx">
-      <DependentUpon>202108141847394_application-validation2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202108151614417_Survey.resx">
+      <DependentUpon>202108151614417_Survey.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202108142108525_position-validation.resx">
-      <DependentUpon>202108142108525_position-validation.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202108151646114_Question.resx">
+      <DependentUpon>202108151646114_Question.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
