@@ -28,12 +28,15 @@ namespace Hospital_Project.Controllers
             client = new HttpClient(handler);
             client.BaseAddress = new Uri("https://localhost:44342/api/");
         }
+        // Note on Authentication
+        // Since this page contains information that users and non-login users should not view
+        // all information except to CREATE an application has been set authorize only to the admin role
+        // The CREATE application is available to all.
 
         /// <summary>
         /// Grabs the authentication cookie sent to this controller.
         /// </summary> 
-        /// Not needed for MVP but will be for the final portion
-       /* private void GetApplicationCookie()
+        private void GetApplicationCookie()
         {
             string token = "";
             
@@ -45,12 +48,14 @@ namespace Hospital_Project.Controllers
             if (token != "") client.DefaultRequestHeaders.Add("Cookie", ".AspNet.ApplicationCookie=" + token);
 
             return;
-        } */
+        }
 
         // Get: Appication/List
-        //[Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult List()
         {
+            GetApplicationCookie();//get token credentials
+
             //objective: commuincate with out application data api to retrieve a list of applications
             //curl https://localhost:44342/api/applicationdata/listapplications
 
@@ -64,9 +69,11 @@ namespace Hospital_Project.Controllers
         }
 
         // GET: Application/Details/5
-        //[Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Details(int id)
         {
+            GetApplicationCookie();//get token credentials
+
             DetailsApplication ViewModel = new DetailsApplication();
 
             //objective: communicate with our application data api to retrieve one application
@@ -89,9 +96,10 @@ namespace Hospital_Project.Controllers
         }
 
         // Get: Application/New
-        //[Authorize]
         public ActionResult New()
         {
+            GetApplicationCookie();//get token credentials
+
             // information about all positions in the system
             // GET api/positiondata/listpositions
 
@@ -109,11 +117,11 @@ namespace Hospital_Project.Controllers
         }
 
         // GET: Application/Create
+        // No authorize is set since we want the non-login/login users to all create applications
         [HttpPost]
-        //[Authorize]
         public ActionResult Create(Application application)
         {
-            //GetApplicationCookie(); // get token credentials
+            GetApplicationCookie();//get token credentials
 
             // objective: add a new application into our system using the api.
             // curl -H "Content-Type:application/json" -d @application.json https://localhost:44342/api/applicationdata/
@@ -138,9 +146,11 @@ namespace Hospital_Project.Controllers
 
         // ERROR WHEN UPDATING THE APPLICATION STATUS
         // GET: Application/Edit/5
-        //[Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
+            GetApplicationCookie();//get token credentials
+
             UpdateApplication ViewModel = new UpdateApplication();
 
             // the existing application information
@@ -163,9 +173,10 @@ namespace Hospital_Project.Controllers
 
         // POST: Application/Edit/5
         [HttpPost]
-        // [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Update(int id, Application application)
         {
+            GetApplicationCookie();//get token credentials
 
             string url = "applicationdata/updateapplication/" + id;
             string jsonpayload = jss.Serialize(application);
@@ -183,9 +194,11 @@ namespace Hospital_Project.Controllers
         }
 
         // GET: Application/Delete/5
-        //[Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirm(int id)
         {
+            GetApplicationCookie();//get token credentials
+
             string url = "applicationdata/findapplication/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
             ApplicationDto SelectedApplication = response.Content.ReadAsAsync<ApplicationDto>().Result;
@@ -194,10 +207,11 @@ namespace Hospital_Project.Controllers
 
         // POST: Application/Delete/5
         [HttpPost]
-        //[Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
-            //GetApplicationCookie();
+            GetApplicationCookie();//get token credentials
+
             string url = "applicationdata/deleteapplication/" + id;
             HttpContent content = new StringContent("");
             content.Headers.ContentType.MediaType = "application/json";

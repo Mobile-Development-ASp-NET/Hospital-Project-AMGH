@@ -3,7 +3,8 @@
     ViewBag.Title = "Update";
 }
 
-<h2>Update Department</h2>
+<a href="/department/details/@Model.DepartmentID" class="btn btn-primary">Go back</a>
+<h2>Update a Department</h2>
 
 <form action="/Department/Edit/@Model.DepartmentID" method="POST">
     <div class="form-group">

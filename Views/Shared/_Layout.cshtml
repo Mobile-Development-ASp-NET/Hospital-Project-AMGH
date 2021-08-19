@@ -7,6 +7,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link rel="stylesheet" type="text/css" href="~/Content/lightbox.css" />
+
     <script src="https://cdn.tiny.cloud/1/e9d46d8j1eliyt2jvqtu4ew4mdb4mezaenryqmahtp67scsw/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
 </head>
@@ -36,12 +37,13 @@
                     <li>@Html.ActionLink("Position", "List", "Position")</li>
                     <li>@Html.ActionLink("Question", "List", "Question")</li>
                     <li>@Html.ActionLink("Survey", "List", "Survey")</li>
+                    <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
-    <div class="container body-content">
+    <div class="container body-content" style="margin-top:1px;">
         @RenderBody()
         <hr />
         <footer>
