@@ -29,6 +29,7 @@ namespace Hospital_Project.Controllers
         /// </example>
         [HttpGet]
         [ResponseType(typeof(FeedbackDto))]
+
         public IHttpActionResult ListFeedbacks()
         {
             List<Feedback> Feedbacks = db.Feedbacks.ToList();
@@ -44,7 +45,39 @@ namespace Hospital_Project.Controllers
                 DrLname = a.DoctorDetails.DrLname,
                 FeedbackContent = a.FeedbackContent,
                 FeedbackDate = a.FeedbackDate                
-                
+            }));
+
+            return Ok(FeedbackDtos);
+        }
+
+        /// <summary>
+        /// Gathers information about all feedbacks related to a particular dr id
+        /// </summary>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// CONTENT: all feedbacks in the database, including their associated doctors matched with a particular dr ID
+        /// </returns>
+        /// <param name="id">DrId</param>
+        /// <example>
+        /// GET: api/FeedbackData/ListFeedbacksForDotor/3
+        /// </example>
+        [HttpGet]
+        [ResponseType(typeof(FeedbackDto))]
+
+        public IHttpActionResult ListFeedbacksForDoctor(int id)
+        {
+
+            List<Feedback> Feedbacks = db.Feedbacks.Where(a => a.DrId == id).ToList();
+            List<FeedbackDto> FeedbackDtos = new List<FeedbackDto>();
+
+            Feedbacks.ForEach(a => FeedbackDtos.Add(new FeedbackDto()
+            {
+                FeedbackId = a.FeedbackId,
+                DrId = a.DoctorDetails.DrId,
+                DrFname = a.DoctorDetails.DrFname,
+                DrLname = a.DoctorDetails.DrLname,
+                FeedbackContent = a.FeedbackContent,
+                FeedbackDate = a.FeedbackDate
             }));
 
             return Ok(FeedbackDtos);
@@ -65,6 +98,7 @@ namespace Hospital_Project.Controllers
         /// </example>
         [ResponseType(typeof(FeedbackDto))]
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult FindFeedback(int id)
         {
             Feedback Feedback = db.Feedbacks.Find(id);
@@ -105,7 +139,8 @@ namespace Hospital_Project.Controllers
         /// </example>
         [ResponseType(typeof(void))]
         [HttpPost]
-        public IHttpActionResult PutFeedback(int id, Feedback Feedback)
+        [Authorize(Roles = "Admin")]
+        public IHttpActionResult UpdateFeedback(int id, Feedback Feedback)
         {
             if (!ModelState.IsValid)
             {
@@ -149,11 +184,12 @@ namespace Hospital_Project.Controllers
         /// HEADER: 400 (Bad Request)
         /// </returns>
         /// <example>
-        /// POST: api/FeedbackData/Feedback
+        /// POST: api/FeedbackData/AddFeedback
         /// FORM DATA: Feedback JSON Object
         /// </example>
         [ResponseType(typeof(Feedback))]
         [HttpPost]
+        [Authorize(Roles = "Admin,Guest")]
         public IHttpActionResult AddFeedback(Feedback Feedback)
         {
             if (!ModelState.IsValid)
@@ -182,6 +218,7 @@ namespace Hospital_Project.Controllers
         /// </example>
         [ResponseType(typeof(Feedback))]
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult DeleteFeedback(int id)
         {
             Feedback Feedback = db.Feedbacks.Find(id);
