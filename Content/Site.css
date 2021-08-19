@@ -1,5 +1,5 @@
 ﻿body {
-    padding-top: 310px;
+    padding-top: 200px;
     padding-bottom: 20px;
     background: #fff8e8;
 }
@@ -57,7 +57,8 @@ textarea {
 }
 
 .navbar-inverse {
-    background-color: cornflowerblue;
+    background-color: #dcc643;
+    ;
 }
 
 .navbar-inverse .navbar-nav > li > a {
@@ -158,4 +159,24 @@ textarea {
     margin:auto;
     margin-top:200px;
     text-align:center;
+}
+
+.heading-container{
+    display :flex;
+    justify-content:space-between;
+}
+.list-style{
+    list-style:none;
+}
+    .list-style a {
+        color: crimson;
+    }
+.list-style a:hover{
+    color:darkgoldenrod;
+}
+.padding-small{
+    padding-top:20px;
+}
+.mr-sm{
+    margin-right:10px;
 }

@@ -728,6 +728,15 @@
             Grabs the authentication cookie sent to this controller.
             </summary>
         </member>
+        <member name="M:Hospital_Project.Controllers.DepartmentController.GetApplicationCookie">
+            <summary>
+            Grabs the authentication cookie sent to this controller.
+            For proper WebAPI authentication, you can send a post request with login credentials to the WebAPI and log the access token from the response. The controller already knows this token, so we're just passing it up the chain.
+            
+            Here is a descriptive article which walks through the process of setting up authorization/authentication directly.
+            https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/individual-accounts-in-web-api
+            </summary>
+        </member>
         <member name="M:Hospital_Project.Controllers.DepartmentDataController.ListDepartments">
             <summary>
             To list all the departments.
@@ -740,6 +749,15 @@
             </summary>
             <param name="id">Department Id</param>
             <returns>A sepcific Department.</returns>
+        </member>
+        <member name="M:Hospital_Project.Controllers.DoctorDetailController.GetApplicationCookie">
+            <summary>
+            Grabs the authentication cookie sent to this controller.
+            For proper WebAPI authentication, you can send a post request with login credentials to the WebAPI and log the access token from the response. The controller already knows this token, so we're just passing it up the chain.
+            
+            Here is a descriptive article which walks through the process of setting up authorization/authentication directly.
+            https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/individual-accounts-in-web-api
+            </summary>
         </member>
         <member name="M:Hospital_Project.Controllers.DoctorDetailsDataController.ListDoctorDetails">
             <summary>
@@ -754,12 +772,47 @@
             <param name="id">Doctor Id</param>
             <returns>A specific doctor details</returns>
         </member>
+        <member name="M:Hospital_Project.Controllers.DoctorDetailsDataController.ListDoctorDetailForDepartment(System.Int32)">
+            <summary>
+            Gathers informatin about all the doctors in a specific department
+            </summary>
+            <param name="id">Department Id</param>
+            <returns>List of Doctor Details</returns>
+            GET: api/DoctorDetailsData/ListDoctorDetailForDepartment/1
+        </member>
+        <member name="M:Hospital_Project.Controllers.DoctorDetailsDataController.UpdateDoctorDetail(System.Int32,Hospital_Project.Models.DoctorDetails)">
+            <summary>
+            Updates the doctor information for specific Id
+            </summary>
+            <param name="id">Doctor Id</param>
+            <param name="doctorDetails"></param>
+            <returns>  
+                 HEADER: 200 (OK)
+                or
+                HEADER: 404 (NOT FOUND)
+            </returns>
+        </member>
         <member name="M:Hospital_Project.Controllers.DoctorDetailsDataController.AddDoctor(Hospital_Project.Models.DoctorDetails)">
             <summary>
             Adds a new Doctor to the database.
             </summary>
-            <param name="doctorDetails"></param>
-            <returns></returns>
+            <param name="doctorDetails">Doctor detail Model</param>
+            <returns>
+             HEADER: 200 (OK)
+                or
+                HEADER: 404 (NOT FOUND)
+            </returns>
+        </member>
+        <member name="M:Hospital_Project.Controllers.DoctorDetailsDataController.DeleteDoctorDetail(System.Int32)">
+            <summary>
+            Delete a spefic doctor
+            </summary>
+            <param name="id">Doctor Id</param>
+            <returns>
+             HEADER: 200 (OK)
+                or
+                HEADER: 404 (NOT FOUND)
+            </returns>
         </member>
         <member name="M:Hospital_Project.Controllers.FeedbackDataController.ListFeedbacks">
             <summary>
