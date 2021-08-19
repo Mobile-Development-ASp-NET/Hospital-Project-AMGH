@@ -159,3 +159,12 @@ textarea {
     margin-top:200px;
     text-align:center;
 }
+
+/* responsive design */
+@media screen and (max-width:768px){
+    .body-content {
+        margin-top: -8em;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}

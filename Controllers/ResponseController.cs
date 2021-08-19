@@ -31,6 +31,7 @@ namespace Hospital_Project.Controllers
 
 
         // GET: Response
+        [HttpGet]
         public ActionResult List()
         {
             //Accessing a list of responses from responseData Listresponses() method.
@@ -40,7 +41,7 @@ namespace Hospital_Project.Controllers
 
             List<ResponseDto> Responses = response.Content.ReadAsAsync<List<ResponseDto>>().Result;
 
-            return View(Response);
+            return View(Responses);
         }
 
         // GET: Response/Details/5

@@ -13,14 +13,17 @@
     </div>
 
     <div id="related-questions">
+        <!--Try to save responses to the database-->
         <form action="/Response/Create" method="POST">
-            <!--<input type="hidden" name="QuestionIDs" value="1,2,3,4,5,6,7,8,9" />-->
+            <input type="hidden" name="QuestionIDs" value="1,2,3,4,5,6,7,8,9" />
             <h3>related questions:</h3>
             @foreach (var question in Model.relatedquestions)
             {
                 <a href="/question/details/@question.QuestionID" style="color:black; padding-right:2em; font-size:2em;">@question.QuestionTitle</a>
                 <p>@question.QuestionyDescription</p>
-                <input type="text" name="Response" id="Question_@question.QuestionID" />
+                <div>
+                    <input type="text" name="Response" id="Question_@question.QuestionID" />
+                </div>
             }
             <div>
                 <input type="submit" value="Submit" />
