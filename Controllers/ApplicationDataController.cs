@@ -30,6 +30,7 @@ namespace Hospital_Project.Controllers
         /// </example>
         [HttpGet]
         [ResponseType(typeof(ApplicationDto))]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult ListApplications()
         {
             List<Application> Applications = db.Applications.ToList();
@@ -65,6 +66,7 @@ namespace Hospital_Project.Controllers
         /// </example>
         [HttpGet]
         [ResponseType(typeof(ApplicationDto))]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult ListApplicationsForPosition(int id)
         {
             List<Application> Applications = db.Applications.Where(a => a.PositionID == id).ToList();
@@ -102,6 +104,7 @@ namespace Hospital_Project.Controllers
         /// </example>
         [ResponseType(typeof(ApplicationDto))]
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult FindApplication(int id)
         {
             Application Application = db.Applications.Find(id);
@@ -144,6 +147,7 @@ namespace Hospital_Project.Controllers
         /// </example>
         [ResponseType(typeof(void))]
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult UpdateApplication(int id, Application application)
         {
             if (!ModelState.IsValid)
@@ -192,8 +196,7 @@ namespace Hospital_Project.Controllers
         /// FORM DATA: Application JSON Object
         /// </example>
         // POST: api/ApplicationData/AddApplication
-        // User Credential 
-        // Admin Credential
+        // Since we want to even allow un login people to make an application
         [ResponseType(typeof(Application))]
         [HttpPost]
         public IHttpActionResult AddApplication(Application application)
@@ -226,6 +229,7 @@ namespace Hospital_Project.Controllers
         // Admin Credential
         [ResponseType(typeof(Application))]
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult DeleteApplication(int id)
         {
             Application application = db.Applications.Find(id);

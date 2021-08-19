@@ -68,6 +68,7 @@ namespace Hospital_Project.Controllers
         // curl -H "Content-Type:application/json" -d @department.json https://localhost:44342/api/departmentdata/updatedepartment/3
         [ResponseType(typeof(void))]
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult UpdateDepartment(int id, Department department)
         {
             if (!ModelState.IsValid)
@@ -106,6 +107,7 @@ namespace Hospital_Project.Controllers
         // POST: api/DepartmentData
         [HttpPost]
         [ResponseType(typeof(Department))]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult AddDepartment(Department department)
         {
             if (!ModelState.IsValid)
@@ -123,7 +125,7 @@ namespace Hospital_Project.Controllers
         // curl -d "" https://localhost:44324/api/departmentdata/deletedepartment/3
         [HttpPost]
         [ResponseType(typeof(Department))]
-
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult DeleteDepartment(int id)
         {
             Department department = db.Departments.Find(id);

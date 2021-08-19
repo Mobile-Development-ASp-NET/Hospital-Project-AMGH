@@ -27,7 +27,7 @@ namespace Hospital_Project.Controllers
                 //cookies are manually set in RequestHeader
                 UseCookies = false
             };
-            client = new HttpClient();
+            client = new HttpClient(handler);
             client.BaseAddress = new Uri("https://localhost:44342/api/");
         }
 
@@ -69,7 +69,12 @@ namespace Hospital_Project.Controllers
         {
 
             GetApplicationCookie();
-     
+
+            AdmissionList ViewModel = new AdmissionList();
+
+            if (User.Identity.IsAuthenticated && User.IsInRole("Admin")) ViewModel.IsAdmin = true;
+            else ViewModel.IsAdmin = false;
+
             string url = "Admissiondata/listAdmissions";
             HttpResponseMessage response = client.GetAsync(url).Result;
 
@@ -80,8 +85,9 @@ namespace Hospital_Project.Controllers
             //Debug.WriteLine("Number of Admissions received : ");
             //Debug.WriteLine(Admissions.Count());
 
+            ViewModel.Admissions = Admissions;
 
-            return View(Admissions);
+            return View(ViewModel);
         }
 
         /// <summary>
@@ -97,6 +103,9 @@ namespace Hospital_Project.Controllers
         {
             GetApplicationCookie();
             AdmissionDetails ViewModel = new AdmissionDetails();
+
+            if (User.Identity.IsAuthenticated && User.IsInRole("Admin")) ViewModel.IsAdmin = true;
+            else ViewModel.IsAdmin = false;
 
             string url = "Admissiondata/findAdmission/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
@@ -134,7 +143,19 @@ namespace Hospital_Project.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult New()
         {
-            return View();
+            //need the doctor DTO for validation
+            UpdateAdmission ViewModel = new UpdateAdmission();
+
+            //information about all doctors  in the system.
+            //GET api/doctordetailsdata/listdoctordetails
+
+            string url = "doctordetailsdata/listdoctordetails";
+            HttpResponseMessage response = client.GetAsync(url).Result;
+            IEnumerable<DoctorDetailDto> DoctorOptions = response.Content.ReadAsAsync<IEnumerable<DoctorDetailDto>>().Result;
+
+            ViewModel.DoctorOptions = DoctorOptions;
+
+            return View(ViewModel);
         }
 
         /// <summary>

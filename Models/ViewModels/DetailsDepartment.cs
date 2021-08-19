@@ -9,5 +9,7 @@ namespace Hospital_Project.Models.ViewModels
     {
         public DepartmentDto SelectedDepartment { get; set; }
 
+        public IEnumerable<DoctorDetailDto> AssociatedDoctors { get; set; }
+
     }
 }

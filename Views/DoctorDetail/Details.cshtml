@@ -2,10 +2,21 @@
 @{
     ViewBag.Title = "Details";
 }
+<div class="heading-container">
+    <h2>Details of a Doctor</h2>
+    @{
+        if (User.IsInRole("Admin"))
+        {
+            <div class="heading-container">
+                <h4 class="mr-sm"><a href="/doctorDetail/Update/@Model.DrId" class="btn btn-primary">Update Details</a></h4>
+                <h4><a href="/doctorDetail/DeleteConfirmation/@Model.DrId" class="btn btn-danger">Delete Doctor</a></h4>
+            </div>
+        }
+    }
 
-<h2>Details of a Doctor</h2>
-<h4><a href="/doctorDetail/Update/@Model.DrId">Update Details</a></h4>
-<h4><a href="/doctorDetail/DeleteConfirmation/@Model.DrId">Delete Doctor</a></h4>
+</div>
+
+
 <h3>Dr Full Name  : <i>@Model.DrFname @Model.DrLname</i></h3>
 <p>Dr Email: <i>@Model.DrEmail</i></p>
 <p>Dr Studies : <i>@Model.DrStudies</i></p>

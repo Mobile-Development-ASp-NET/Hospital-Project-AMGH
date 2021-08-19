@@ -3,17 +3,20 @@
     ViewBag.Title = "List";
 }
 
-<h2>List</h2>
-<h4><a href="/Department/New">Add a Department</a></h4>
+<div class="heading-container">
+    <h2>List of Departments</h2>
+    @{
+        if (User.IsInRole("Admin"))
+        {
+        <h4><a href="/Department/New" class=" btn btn-success">Add a Department</a></h4>
+        }
+    }
+    
+</div>
+
 <ul>
     @foreach (var department in Model)
     {
-        <li>
-            <ol>
-                <li>Department ID : @department.DepartmentID</li>
-                <li>Department Name : <a href="/department/details/@department.DepartmentID">@department.DepartmentName</a></li>
-                <li>Department Description : @department.DepartmentDescription</li>
-            </ol>
-        </li>
+        <li class="list-style"><h3><a href="/department/details/@department.DepartmentID">@department.DepartmentName</a></h3></li>
     }
 </ul>

@@ -27,6 +27,7 @@ namespace Hospital_Project.Controllers
         }
 
         // GET: Feedback/List
+
         public ActionResult List()
         {
             //objective: communicate with our Feedback data api to retrieve a list of Feedbacks
@@ -85,6 +86,7 @@ namespace Hospital_Project.Controllers
         }
 
         // GET: Feedback/New
+        [Authorize(Roles = "Admin,Guest")]
         public ActionResult New()
         {
             string url = "doctordetailsdata/listdoctordetails";
@@ -95,6 +97,7 @@ namespace Hospital_Project.Controllers
 
         // POST: Feedback/Create
         [HttpPost]
+        [Authorize(Roles = "Admin,Guest")]
         public ActionResult Create(Feedback Feedback)
         {
             Debug.WriteLine("the json payload is :");
@@ -124,6 +127,7 @@ namespace Hospital_Project.Controllers
         }
 
         // GET: Feedback/Edit/3
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
             string url = "Feedbackdata/findFeedback/" + id;
@@ -134,6 +138,7 @@ namespace Hospital_Project.Controllers
 
         // POST: Feedback/Update/3
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult Update(int id, Feedback Feedback)
         {
 
@@ -155,6 +160,7 @@ namespace Hospital_Project.Controllers
 
 
         // GET: Feedback/Delete/3
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirm(int id)
         {
             string url = "Feedbackdata/findFeedback/" + id;
@@ -164,6 +170,7 @@ namespace Hospital_Project.Controllers
         }
 
         // POST: Feedback/Delete/3
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Delete(int id)
         {

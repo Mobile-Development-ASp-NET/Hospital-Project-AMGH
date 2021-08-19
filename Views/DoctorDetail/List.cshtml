@@ -2,14 +2,21 @@
 @{
     ViewBag.Title = "List";
 }
-
-<h2>List of all Doctors</h2>
-<a href ="/doctordetail/new">Add new Doctor</a>
-<ul>
-    @foreach (var drdetail in Model)
-    {
-        <li><h3><a href="/doctorDetail/Details/@drdetail.DrId">@drdetail.DrFname @drdetail.DrLname</a></h3></li>
-        
+<div class="heading-container">
+    <h2>List of all Doctors</h2>
+    @{ 
+        if(User.IsInRole("Admin"))
+            {
+        <h4><a href="/doctordetail/new" class="btn btn-success">Add new Doctor</a></h4>
+            }
     }
-</ul>
+    
+</div>
+    <ul>
+        @foreach (var drdetail in Model)
+        {
+            <li class="list-style"><h3><a href="/doctorDetail/Details/@drdetail.DrId">@drdetail.DrFname @drdetail.DrLname</a></h3></li>
+
+        }
+    </ul>
 

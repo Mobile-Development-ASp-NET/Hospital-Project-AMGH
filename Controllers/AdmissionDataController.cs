@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Web;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -33,25 +35,32 @@ namespace Hospital_Project.Controllers
         public IHttpActionResult ListAdmissions()
         {
             bool isAdmin = User.IsInRole("Admin");
-            
-            
 
-            List<Admission> Admissions = db.Admissions.ToList();
 
+            Debug.WriteLine("hello");
+            List<Admission> Admissions;
             List<AdmissionDto> AdmissionDtos = new List<AdmissionDto>();
 
-
-            Admissions.ForEach(a => AdmissionDtos.Add(new AdmissionDto()
+            if (isAdmin)
             {
-                AdmissionId = a.AdmissionId,
-                Room = a.Room,
-                Bed = a.Bed,
-                DrId = a.DoctorDetails.DrId,
-                DrFname = a.DoctorDetails.DrFname,
-                DrLname = a.DoctorDetails.DrLname,
-                UserId = a.UserId,
-                UserName = a.ApplicationUser.UserName
-            }));
+                Admissions = db.Admissions.ToList();
+
+                Debug.WriteLine("hello");
+
+
+
+                Admissions.ForEach(a => AdmissionDtos.Add(new AdmissionDto()
+                {
+                    AdmissionId = a.AdmissionId,
+                    Room = a.Room,
+                    Bed = a.Bed,
+                    DrId = a.DoctorDetails.DrId,
+                    DrFname = a.DoctorDetails.DrFname,
+                    DrLname = a.DoctorDetails.DrLname,
+                    UserId = a.UserId,
+                    UserName = a.ApplicationUser.UserName
+                }));
+            }
         
                 return Ok(AdmissionDtos);
         }

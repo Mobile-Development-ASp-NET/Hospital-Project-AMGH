@@ -75,12 +75,51 @@ namespace Hospital_Project.Controllers
 
             return Ok(doctorDetailDto);
         }
+        /// <summary>
+        /// Gathers informatin about all the doctors in a specific department
+        /// </summary>
+        /// <param name="id">Department Id</param>
+        /// <returns>List of Doctor Details</returns>
+        /// GET: api/DoctorDetailsData/ListDoctorDetailForDepartment/1
 
+        [HttpGet]
+        [ResponseType(typeof(DoctorDetailDto))]
+        public IHttpActionResult ListDoctorDetailForDepartment(int id)
+        {
+            List<DoctorDetails> doctorDetails = db.DoctorDetails.Where(a=>a.DepartmentId == id).ToList();
+            List<DoctorDetailDto> doctorDetailDtos = new List<DoctorDetailDto>();
+            doctorDetails.ForEach(element => doctorDetailDtos.Add(new DoctorDetailDto()
+            {
+                DrId = element.DrId,
+                DrFname = element.DrFname,
+                DrLname = element.DrLname,
+                DrEmail = element.DrEmail,
+                DrBio = element.DrBio,
+                DrPosition = element.DrPosition,
+                DrStudies = element.DrStudies,
+                DepartmentId = element.DepartmentId,
+                DepartmentName = element.Department.DepartmentName
+
+            }));
+            return Ok(doctorDetailDtos);
+
+        }
+        /// <summary>
+        /// Updates the doctor information for specific Id
+        /// </summary>
+        /// <param name="id">Doctor Id</param>
+        /// <param name="doctorDetails"></param>
+        /// <returns>  
+        ///      HEADER: 200 (OK)
+        ///     or
+        ///     HEADER: 404 (NOT FOUND)
+        /// </returns>
         // POST: api/DoctorDetailsData/UpdateDoctorDetail/3
         // curl -H "Content-Type:application/json" -d @DoctorDetail.json https://localhost:44342/api/DoctorDetailsData/UpdateDoctorDetail/3
 
         [HttpPost]
         [ResponseType(typeof(void))]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult UpdateDoctorDetail(int id, DoctorDetails doctorDetails)
         {
             if (!ModelState.IsValid)
@@ -117,12 +156,17 @@ namespace Hospital_Project.Controllers
         /// <summary>
         /// Adds a new Doctor to the database.
         /// </summary>
-        /// <param name="doctorDetails"></param>
-        /// <returns></returns>
+        /// <param name="doctorDetails">Doctor detail Model</param>
+        /// <returns>
+        ///  HEADER: 200 (OK)
+        ///     or
+        ///     HEADER: 404 (NOT FOUND)
+        /// </returns>
         // curl -d @DoctorDetail.json -H "Content-type:application/json" https://localhost:44342/api/DoctorDetailsData/AddDoctor
         // POST: api/DoctorDetailsData/AddDoctor
         [ResponseType(typeof(DoctorDetails))]
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult AddDoctor(DoctorDetails doctorDetails)
         {
             if (!ModelState.IsValid)
@@ -135,11 +179,20 @@ namespace Hospital_Project.Controllers
 
             return CreatedAtRoute("DefaultApi", new { id = doctorDetails.DrId }, doctorDetails);
         }
-
+        /// <summary>
+        /// Delete a spefic doctor
+        /// </summary>
+        /// <param name="id">Doctor Id</param>
+        /// <returns>
+        ///  HEADER: 200 (OK)
+        ///     or
+        ///     HEADER: 404 (NOT FOUND)
+        /// </returns>
         //POST: api/DoctorDetailsData/DeletDoctorDetail/3
         // curl -d "" https://localhost:44324/api/doctorDetailsData/deleteDoctorDetail/3
         [HttpPost]
         [ResponseType(typeof(DoctorDetails))]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult DeleteDoctorDetail(int id)
         {
             DoctorDetails doctorDetails = db.DoctorDetails.Find(id);

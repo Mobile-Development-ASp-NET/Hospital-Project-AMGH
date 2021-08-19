@@ -5,19 +5,23 @@
 }
 
 <h2>Update Admission</h2>
-<nav>
+<nav class="buttons">
     <ul>
         <li><a href="/Admission/List">Go back to list</a></li>
 
         <li><a style="color:#ab2020;" href="/Admission/DeleteConfirm/@Model.SelectedAdmission.AdmissionId">Delete</a></li>
     </ul>
 </nav>
-<form action="/Admission/Update/@Model.SelectedAdmission" method="POST">
+<form action="/Admission/Update/@Model.SelectedAdmission.AdmissionId" method="POST">
     <div class="row">
         <div class="col-md-6 col-sm-12">
             <div style="display:none;">
-                @* Pass through the card Id *@
+                @* Pass through the Admission Id *@
                 <input type="text" name="AdmissionId" value="@Model.SelectedAdmission.AdmissionId" />
+            </div>
+            <div style="display:none;">
+                @* Pass through the User Id *@
+                <input type="text" name="UserId" value="@Model.SelectedAdmission.UserId" />
             </div>
             <div>
                 <label>Room:</label> <input type="text" name="Room" value="@Model.SelectedAdmission.Room" />
