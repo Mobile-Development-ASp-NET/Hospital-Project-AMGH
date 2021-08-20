@@ -1,0 +1,17 @@
+﻿@model List<Hospital_Project.Models.ResponseDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<a href="#" class="navlink">Add</a>
+<div class="detailInfo">
+    <h1>response List</h1>
+    <div>
+        @foreach (var response in Model)
+        {
+            <a href="#"><h2>@response.ResponseID</h2></a>
+            <p>@response.Answer</p>
+        }
+    </div>
+</div>
+

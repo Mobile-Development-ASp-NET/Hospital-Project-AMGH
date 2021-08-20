@@ -512,12 +512,12 @@
     <Content Include="Views\DoctorDetail\Error.cshtml" />
     <Content Include="Views\DoctorDetail\Update.cshtml" />
     <Content Include="Views\DoctorDetail\DeleteConfirmation.cshtml" />
+    <Content Include="Views\Response\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include=".vs\Hospital Project\v16\" />
     <Folder Include=".vs\Hospital-Project-AMGH\v16\" />
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Response\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -51,7 +51,7 @@
       - Fix tiny editor bugs, @Html.raw() is not working at the moment.
   
   - Blogs - Uditesh Jha
-    - This feature allows a user to read blogs in the blogs web page. Firstly, to get access to the blogs or updates regarding hospital, user has to subscribe for blogs. This         feature is an admin side functionality so an admin can view the list of subscribed users, create new user or delete them as well. An admin can view the list of blogs,           update the blog, create new blog and delete the particular blog. Here, admmin can approve the users for particular blog in the blog details page.
+    - This feature allows a user to read blogs in the blogs web page. Firstly, to get access to the blogs or updates regarding hospital, user has to subscribe for blogs. This feature is an admin side functionality so an admin can view the list of subscribed users, create new user or delete them as well. An admin can view the list of blogs, update the blog, create new blog and delete the particular blog. Here, admmin can approve the users for particular blog in the blog details page.
     - Models
       - Subscribed user
       - Blog
@@ -68,5 +68,8 @@
     - Models 
       - Department
       - DoctorDetails
-    - Work Completed : MVP thats is CRUD for both the models is completed and in the doctor details view all the information related to department is being display.
-    - To Do : List all the dr related to department on the list department View , Styling as well as authorization.
+    - Work Completed : 
+      - CRUD for both Doctor as well as department.
+      - Authorization for each pages that is only admin user can update,create or delete information.
+      - Only Admin users can view the links for adding, updating and deleting information.
+      - Added some styling to my pages as well as to the website.

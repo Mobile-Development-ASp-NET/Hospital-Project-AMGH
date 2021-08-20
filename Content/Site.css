@@ -161,22 +161,11 @@ textarea {
     text-align:center;
 }
 
-.heading-container{
-    display :flex;
-    justify-content:space-between;
-}
-.list-style{
-    list-style:none;
-}
-    .list-style a {
-        color: crimson;
+/* responsive design */
+@media screen and (max-width:768px){
+    .body-content {
+        margin-top: -8em;
+        padding-left: 15px;
+        padding-right: 15px;
     }
-.list-style a:hover{
-    color:darkgoldenrod;
-}
-.padding-small{
-    padding-top:20px;
-}
-.mr-sm{
-    margin-right:10px;
 }

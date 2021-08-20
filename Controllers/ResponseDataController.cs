@@ -23,6 +23,7 @@ namespace Hospital_Project.Controllers
         /// </summary>
         /// <returns>List of responses in the database</returns>
         /// <example>GET: api/ResponseData/ListResponses</example>
+        [HttpGet]
         public List<ResponseDto> ListResponses()
         {
             List<Response> Responses = db.Responses.ToList();
