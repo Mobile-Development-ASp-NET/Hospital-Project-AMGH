@@ -814,6 +814,14 @@
                 HEADER: 404 (NOT FOUND)
             </returns>
         </member>
+        <member name="M:Hospital_Project.Controllers.FeedbackController.GetApplicationCookie">
+            <summary>
+            Grabs the authentication cookie sent to this controller.
+            For proper WebAPI authentication, you can send a post request with login credentials to the WebAPI and log the access token from the response. The controller already knows this token, so we're just passing it up the chain.
+            Here is a descriptive article which walks through the process of setting up authorization/authentication directly.
+            https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/individual-accounts-in-web-api
+            </summary>
+        </member>
         <member name="M:Hospital_Project.Controllers.FeedbackDataController.ListFeedbacks">
             <summary>
             Returns all Feedbacks in the system.
@@ -824,6 +832,19 @@
             </returns>
             <example>
             GET: api/FeedbackData/ListFeedbacks
+            </example>
+        </member>
+        <member name="M:Hospital_Project.Controllers.FeedbackDataController.ListFeedbacksForDoctor(System.Int32)">
+            <summary>
+            Gathers information about all feedbacks related to a particular dr id
+            </summary>
+            <returns>
+            HEADER: 200 (OK)
+            CONTENT: all feedbacks in the database, including their associated doctors matched with a particular dr ID
+            </returns>
+            <param name="id">DrId</param>
+            <example>
+            GET: api/FeedbackData/ListFeedbacksForDotor/3
             </example>
         </member>
         <member name="M:Hospital_Project.Controllers.FeedbackDataController.FindFeedback(System.Int32)">
@@ -841,7 +862,7 @@
             GET: api/FeedbackData/FindFeedback/3
             </example>
         </member>
-        <member name="M:Hospital_Project.Controllers.FeedbackDataController.PutFeedback(System.Int32,Hospital_Project.Models.Feedback)">
+        <member name="M:Hospital_Project.Controllers.FeedbackDataController.UpdateFeedback(System.Int32,Hospital_Project.Models.Feedback)">
             <summary>
             Updates a particular Feedback in the system with POST Data input
             </summary>
@@ -871,7 +892,7 @@
             HEADER: 400 (Bad Request)
             </returns>
             <example>
-            POST: api/FeedbackData/Feedback
+            POST: api/FeedbackData/AddFeedback
             FORM DATA: Feedback JSON Object
             </example>
         </member>

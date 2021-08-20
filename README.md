@@ -57,7 +57,8 @@
       - Blog
   
   - Patient Feedback - Majdi Nawfal
-    - This feature allows a user to provide feedback upon visiting a doctor in the hospital. The feedback will be saved in the database, and all users will be able to see a list of the patient's feedback. Admin and logged in users will be able to add new feedback. Admin will be able to update and delete an existing feedback. 
+    - This feature allows a user to provide feedback upon visiting a doctor in the hospital. The feedback will be saved in the database, and all users will be able to see a list of the patient's feedback. Admin and logged in users will be able to add new feedback. Admin will be able to update and delete an existing feedback.
+    - Authorization was added, where everyone can see the list of feedbacks, while only logged in user(guest) and admin can add/create a feedback. Only Admin can update and delete it. 
     - Model
       - Feedback
   

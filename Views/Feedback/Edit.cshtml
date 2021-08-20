@@ -22,7 +22,7 @@
                 <label>Patient:</label> <input type="text" name="UserName" value="@Model.UserName" />
             </div>
             <div>
-                <label>Content:</label> <input type="text" name="FeedbackContent" value="@Model.FeedbackContent" />
+                <label>Content:</label> <textarea name="FeedbackContent">@Model.FeedbackContent</textarea>
             </div>
             <div>
                 <label>Date:</label> <input type="date" value="@Model.FeedbackDate.ToString("yyyy-MM-dd")" name="FeedbackDate" />
