@@ -15,7 +15,12 @@ namespace Hospital_Project.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: api/SubscribedUserData/ListSubscribedUsers
+        /// Objective: Create a method that returns all subscribed users from the database
+        /// <summary>
+        /// return all subscribed users from the database
+        /// </summary>
+        /// <returns>List of subscribed users </returns>
+        /// <example>GET: api/SubscribedUserData/ListSubscribedUsers</example>
         [HttpGet]
         [ResponseType(typeof(SubscribedUserDto))]
         public IEnumerable<SubscribedUserDto> ListSubscribedUsers()
@@ -31,6 +36,13 @@ namespace Hospital_Project.Controllers
             return SubscribedUserDtos;
         }
 
+        ///Objective: Create a method that allow us to return all subscribed users that are related to the blog
+        ///by entering a interger value of the selected blog id
+        /// <summary>
+        /// Return all subscribed users that are related to the selected blog from the database
+        /// </summary>
+        /// <param name="id">blogID</param>
+        ///<example>GET: api/SubscribedUserData/ListSubscribedUsersForBlog</example>
         [HttpGet]
         [ResponseType(typeof(SubscribedUserDto))]
         public IHttpActionResult ListSubscribedUsersForBlog(int id)
@@ -47,6 +59,13 @@ namespace Hospital_Project.Controllers
             return Ok(SubscribedUserDtos);
         }
 
+        ///Objective: Create a method that returns the selected user by entering a interger value of the selected user id
+        /// <summary>
+        /// Return the selected subscribed user
+        /// </summary>
+        /// <param name="id">SubscribedUserID</param>
+        /// <return>selected subscribed user</return>
+        ///<example>GET: api/SubscribedUserData/FindSubscribedUser/{id}</example>
         [HttpGet]
         [ResponseType(typeof(SubscribedUserDto))]
         public IHttpActionResult FindSubscribedUser(int id)
@@ -66,7 +85,20 @@ namespace Hospital_Project.Controllers
             return Ok(subscribedUserDto);
         }
 
-        // PUT: api/SubscribedUserData/UpdateSubscribedUser/5
+        /// Objective: Create a method that allow us to access the selected survey by entering a interger value of the selected user id
+        /// then Update the selected subscribed user with JSON form data of the subscribedUser model 
+        /// <summary>
+        /// Update the selected subscribed user from the database
+        /// </summary>
+        /// <param name="id">SubscribedUserID</param>
+        /// <param name="SubscribedUser">SubscribedUser JSON form data</param>
+        /// <returns>
+        /// HEADER: 204 (Success, No Content Response)
+        /// or
+        /// HEADER: 404 (Not Found)
+        /// </returns>
+        ///<example>POST: api/SubscribedUserData/UpdateSubscribedUser/{id}</example>
+
         [HttpPost]
         [ResponseType(typeof(void))]
         public IHttpActionResult UpdateSubscribedUser(int id, SubscribedUser subscribedUser)
@@ -102,6 +134,17 @@ namespace Hospital_Project.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        ///Objective: Create a method that allow us to add a new SubscribedUser
+        /// <summary>
+        /// Add a new SubscribedUser into the database
+        /// </summary>
+        /// <param name="SubscribedUser">Subscribed User JSON form data</param>
+        /// <returns>
+        /// HEADER: 204 (Success, No Content Response)
+        /// or
+        /// HEADER: 400 (Bad Request)
+        /// </returns>
+        ///<example>POST: api/SubscribedUserData/AddSubscribedUser</example>
         [HttpPost]
         [ResponseType(typeof(SubscribedUser))]
         public IHttpActionResult AddSubscribedUser(SubscribedUser subscribedUser)
@@ -117,6 +160,17 @@ namespace Hospital_Project.Controllers
             return CreatedAtRoute("DefaultApi", new { id = subscribedUser.SubscribedUserID }, subscribedUser);
         }
 
+        /// Objective: Create a method that allow us to delete the selected SubscribedUser by entering a interger value of the selected SubscribedUser id
+        /// <summary>
+        /// Remove the selected SubscribedUser from the database
+        /// </summary>
+        /// <param name="id">SubscribedUserID</param>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// or
+        /// HEADER: 404 (NOT FOUND)
+        /// </returns>
+        ///<example>POST: api/SubscribedUserData/DeleteSubscribedUser/{id}</example>
         [HttpPost]
         [ResponseType(typeof(SubscribedUser))]
         public IHttpActionResult DeleteSubscribedUser(int id)
