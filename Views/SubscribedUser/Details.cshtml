@@ -7,10 +7,17 @@
 <a href="/subscribeduser/edit/@Model.SelectedSubscribedUser.SubscribedUserID" class="navlink">Update</a>
 <a href="/subscribeduser/DeleteConfirm/@Model.SelectedSubscribedUser.SubscribedUserID" class="dellink">Delete</a>
 <div class="detailInfo">
-    <div>
+    <div class="subscribedUser">
         <div>User ID : @Model.SelectedSubscribedUser.SubscribedUserID</div>
         <div>User Name : @Model.SelectedSubscribedUser.Name</div>
         <div>User Email : @Model.SelectedSubscribedUser.Email</div>
+    </div>
+    <div class="relatedBlogs">
+        <h3>Related Blogs:</h3>
+        @foreach (var blog in Model.relatedBlogs)
+        {
+            <a href="/blog/details/@blog.BlogID" style="color:blue; padding-right:1em; font-size:1.6em;">@blog.Title</a>
+        }
     </div>
 </div>
 

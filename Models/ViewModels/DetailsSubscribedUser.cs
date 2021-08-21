@@ -8,5 +8,6 @@ namespace Hospital_Project.Models.ViewModels
     public class DetailsSubscribedUser
     {
         public SubscribedUserDto SelectedSubscribedUser { get; set; }
+        public List<BlogDto> relatedBlogs { get; set; }
     }
 }

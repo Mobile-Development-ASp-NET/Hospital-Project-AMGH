@@ -31,7 +31,7 @@ namespace Hospital_Project.Controllers
         }
 
         /// <summary>
-        /// Grabs the authentication cookie sent to this controller.
+        ///     Grabs the authentication cookie sent to this controller.
         /// </summary>
         private void GetApplicationCookie()
         {
@@ -70,6 +70,7 @@ namespace Hospital_Project.Controllers
 
             ViewModel.SelectedBlog = SelectedBlog;
 
+            // Show all subscribedusers that are related to one blog
             url = "subscribeduserdata/listsubscribedusersforblog/" + id;
             response = client.GetAsync(url).Result;
 

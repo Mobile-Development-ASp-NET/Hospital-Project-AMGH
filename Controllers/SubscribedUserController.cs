@@ -70,6 +70,12 @@ namespace Hospital_Project.Controllers
 
             ViewModel.SelectedSubscribedUser = SelectedSubscribedUser;
 
+            // Show all blogs that are related to one subscribed user
+            url = "BlogData/ListBlogsForSubscribedUser/" + id;
+            response = client.GetAsync(url).Result;
+            List<BlogDto> relatedBlogs = response.Content.ReadAsAsync<List<BlogDto>>().Result;
+            ViewModel.relatedBlogs = relatedBlogs;
+
             return View(ViewModel);
         }
 
