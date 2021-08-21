@@ -45,6 +45,7 @@ namespace Hospital_Project.Controllers
         ///<example>GET: api/SubscribedUserData/ListSubscribedUsersForBlog</example>
         [HttpGet]
         [ResponseType(typeof(SubscribedUserDto))]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult ListSubscribedUsersForBlog(int id)
         {
             List<SubscribedUser> SubscribedUsers = db.SubscribedUsers.Where(b => b.Blogs.Any(a => a.BlogID == id)).ToList();
@@ -101,6 +102,7 @@ namespace Hospital_Project.Controllers
 
         [HttpPost]
         [ResponseType(typeof(void))]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult UpdateSubscribedUser(int id, SubscribedUser subscribedUser)
         {
             if (!ModelState.IsValid)
@@ -147,6 +149,7 @@ namespace Hospital_Project.Controllers
         ///<example>POST: api/SubscribedUserData/AddSubscribedUser</example>
         [HttpPost]
         [ResponseType(typeof(SubscribedUser))]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult AddSubscribedUser(SubscribedUser subscribedUser)
         {
             if (!ModelState.IsValid)
@@ -173,6 +176,7 @@ namespace Hospital_Project.Controllers
         ///<example>POST: api/SubscribedUserData/DeleteSubscribedUser/{id}</example>
         [HttpPost]
         [ResponseType(typeof(SubscribedUser))]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult DeleteSubscribedUser(int id)
         {
             SubscribedUser subscribedUser = db.SubscribedUsers.Find(id);

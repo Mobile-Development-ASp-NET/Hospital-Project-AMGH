@@ -45,8 +45,9 @@ namespace Hospital_Project.Controllers
         /// <param name="id">SubscribedUserID</param>
         ///<example>GET: api/BlogData/ListBlogsForSubscribedUser</example>
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         [ResponseType(typeof(BlogDto))]
-        public IHttpActionResult ListBlogsForSubscribedUser(int id)
+        public List<BlogDto> ListBlogsForSubscribedUser(int id)
         {
             List<Blog> Blogs = db.Blogs.Where(b => b.SubscribedUsers.Any(a => a.SubscribedUserID == id)).ToList();
             List<BlogDto> BlogDtos = new List<BlogDto>();
@@ -57,7 +58,7 @@ namespace Hospital_Project.Controllers
                 Title = b.Title,
                 Content = b.Content
             }));
-            return Ok(BlogDtos);
+            return BlogDtos;
         }
 
         ///Objective: Create a method that returns the selected blog by entering a interger value of the selected blog id
@@ -103,6 +104,7 @@ namespace Hospital_Project.Controllers
         // POST: api/BlogData/UpdateBlog/5
         [HttpPost]
         [ResponseType(typeof(void))]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult UpdateBlog(int id, Blog blog)
         {
             if (!ModelState.IsValid)
@@ -148,7 +150,9 @@ namespace Hospital_Project.Controllers
         /// </returns>
         ///<example>POST: api/BlogData/AddBlog</example>
         // POST: api/BlogData/AddBlog
+        [HttpPost]
         [ResponseType(typeof(Blog))]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult AddBlog(Blog blog)
         {
             if (!ModelState.IsValid)
@@ -174,7 +178,9 @@ namespace Hospital_Project.Controllers
         /// </returns>
         ///<example>POST: api/BlogData/DeleteBlog/{id}</example>
         // DELETE: api/BlogData/DeleteBlog/5
+        [HttpPost]
         [ResponseType(typeof(Blog))]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult DeleteBlog(int id)
         {
             Blog blog = db.Blogs.Find(id);
