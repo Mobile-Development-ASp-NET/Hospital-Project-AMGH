@@ -55,6 +55,17 @@
     - Models
       - Subscribed user
       - Blog
+    - Relationship between entities
+      - Many to Many
+    - Work completed
+      - CRUD for subscribed user and blogs.
+      - Authorization so that only admin user can update,add or delete information.
+      - List of blogs for selected subscribed user and list of subscribed users for selected blog can be seen in details view.
+      - Admin can approve users on details of particular blog by dropdown.
+    - Future improvements
+      - Add article entity. So Blog enitity will have one to many relationship with Article enitity.
+      - Add more styling and design.
+      - Build mailing system. Subscribed users will get email notification when new article is created.
   
   - Patient Feedback - Majdi Nawfal
     - This feature allows a user to provide feedback upon visiting a doctor in the hospital. The feedback will be saved in the database, and all users will be able to see a list of the patient's feedback. Admin and logged in users will be able to add new feedback. Admin will be able to update and delete an existing feedback.
